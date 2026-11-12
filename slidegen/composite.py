@@ -696,17 +696,26 @@ def _cards(slide, p, x, y, w, h, theme, geo=None):
         text(slide, tx, cy, x + w - tx - 0.12, ch, [f"**{it['title']}**", it["text"]], size=p.get("text_size", 12), font=theme["body_font"], anchor="m", accent=theme.get("text_primary"))     # ==accent== in brand colour
 
 
+def _kpi_card(slide, x, y, w, h, theme):
+    """theme kpi_style "boxed" (outlined card) / "tiles" (brand-filled tile): the card behind one KPI; returns (value colour, label colour)."""
+    ks = theme.get("kpi_style")
+    if ks == "tiles": box(slide, x, y, w, h, fill=theme["primary"], shape=rect_shape(theme)); return theme["on_primary"], theme["on_primary"]
+    if ks == "boxed": box(slide, x, y, w, h, fill="FFFFFF", line="BFBFBF", line_w=0.75, shape=rect_shape(theme))
+    return None, "1A1A1A"
+
+
 def _kpis(slide, p, x, y, w, h, theme):
     items = p["items"]; n = len(items); f = theme["body_font"]; ic = any(i.get("icon") for i in items); st = p.get("icon_style", "disc")
+    card = theme.get("kpi_style") in ("boxed", "tiles"); pad = 0.12 if card else 0
     if w / n >= 1.9:                                  # side by side; an icon disc sits above the figure
         tw = (w - 0.15 * (n - 1)) / n; th = min(h - (0.6 if ic else 0), 2.4); y += 0.6 if ic else 0
         for i, k in enumerate(items):
             tx = x + i * (tw + 0.15)
             if k.get("icon"): _icon(slide, k["icon"], tx + 0.25, y - 0.3, 0.5, theme, st)
-            # no tinted card or accent bar: a plain brand-coloured figure with its label beneath (as in the original)
-            # left-aligned, dark figure (not a centred red pair): one accent per slide, reads as a hand-placed stat
-            text(slide, tx, y + 0.12, tw, th * 0.5, k["value"], size=max(16, min(26, int(tw * 72 / (0.6 * max(len(k["value"]), 1))))), bold=theme.get("kpi_bold", True), color=theme.get("kpi_color") or theme.get("title_color") or "1A1A1A", font=theme["heading_font"], align="l", anchor="m")
-            text(slide, tx, y + th * 0.6, tw - 0.1, th * 0.38, k["label"], size=11, font=f, align="l")
+            # default: no card, a plain brand-coloured figure with its label beneath (as in the original); theme kpi_style boxed / tiles add one
+            vc, lc = _kpi_card(slide, tx, y + 0.05, tw, th - 0.05, theme) if card else (None, "1A1A1A")
+            text(slide, tx + pad, y + 0.12, tw - 2 * pad, th * 0.5, k["value"], size=max(16, min(26, int((tw - 2 * pad) * 72 / (0.6 * max(len(k["value"]), 1))))), bold=theme.get("kpi_bold", True), color=vc or theme.get("kpi_color") or theme.get("title_color") or "1A1A1A", font=theme["heading_font"], align="l", anchor="m")
+            text(slide, tx + pad, y + th * 0.6, tw - 0.1 - 2 * pad, th * 0.38, k["label"], size=11, color=lc, font=f, align="l")
             if k.get("delta"): sz = max(16, min(26, int(tw * 72 / (0.6 * max(len(k["value"]), 1))))); _delta(slide, k, tx + min(tw - 0.25, 0.68 * sz / 72 * len(k["value"]) + 0.15), y + 0.12 + th * 0.25, theme)
     else:                                             # stacked rows: value | label
         rh = min((h - 0.1 * (n - 1)) / n, 1.4)
@@ -723,8 +732,9 @@ def _kpis(slide, p, x, y, w, h, theme):
         for i, k in enumerate(items):
             ry = y + i * (rh + 0.1)
             if k.get("icon"): _icon(slide, k["icon"], x + 0.4, ry + rh / 2, 0.5, theme, st)
-            text(slide, x + 0.15 + ox, ry, vw, rh, k["value"], size=max(16, min(24, int(vw * 72 / (0.6 * max(len(k["value"]), 1))))), bold=theme.get("kpi_bold", True), color=theme.get("kpi_color") or theme["primary"], font=theme["heading_font"], anchor="m")
-            text(slide, x + 0.15 + ox + vw + 0.1, ry, w - ox - vw - (0.25 if ic else 0.4), rh, k["label"], size=12, font=f, anchor="m")
+            vc, lc = _kpi_card(slide, x + ox + (0.05 if ic else 0), ry, w - ox - (0.05 if ic else 0), rh, theme) if card else (None, "1A1A1A")      # the card starts right of the icon
+            text(slide, x + 0.15 + ox, ry, vw, rh, k["value"], size=min(max(16, min(24, int(vw * 72 / (0.6 * max(len(k["value"]), 1))))), int(rh * 72 * 0.55) if card else 99), bold=theme.get("kpi_bold", True), color=vc or theme.get("kpi_color") or theme["primary"], font=theme["heading_font"], anchor="m")      # in a card the figure fits the card height
+            text(slide, x + 0.15 + ox + vw + 0.1, ry, w - ox - vw - (0.25 if ic else 0.4), rh, k["label"], size=12, color=lc, font=f, anchor="m")
             if k.get("delta"): _delta(slide, k, x + 0.15 + ox + vw - 0.2, ry + rh / 2, theme)      # stacked rows: markers share one column at the right edge of the figure column
 
 
@@ -1163,16 +1173,19 @@ def fit(spec, theme):
     if spec["layout"] == "cols":
         hd = list(zip(spec["cols"], _cols(spec["cols"], *_body(spec))))
         if _hasband(spec): hd.insert(0, (spec["band"], (None, 0, None, _full(spec)[2])))
+    st = spec.get("section_style") or hst; sz = 14 if st == "label" else 12; caps = st == "dotline" and theme.get("header_caps", True)
+    hdr_w = lambda t: _tw(t, sz, True) * fh * (1.15 if caps else 1)      # capitals run ~15% wider
+    ends = 0.2 if st == "bar" else 0.5 if st in ("dotline", "centred_rule") else 0.05      # bar padding / the line + dot at both ends of a centred header
+    if spec["layout"] == "cols":
         for c, (_r, hh, _, hw) in hd:
             if not (hw and c.get("title")): continue
-            st = spec.get("section_style") or hst; sz = 14 if st == "label" else 12
-            room = hw - (0.36 if c.get("title_badge") is not None else 0) - (0.2 if st == "bar" else 0.05)
-            if _tw(c["title"], sz, True) * fh > room:
-                w_.append(f"section header '{c['title']}' needs 2 lines but its column fits one (~{int(len(c['title']) * room / (_tw(c['title'], sz, True) * fh))} characters): shorten it")
+            room = hw - (0.36 if c.get("title_badge") is not None else 0) - ends
+            if hdr_w(c["title"]) > room:
+                w_.append(f"section header '{c['title']}' needs 2 lines but its column fits one (~{int(len(c['title']) * room / hdr_w(c['title']))} characters): shorten it")
     for c, (_r, _hh, rs, _hw) in (zip(spec["cols"], _cols(spec["cols"], *_body(spec))) if spec["layout"] == "cols" else []):
         for i, t in enumerate(c.get("row_titles") or []):
-            st = spec.get("section_style") or hst; sz = 14 if st == "label" else 12; bd = (c.get("row_badges") or [None] * 99)[i] if i < len(c.get("row_badges") or []) else None
-            if t and i < len(rs) and _tw(t, sz, True) * fh > rs[i][2] - (0.36 if bd is not None else 0) - (0.2 if st == "bar" else 0.05):
+            bd = (c.get("row_badges") or [None] * 99)[i] if i < len(c.get("row_badges") or []) else None
+            if t and i < len(rs) and hdr_w(t) > rs[i][2] - (0.36 if bd is not None else 0) - ends:
                 w_.append(f"section header '{t}' needs 2 lines but its section fits one: shorten it")
     for p, r in zip(P, _slots(spec)):
         pw = r[2] - _side_w(p)

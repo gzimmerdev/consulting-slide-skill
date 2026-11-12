@@ -3,7 +3,8 @@
 24 styles, about one per archive deck. Each takes a colour family the archive uses (reds, wines, greens, moss/olive, navy/blue, golds,
 greys), rebuilt as an original muted tone (never a deck's hex), and a different archive option for every other trait: font family
 (mapped to fonts every Office install has; the map of archive fonts is in private/font_map.json), title size, weight and underline,
-header look, conclusion look, table header and row lines, badge, corners, bottom rule, one or two strong colours. Options are spread
+header look, conclusion look (dashed / filled / rule / grey box), big numbers (plain / boxed / tiles), grey panels or white, bar
+thickness, table header and row lines, badge, corners, bottom rule, one or two strong colours. Options are spread
 evenly over the styles and, of 300 seeded shuffles, the one where two styles share the fewest traits wins (user, 2026-11-12: "it seems
 there is no variety" when traits were drawn by frequency). A style whose colour family + font + title size equals one deck's is
 re-assigned, so none copies a deck.
@@ -29,7 +30,8 @@ font_of = lambda f: f if f in STANDARD else FONT.get(f, "Segoe UI")
 WIDE = ("Century Gothic", "Verdana")      # wide fonts stay in headings: the text-height estimates assume an average-width body font
 # Trait options the archive shows (vision labels + per-deck traits); common options are listed twice so they come up more often.
 TRAITS = {"header_style": ["rule", "rule", "bar", "dotline", "vbar"],      # label over a line / filled bar / centred line / side bar
-          "takeaway_style": ["dashed", "dashed", "solid", "rule"], "table_header": ["rule", "rule", "fill", "plain"], "badge": ["circle", "square"],
+          "takeaway_style": ["dashed", "dashed", "solid", "rule", "grey"], "kpi_style": ["plain", "plain", "boxed", "tiles"],
+          "panels": ["none", "none", "none", "grey"], "bar_gap": [80, 80, 50, 140], "table_header": ["rule", "rule", "fill", "plain"], "badge": ["circle", "square"],
           "title_bold": [True, False], "title_rule": [False, False, True], "footer_rule": [True, False], "table_row_rules": [False, True],
           "corners": ["square", "square", "rounded"], "source_italic": [True, False], "palette": ["brand_grey", "brand_grey", "two_brand"],
           "title_size": [18, 19, 20, 20, 21, 22, 24]}
@@ -66,7 +68,7 @@ def mix(i, name, fonts, A, taken):
     dark = hexc(h, .16, min(s, .5) * .8)
     return {"_src": f"archive mix (2026-11-12): {name}, an original muted tone of the archive's {f} family; every other trait takes a different archive option per style (tools/mix_styles.py)",
             "primary": hexc(h, l, s), "title_color": dark, "dark": dark, "kpi_color": hexc(h, l, s), "series": series,
-            "heading_font": font, "body_font": "Segoe UI" if font in WIDE else font, **t}
+            "heading_font": font, "body_font": "Segoe UI" if font in WIDE else font, **t, **({"header_caps": False} if font in WIDE else {})}      # wide fonts: centred headers in sentence case
 
 
 def main():

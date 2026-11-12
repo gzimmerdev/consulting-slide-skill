@@ -86,7 +86,8 @@ Tokens are grouped by what they touch. "Default" is the `_defaults` value; "—"
 ### Takeaway, shapes and tags
 | Token | Values | What it changes | Used by |
 |---|---|---|---|
-| `takeaway_style` | `dashed` (default) · `solid` · `rule` | so-what bar: `dashed` = pale fill + dashed outline; `solid` = brand strip with light text; `rule` = thin primary rule over plain text, no box | Team G dashed · LEK/Team D solid · Team E rule |
+| `takeaway_style` | `dashed` (default) · `solid` · `rule` · `grey` | so-what bar: `dashed` = pale fill + dashed outline; `solid` = brand strip with light text; `rule` = thin primary rule over plain text, no box; `grey` = grey box, no outline | Team G dashed · LEK/Team D solid · Team E rule |
+| `bar_gap` | % of a bar width (default 80) | gap between bars in column/bar charts: 50 = thick bars, 140 = thin bars (waterfalls keep their own) | mix_* styles |
 | `corners` | `square` (default) · `rounded` | cards, tiles, bars | Team I / Team E rounded |
 | `badge` | `circle` (default) · `square` | numbered markers 1-2-3 | Team I square |
 | `tag_style` | `plain` | the stamp (`tag`) becomes a small label top-left, no box | Team E, lek_report |
@@ -129,7 +130,7 @@ Tokens are grouped by what they touch. "Default" is the `_defaults` value; "—"
 |---|---|---|---|
 | `kpi_color` | hex (default `title_color`) | figure colour of `kpis` panels | lek_report 129B46 · Team I 265701 |
 | `kpi_bold` | true/false (default true) | KPI figures bold | lek_report false |
-| `kpi_style` | `bracket` | label above a [bracketed] figure | lek_report |
+| `kpi_style` | `bracket` · `boxed` · `tiles` | `bracket`: label above a [bracketed] figure; `boxed`: each KPI in an outlined card; `tiles`: each KPI on a brand-filled tile with light text (archive KPI looks) | lek_report bracket · mix_* styles |
 | `kpi_row_max` | inches (default 1.1) | max KPI row height | lek_report 1.5 |
 | `kpi_size` | pt (default auto) | fixed KPI figure size | lek_report 18 |
 | `kpi_label_size` | pt (default 11) | KPI label size | lek_report 16 |

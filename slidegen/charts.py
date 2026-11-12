@@ -334,7 +334,7 @@ def add_chart(slide, c, theme, x, y, w, h, font_size=10):
 
     stacked = kind in ("stacked", "stacked100", "waterfall")
     if kind != "line":
-        plot.gap_width = c.get("gap", 50 if kind == "waterfall" else 80)
+        plot.gap_width = c.get("gap", 50 if kind == "waterfall" else theme.get("bar_gap", 80))      # theme bar_gap: 50 thick bars ... 150 thin bars
         plot.overlap = 100 if stacked else (-10 if nser > 1 else 0)
     plot.vary_by_categories = False
 
