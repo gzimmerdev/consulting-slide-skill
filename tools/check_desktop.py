@@ -13,4 +13,8 @@ tools = {t.name for t in asyncio.run(m.mcp.list_tools())}; prompts = {p.name for
 need = {"suggest_composition", "slide_grammar", "build_slide", "rank_candidates", "save_exemplar"}
 print("tools:", len(tools), "ok" if need <= tools else f"MISSING {need - tools}", "| prompt slide:", "ok" if "slide" in prompts else "MISSING"); ok &= need <= tools and "slide" in prompts
 z = root / "desktop" / "slide.zip"; print("desktop skill zip:", z if z.exists() else "not built")
+if z.exists():      # Desktop refuses a zip whose paths use "\" ("Zip file contains path with invalid characters"); Windows PowerShell's Compress-Archive writes them
+    import zipfile; zf = zipfile.ZipFile(z); bad = [i.orig_filename for i in zf.infolist() if "\\" in i.orig_filename]
+    stale = zf.read("slide/SKILL.md") != (root / "desktop" / "slide" / "SKILL.md").read_bytes() if "slide/SKILL.md" in zf.namelist() else True
+    if bad or stale: print("  zip BROKEN (backslash paths or not the current SKILL.md); rebuild: py -3 -c \"import zipfile; zipfile.ZipFile('desktop/slide.zip','w',zipfile.ZIP_DEFLATED).write('desktop/slide/SKILL.md','slide/SKILL.md')\""); ok = False
 sys.exit(0 if ok else 1)

@@ -15,7 +15,8 @@ plus one prompt, `slide`. It runs on your Claude plan; no API key.
    tools icon of a new chat.
 5. Optional, so that typing `/slide` works in Desktop: Settings -> Capabilities -> Skills -> upload `desktop/slide.zip`.
    It only routes the request to the slidegen tools. (After editing `desktop/slide/SKILL.md`, rebuild the zip:
-   `Compress-Archive -Path desktop\slide -DestinationPath desktop\slide.zip -Force`.)
+   `py -3 -c "import zipfile; zipfile.ZipFile('desktop/slide.zip','w',zipfile.ZIP_DEFLATED).write('desktop/slide/SKILL.md','slide/SKILL.md')"`.
+   Not Windows PowerShell's `Compress-Archive`: it writes `slide\SKILL.md` and Desktop refuses the zip ("path with invalid characters"). `tools/check_desktop.py` checks the zip.)
 
 Built slides land in `out/mcp/<name>.pptx`; ask Claude to open one in PowerPoint.
 
