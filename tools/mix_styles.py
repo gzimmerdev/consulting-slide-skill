@@ -30,7 +30,7 @@ def fam(h, s):
 def hexc(h, l, s): return "".join(f"{round(c * 255):02X}" for c in colorsys.hls_to_rgb(h / 360 % 1, l, s))
 
 
-def pick(rng, w):
+def _pick_unused(rng, w):
     w = {k: v for k, v in w.items() if v > 0}; r = rng.random() * sum(w.values())
     for k, v in w.items():
         r -= v
@@ -38,33 +38,50 @@ def pick(rng, w):
     return k
 
 
-def mix(name, decks, shares, rng):
-    taken = {(fam(d["_hue"], d["_s"]), font_of(d["heading_font"]), d["title_size"]) for d in decks.values()}
-    fonts = collections.Counter(font_of(d["heading_font"]) for d in decks.values())
-    sizes = collections.Counter(d["title_size"] for d in decks.values()); bold = sum(d["title_bold"] for d in decks.values()) / len(decks)
-    for _ in range(50):
-        font, size = pick(rng, fonts), pick(rng, sizes)
-        if (name, font, size) not in taken: break
-    h, l, s = FAMILY[name]; h += rng.uniform(-6, 6)
-    sh = lambda f: {k: v for k, v in shares.get(f, {}).items()}
-    pal = pick(rng, sh("palette") or {"brand_grey": 1})
+# Trait options the archive shows (vision labels + per-deck traits). Styles take DIFFERENT values (user, 2026-11-12: "it seems there is
+# no variety"; frequency draws all landed on the most common value): each option goes to an equal share of the styles, and of 300
+# seeded shuffles the one where two styles share the fewest traits wins. Common options are listed twice, so they come up more often.
+TRAITS = {"header_style": ["rule", "bar", "dotline", "vbar"],                # label over a line / filled bar / centred line / side bar
+          "takeaway_style": ["dashed", "solid", "rule"], "table_header": ["rule", "fill", "plain"], "badge": ["circle", "square"],
+          "title_bold": [True, False], "title_rule": [False, True, False], "footer_rule": [True, False], "table_row_rules": [False, True],
+          "corners": ["square", "square", "rounded"], "source_italic": [True, False], "palette": ["brand_grey", "two_brand", "brand_grey"]}
+SIZES = [20, 18, 24, 22, 19, 21]
+
+
+def assign(n):
+    """{trait: [value for style 0..n-1]}: balanced per trait, the shuffle with the lowest max shared-trait count between two styles."""
+    best = None
+    for seed in range(300):
+        rng = random.Random(seed); a = {}
+        for k, v in TRAITS.items():
+            col = (v * n)[:n]; rng.shuffle(col); a[k] = col
+        score = max(sum(a[k][x] == a[k][y] for k in TRAITS) for x in range(n) for y in range(x + 1, n))
+        if best is None or score < best[0]: best = (score, a)
+    return best[1]
+
+
+def mix(i, name, decks, A):
+    fonts = [f for f, _ in collections.Counter(font_of(d["heading_font"]) for d in decks.values()).most_common()]
+    fonts += [f for f in STANDARD if f not in fonts]; font = fonts[i % len(fonts)]
+    t = {k: A[k][i] for k in TRAITS}
+    h, l, s = FAMILY[name]; h += random.Random(name).uniform(-6, 6)
     series = [hexc(h, l * .62, s), hexc(h, l, s), hexc(h, .62, s * .55), hexc(h, .85, s * .45)]
-    if pal == "two_brand": series[2] = "7F7F7F"      # second strong colour: graphite next to the brand
-    return {"_src": f"archive mix (2026-11-12): {name} family as an original muted tone; font, title, headers, conclusion, tables and palette drawn from archive frequencies (tools/mix_styles.py)",
+    if t.pop("palette") == "two_brand": series = [hexc(h, l, s), "595959", hexc(h, .62, s * .55), "BFBFBF"]      # brand + graphite
+    return {"_src": f"archive mix (2026-11-12): {name} family as an original muted tone; font, title, headers, conclusion, tables, badges and rules each take a different archive option per style (tools/mix_styles.py)",
             "primary": hexc(h, l, s), "title_color": hexc(h, .16, s * .7), "dark": hexc(h, .16, s * .7), "kpi_color": hexc(h, l, s), "series": series,
-            "heading_font": font, "body_font": "Segoe UI" if font in WIDE else font if rng.random() < .8 else "Arial", "title_size": max(18, min(22, size)), "title_bold": rng.random() < bold,
-            "header_style": HEADER.get(pick(rng, {k: v for k, v in sh("header_look").items() if k in HEADER}), "rule"),
-            "takeaway_style": CALLOUT.get(pick(rng, {k: v for k, v in sh("callout_look").items() if k in CALLOUT}), "dashed"),
-            "table_header": TABLE.get(pick(rng, {k: v for k, v in sh("table_look").items() if k in TABLE}), "rule"),
-            "badge": "square" if rng.random() < .35 else "circle"}
+            "heading_font": font, "body_font": "Segoe UI" if font in WIDE else font, "title_size": SIZES[i % len(SIZES)], **t}
 
 
 def main():
-    decks = json.loads((ROOT / "private" / "archive_styles.json").read_text("utf8")); shares = json.loads((ROOT / "analysis" / "grammar.json").read_text("utf8")).get("style", {})
-    p = ROOT / "slidegen" / "themes.json"; th = json.loads(p.read_text("utf8"))
-    for name in FAMILY:
-        th[f"mix_{name}"] = st = mix(name, decks, shares, random.Random(name))
-        print(f"mix_{name}", st["primary"], st["heading_font"], st["title_size"], "bold" if st["title_bold"] else "reg", st["header_style"], st["takeaway_style"], st["table_header"], st["badge"])
+    decks = json.loads((ROOT / "private" / "archive_styles.json").read_text("utf8"))
+    p = ROOT / "slidegen" / "themes.json"; th = json.loads(p.read_text("utf8")); out = {}
+    A = assign(len(FAMILY))
+    for i, name in enumerate(FAMILY):
+        th[f"mix_{name}"] = out[name] = mix(i, name, decks, A)
+    keys = [k for k in TRAITS if k != "palette"] + ["heading_font", "title_size"]
+    for a in out:
+        same = max(sum(out[a][k] == out[b][k] for k in keys) for b in out if b != a)
+        print(f"mix_{a:8}", " ".join(str(out[a][k]) for k in keys), f"| most shared with another style: {same}/{len(keys)}")
     p.write_text(json.dumps(th, ensure_ascii=False, indent=1) + "\n", "utf8", newline="\n")
 
 
