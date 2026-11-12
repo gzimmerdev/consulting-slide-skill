@@ -42,23 +42,25 @@ print("ok compose: orbital ->", top["layout"], [p["element"] for p in top["panel
 # 5-6 items are no longer trimmed: 5 -> a 5-panel layout, 6 -> 2x3; correlation with 2 numeric dimensions -> scatter panel, 3 -> bubble
 five = {"message": "m", "items": [{"id": f"i{k}", "kind": "trend", "points": 5, "series": 1, "label": f"T{k}"} for k in range(4)] + [{"id": "c", "kind": "correlation", "points": 8, "dimensions": 2}], "insights": 0}
 r5 = compose.suggest(five); [valid(o) for o in r5["options"]]
-assert r5["options"] and all(len(o["panels"]) == 5 for o in r5["options"]) and r5["options"][0]["layout"] == "cols" and "T2|B3" in [o["layout"] for o in r5["options"]], [(o["layout"], len(o["panels"])) for o in r5["options"]]
-assert sorted(len(c["rows"]) for c in r5["options"][0]["spec"]["cols"]) == [1, 2, 2], "5 exhibits -> 3 sections of 1+2+2 (user ruling 2026-11-12)"
+assert r5["options"] and all(len(o["panels"]) == 5 for o in r5["options"]) and r5["options"][0]["layout"] == "cols", [(o["layout"], len(o["panels"])) for o in r5["options"]]
+o5 = next(o for o in compose.section_options(*[compose._normalize(five)[k] for k in ("items",)], [compose.pick_element(i) for i in compose._normalize(five)["items"]], [], compose._normalize(five)) if len(o["spec"]["cols"]) == 3)
+assert sorted(len(c["rows"]) for c in o5["spec"]["cols"]) == [1, 2, 2], "5 exhibits -> 3 sections of 1+2+2 (user ruling 2026-11-12)"
 assert any(pp["element"] == "scatter" for pp in r5["options"][0]["panels"]), r5["options"][0]["panels"]
+assert len({(o["strategy"], len(o["spec"].get("cols") or [])) for o in r5["options"]}) == len(r5["options"]), "top options differ in structure (user ruling 2026-11-12)"
 six = dict(five, items=five["items"] + [{"id": "b", "kind": "correlation", "points": 6, "dimensions": 3}])
 r6 = compose.suggest(six); [valid(o) for o in r6["options"]]
-o6 = next(o for o in r6["options"] if o["layout"] == "2x3"); assert r6["options"][0]["layout"] == "cols" and len(o6["panels"]) == 6 and {"scatter", "bubble"} <= {pp["element"] for pp in o6["panels"]}
+o6 = r6["options"][0]; assert o6["layout"] == "cols" and len(o6["panels"]) == 6 and {"scatter", "bubble"} <= {pp["element"] for pp in o6["panels"]}, [(o["layout"], [pp["element"] for pp in o["panels"]]) for o in r6["options"]]
 assert compose.pick_element({"kind": "correlation", "points": 8, "dimensions": 1}) == "column"
 sec = compose.suggest({"message": "m", "items": [{"id": "m", "kind": "trend", "points": 5}, {"id": "f", "kind": "breakdown", "points": 4}, {"id": "c", "kind": "ranking", "points": 4}, {"id": "k", "kind": "kpi", "points": 3}, {"id": "r", "kind": "list", "points": 2, "words": 16}],
                        "relations": [{"from": "m", "to": "c", "type": "leads_to"}], "insights": 2, "decisions": 1})["options"]
-assert sec[0]["strategy"] == "strip", "KPIs that relate to nothing -> KPI strip first (user ruling 2026-11-12)"
-sec = next(o for o in sec if o["strategy"] == "sections"); valid(sec)
+assert "strip" in [o["strategy"] for o in sec], "KPIs that relate to nothing -> a KPI strip option (user ruling 2026-11-12)"
+sec = next(o for o in sec if o["strategy"] == "sections" and len(o["spec"]["cols"]) == 3); valid(sec)
 assert sec["layout"] == "cols" and [pp["item"] for pp in sec["panels"]] == ["m", "c", "f", "k", "r"] and sec["spec"]["frame"]["panels"] == ["p4", "p5"], sec["panels"]
 assert "callout" in sec["spec"]["panels"][-1] and "takeaway" not in sec["spec"] and not any(pp.get("bullets") for pp in sec["spec"]["panels"]), "decision -> conclusion callout; insights -> intros"
 tb_ = compose.suggest({"message": "m", "items": [{"id": "t", "kind": "lookup_table", "points": 6, "series": 6}, {"id": "c", "kind": "trend", "points": 5}, {"id": "k", "kind": "kpi", "points": 3}, {"id": "r", "kind": "list", "points": 2, "words": 14}],
-                        "relations": [{"from": "c", "to": "t", "type": "zooms_into"}], "insights": 1})["options"]; tb_, tb2 = [o for o in tb_ if o["strategy"] == "sections"][:2]; valid(tb_); valid(tb2)
+                        "relations": [{"from": "c", "to": "t", "type": "zooms_into"}], "insights": 1}, nearest=False)["options"]; tbs = {len(o["spec"]["cols"]): o for o in tb_ if o["strategy"] == "sections"}; tb_, tb2 = tbs[3], tbs[2]; valid(tb_); valid(tb2)
 lay = lambda o: [(c["w"], len(c["rows"])) for c in o["spec"]["cols"]]
-assert lay(tb_) != lay(sec) and {len(tb_["spec"]["cols"]), len(tb2["spec"]["cols"])} == {2, 3} and tb_["score"] >= tb2["score"], ("layout follows the content: 2- and 3-section variants ranked by archive share (user ruling 2026-11-12)", lay(tb_), lay(tb2), lay(sec))
+assert lay(tb_) != lay(sec), ("layout follows the content: 2- and 3-section variants (user ruling 2026-11-12)", lay(tb_), lay(tb2), lay(sec))
 assert tb_["spec"]["cols"][0]["w"] >= max(c["w"] for c in tb_["spec"]["cols"]) - 1e-9, "a table section runs wider (grammar rel_width)"
 g1 = compose.sections([{"id": "c", "kind": "trend"}, {"id": "f", "kind": "breakdown"}, {"id": "t", "kind": "comparison"}, {"id": "k", "kind": "kpi"}],
                       ["column", "flow", "table", "kpis"], [{"from": "k", "to": "f", "type": "explains"}], 3)
@@ -85,14 +87,25 @@ print("ok compose: archive grammar loaded,", gm["n_slides"], "labelled slides")
 bp = compose.suggest({"message": "margem caiu", "items": [{"id": "b", "kind": "bridge", "points": 7}, {"id": "l", "kind": "ranking", "points": 5}, {"id": "m", "kind": "comparison", "points": 3},
                       {"id": "a", "kind": "assumptions", "points": 3, "series": 3}, {"id": "k", "kind": "kpi", "points": 3}],
                       "relations": [{"from": "l", "to": "b", "type": "explains"}, {"from": "m", "to": "b", "type": "explains"}], "decisions": 1}, nearest=False)["options"]
-st = [o["strategy"] for o in bp]; valid(bp[0])
-assert st[0] == "wide" and len(set(st)) == len(st), ("hero bridge -> wide section first; options differ in structure", st)
-c0 = bp[0]["spec"]["cols"]; assert c0[0]["w"] == max(c["w"] for c in c0) > 0.4 and bp[0]["spec"]["panels"][0]["chart"]["kind"] == "waterfall", c0
-assert bp[0]["spec"]["section_style"] in compose.SECTION_STYLES and any(p.get("callout") for p in bp[0]["spec"]["panels"]), "section style from the archive mix; decision -> callout"
+st = [o["strategy"] for o in bp]; [valid(o) for o in bp]; wd = next(o for o in bp if o["strategy"] == "wide")
+assert len({(o["strategy"], len(o["spec"]["cols"])) for o in bp}) == len(bp), ("options differ in structure", st)
+c0 = wd["spec"]["cols"]; assert c0[0]["w"] == max(c["w"] for c in c0) > 0.4 and wd["spec"]["panels"][0]["chart"]["kind"] == "waterfall", ("hero bridge -> a wider section", c0)
+assert wd["spec"]["section_style"] in compose.SECTION_STYLES and any(p.get("callout") for p in wd["spec"]["panels"]), "section style from the archive mix; decision -> callout"
+orders = {tuple(o["strategy"] + str(len(o["spec"]["cols"])) for o in compose.suggest({**json.loads((root / "examples" / "profiles" / "coldchain.json").read_text("utf8")), "message": f"m{i}"}, nearest=False)["options"]) for i in range(12)}
+assert len(orders) >= 2, ("dispositions vary across slides (user ruling 2026-11-12)", orders)
 assert compose.section_style({"message": "x"}) == compose.section_style({"message": "x"}) and len({compose.section_style({"message": str(i)}) for i in range(40)}) >= 3, "section style: stable per slide, varies across slides"
 sn = compose.suggest(json.loads((root / "examples" / "profiles" / "coldchain.json").read_text("utf8")), nearest=False)["options"]
 eq = compose.suggest({"message": "m", "items": [{"id": "c", "kind": "trend", "points": 5}, {"id": "f", "kind": "breakdown", "points": 4}, {"id": "t", "kind": "comparison", "points": 4, "series": 4}, {"id": "k", "kind": "kpi", "points": 3}],
                       "relations": [{"from": "k", "to": "f", "type": "explains"}]}, nearest=False)["options"]
-assert eq[0]["strategy"] == "sections" and "strip" in [o["strategy"] for o in eq], ("no hero -> equal sections first, KPI strip offered", [o["strategy"] for o in eq])
-strip = next(o for o in eq if o["strategy"] == "strip"); valid(strip); assert strip["spec"]["band"]["h"] == 0.2 and strip["spec"]["panels"][0]["kind"] == "kpis"
-print("ok compose: variants by content ->", st, "|", [o["strategy"] for o in eq])
+eqp = compose._normalize({"message": "m", "items": [{"id": "c", "kind": "trend", "points": 5}, {"id": "f", "kind": "breakdown", "points": 4}, {"id": "t", "kind": "comparison", "points": 4, "series": 4}, {"id": "k", "kind": "kpi", "points": 3}], "relations": [{"from": "k", "to": "f", "type": "explains"}]})
+eqa = compose.section_options(eqp["items"], [compose.pick_element(i) for i in eqp["items"]], eqp["relations"], eqp)
+assert "strip" in [o["strategy"] for o in eqa] and "wide" not in [o["strategy"] for o in eqa], ("no hero -> no wide option, KPI strip offered", [o["strategy"] for o in eqa])
+strip = next(o for o in eqa if o["strategy"] == "strip"); valid(strip); assert strip["spec"]["band"]["h"] == 0.2 and strip["spec"]["panels"][0]["kind"] == "kpis"
+lp = {"message": "L", "items": [{"id": "f", "kind": "breakdown", "points": 4, "words": 30}, {"id": "t", "kind": "trend", "points": 6, "words": 20}, {"id": "r", "kind": "ranking", "points": 4, "words": 20}, {"id": "k", "kind": "kpi", "points": 3, "words": 20}],
+      "relations": [{"from": "k", "to": "f", "type": "explains"}], "insights": 2, "decisions": 1}
+lo = next(o for o in compose.suggest(lp, nearest=False)["options"] if o["strategy"] == "L"); valid(lo)
+assert lo["spec"]["cols"][0].get("title") and [t is not None for t in lo["spec"]["cols"][1]["row_titles"]] == [True, True] and {p["kind"] for p in lo["spec"]["panels"][:2]} == {"flow", "kpis"}, ("L: tall tree + KPIs left, two stacked sections right", lo["spec"]["cols"])
+gp = {"message": "Telemedicina em alta", "items": [{"id": f"c{i}", "kind": k, "points": 4, "words": 20} for i, k in enumerate(("comparison", "trend", "ranking", "composition"))], "relations": [], "insights": 2, "decisions": 1}
+go = next(o for o in compose.suggest(gp, nearest=False)["options"] if o["strategy"] == "grid"); valid(go)
+assert all(all(t for t in c["row_titles"]) for c in go["spec"]["cols"]) and len(go["spec"]["panels"]) == 4, go["spec"]["cols"]
+print("ok compose: variants by content ->", st, "|", [o["strategy"] for o in eq], "| L + 2x2 sections")

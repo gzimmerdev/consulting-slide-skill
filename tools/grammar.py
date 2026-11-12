@@ -25,7 +25,30 @@ def load():
         m = meta.get(l["id"], {}); l["ref"] = f"{m.get('deck', '?')}#{m.get('slide', '?')}"; l["deck"] = m.get("deck", "?")
         l["sections"] = [s for s in l.get("sections") or [] if isinstance(s, dict)]
         for s in l["sections"]: s["blocks"] = [b for b in s.get("blocks") or [] if isinstance(b, str)]
-    return labs
+    return [l for l in labs if l["sections"]]      # title / blank slides (no sections) are not content
+
+
+def disposition(l):
+    """How the sections are arranged: cols<n>[_uneq], L (one tall section beside stacked ones), grid2x<n>, band_top+cols<n>,
+    cols<n>+band_bottom, rows<n>, single, other."""
+    rows = collections.defaultdict(list)
+    for s in l["sections"]: rows[s.get("row", 1)].append(s)
+    R = [sorted(rows[k], key=lambda s: s.get("x", 0)) for k in sorted(rows)]; full = lambda s: s.get("w", 0) >= 80
+    if len(l["sections"]) == 1: return "single"
+    if len(R) == 1:
+        ws = [s.get("w", 0) for s in R[0]]; return f"cols{min(len(ws), 4)}" + ("" if max(ws) - min(ws) <= 12 else "_uneq")
+    if all(len(r) == 1 for r in R): return f"rows{min(len(R), 3)}"
+    if len(R) == 2:
+        a, b = R
+        if len(a) == 1 and full(a[0]): return f"band_top+cols{min(len(b), 4)}"
+        if len(b) == 1 and full(b[0]): return f"cols{min(len(a), 4)}+band_bottom"
+        if len(a) == len(b): return f"grid2x{min(len(a), 4)}"
+        span = [(t.get("x", 0), t.get("x", 0) + t.get("w", 0)) for t in b]
+        if any(not any(u < s.get("x", 0) + s.get("w", 0) - 5 and v > s.get("x", 0) + 5 for u, v in span) for s in a): return "L"
+    return "other"
+
+
+STYLE = ("header_look", "kpi_look", "callout_look", "table_look", "palette", "whitespace", "text_words")
 
 
 class Tally:
@@ -44,12 +67,21 @@ class Tally:
 
 def stats(labs):
     N = len(labs); secs = [(l, s) for l in labs for s in l["sections"]]; S = len(secs)
-    T = {k: Tally() for k in ("grid", "nsec", "split2", "split3", "header", "under", "top", "nblocks", "grey_kind", "grey_pos", "full", "conn", "pair")}
+    T = {k: Tally() for k in ("grid", "nsec", "split2", "split3", "header", "under", "top", "nblocks", "grey_kind", "grey_pos", "full", "conn", "pair", "disp", "place", "emph") + STYLE}
+    disp_blocks = collections.defaultdict(collections.Counter); icons = isec = 0; styled = [l for l in labs if isinstance(l.get("style"), dict)]
     widths = collections.defaultdict(list); kind_sec = collections.Counter(); grey_kind = collections.Counter(); blocks_vs_secs = collections.defaultdict(collections.Counter)
     intro = hdr = grey = 0; vdiv = vmulti = hdiv = hstack = 0
     for l in labs:
         ss = l["sections"]; n = len(ss); T["grid"].add(l.get("grid", "?"), l); T["nsec"].add(str(min(n, 4)) + ("+" if n >= 4 else ""), l)
         nb = sum(len(s["blocks"]) for s in ss); blocks_vs_secs[min(nb, 7)][min(n, 4)] += 1
+        d = disposition(l); T["disp"].add(d, l); disp_blocks[min(nb, 7)][d] += 1
+        st = l.get("style") if isinstance(l.get("style"), dict) else None
+        if st:
+            for f in STYLE: T[f].add(str(st.get(f, "?")), l)
+            for e in st.get("emphasis") or []: T["emph"].add(str(e), l)
+            for s in ss:
+                if "text_place" in s: T["place"].add(str(s["text_place"]), l)
+                if "icons" in s: isec += 1; icons += bool(s["icons"])
         row1 = [s for s in ss if s.get("row", 1) == 1]
         if l.get("grid") == "columns" and len(row1) == 2:
             nar = min(s.get("w", 50) for s in row1) / max(sum(s.get("w", 50) for s in row1), 1)
@@ -87,7 +119,12 @@ def stats(labs):
          "blocks_per_section": {k: v / S for k, v in T["nblocks"].n.items()},
          "under": {k: v for k, v in T["under"].n.most_common(20)}, "same_section": {k: v for k, v in T["pair"].n.most_common(20)},
          "vertical_divider_rate": vdiv / max(vmulti, 1), "horizontal_divider_rate": hdiv / max(hstack, 1),
-         "full_width": {k: v / N for k, v in T["full"].n.items()}, "connectors": {k: v for k, v in T["conn"].n.most_common(12)}}
+         "full_width": {k: v / N for k, v in T["full"].n.items()}, "connectors": {k: v for k, v in T["conn"].n.most_common(12)},
+         "dispositions": {k: v / N for k, v in T["disp"].n.items()},
+         "dispositions_by_blocks": {str(k): {a: b / sum(c.values()) for a, b in c.items()} for k, c in sorted(disp_blocks.items())},
+         "n_styled": len(styled), "style": {f: {k: v / max(len(styled), 1) for k, v in T[f].n.items()} for f in STYLE},
+         "emphasis": {k: v / max(len(styled), 1) for k, v in T["emph"].n.items()},
+         "text_place": {k: v / max(sum(T["place"].n.values()), 1) for k, v in T["place"].n.items()}, "icon_rate": icons / max(isec, 1)}
     return g, T
 
 
@@ -113,6 +150,15 @@ def notes(g, T):
         "04-grey-dividers.md": ("Grey boxes and dividers", f"Sections on a grey box: {g['grey_rate']:.0%}. Vertical divider on multi-column slides: {g['vertical_divider_rate']:.0%}; horizontal divider where blocks stack: {g['horizontal_divider_rate']:.0%}.\n\n"
                                  "Grey rate by block kind (share of sections holding that kind that are grey): " + ", ".join(f"{k} {v:.0%}" for k, v in sorted(g["grey_by_kind"].items(), key=lambda x: -x[1])) +
                                  "\n\nWhere the grey section sits:\n" + table(T["grey_pos"].rows(sum(T["grey_pos"].n.values())), "position") + "\nWhat sits on grey:\n" + table(T["grey_kind"].rows(sum(T["grey_kind"].n.values())), "kind")),
+        "06-dispositions.md": ("How sections are arranged", "Disposition = how the sections sit on the body: `cols<n>` side-by-side columns (`_uneq` = widths differ by >12 pt), `L` = one tall section beside stacked ones, "
+                               "`grid2x<n>` = two rows of sections, `band_top+cols<n>` = a full-width section above columns, `cols<n>+band_bottom` = columns above a full-width section, `rows<n>` = full-width sections stacked, `single` = one area.\n\n" +
+                               table(T["disp"].rows(N, 14), "disposition") + "\nBy how many blocks the slide holds:\n" +
+                               "\n".join(f"- {k} blocks: " + ", ".join(f"{a} {b:.0%}" for a, b in sorted(v.items(), key=lambda x: -x[1])[:5]) for k, v in g["dispositions_by_blocks"].items()) + "\n"),
+        "07-styling.md": ("Styling habits", f"From {g['n_styled']} slides labelled with styling fields. Combine these traits; no single deck's look is the reference.\n\n" +
+                          "".join(f"{f.replace('_', ' ').capitalize()}:\n" + table(T[f].rows(g['n_styled']), f) + "\n" for f in STYLE) +
+                          "Emphasis devices (share of slides using each):\n" + table(T["emph"].rows(g['n_styled']), "device") +
+                          "\nWhere a section's explanatory text sits relative to its exhibit:\n" + table(T["place"].rows(sum(T["place"].n.values())), "text place") +
+                          f"\nSections with icons: {g['icon_rate']:.0%}.\n"),
         "05-connections.md": ("Full-width elements and connectors", "Full-width elements (share of slides):\n" + table(T["full"].rows(N), "element") + "\nConnectors between blocks:\n" + table(T["conn"].rows(sum(T["conn"].n.values()), 12), "connector")),
     }
     for f, (t, body) in files.items(): (NOTES / f).write_text(HEAD + f"# {t}\n\n" + base + body, "utf8")

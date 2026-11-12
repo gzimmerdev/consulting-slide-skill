@@ -231,7 +231,51 @@ def hero(items, els, rels):
     return next((j for j in big if items[j]["kind"] == "bridge"), next((j for j in big if ELEMENTS[els[j]][0] == "chart" and items[j].get("points", 0) >= 8), None))
 
 
-def sections_option(items, els, rels, prof, k=3, wide=None, band=None):
+SMALL = ("kpis", "bullets", "cards")
+
+
+def stacked_option(items, els, rels, prof, g, shape, hero_j=None):
+    """Stacked sections (archive dispositions, user ruling 2026-11-12: vary the disposition): shape "L" = one tall section beside two
+    stacked ones (~10% of archive slides), "grid" = 2x2 sections (~5%). Stacked sections carry their own header (cols row_titles);
+    each holds one exhibit + at most one small support. g = item-index groups from sections(); None when they do not stack."""
+    if shape == "L":
+        tall = lambda j: els[j] in ("flow", "process", "matrix", "table", "table_pills") and items[j].get("points", 0) > 3      # needs a full-height column
+        ok = [c for c in range(len(g)) if all(len(x) == 1 for d, x in enumerate(g) if d != c)]      # the stacked sections hold one exhibit each
+        if not ok: return None
+        li = max(ok, key=lambda c: (any(tall(j) for j in g[c]), len(g[c]) > 1, hero_j in g[c], -c))
+        cg = [[g[li]], [x for c, x in enumerate(g) if c != li]]
+    else: cg = [g[:2], g[2:]]
+    if any(len(x) > 1 for c, secs in enumerate(cg) for x in secs if shape == "grid" or c == 1): return None      # a stacked section is short: one exhibit, no support
+    perm = [j for secs in cg for x in secs for j in x]; cols, S, x0 = [], [], 0
+    for c, secs in enumerate(cg):
+        rows, rt = [], []
+        for x in secs:
+            rows += [f / len(secs) for f in ([0.6, 0.4] if len(x) == 2 else [1])]; rt += ["S"] + [None] * (len(x) - 1)
+        y0 = 0
+        for r in rows: S.append((x0, y0, 0.5, r)); y0 += r
+        col = {"w": 0.5, "rows": [round(r, 2) for r in rows]}
+        if shape == "L" and c == 0: col["title"] = "TODO seção"
+        else: col["row_titles"] = rt
+        cols.append(col); x0 += 0.5
+    n = len(items); share = grammar().get("dispositions_by_blocks", {}).get(str(min(n, 7)), {}).get("L" if shape == "L" else "grid2x2")
+    why = ("uma seção alta + duas empilhadas ao lado (forma em L), cada uma com seu cabeçalho" if shape == "L" else "quatro seções em grade 2x2, cada uma com seu cabeçalho") + \
+          (f"; no arquivo, {share:.0%} dos slides com {n} blocos usam essa disposição" if share else "")
+    o = build_option("cols", items, els, perm, rels, {**prof, "insights": 0}, shape, why, slots=S); o["score"] = share or 0
+    sp = o["spec"]; sp.pop("takeaway", None); sp["divider"] = True; sp["dividers"] = True; sp["section_style"] = section_style(prof); sp["cols"] = cols; k = 0
+    for col in cols:
+        for i in range(len(col["rows"])):
+            q = sp["panels"][k + i]; q["title_plain"] = True
+            if col.get("row_titles") and col["row_titles"][i]: lab = q.pop("title", ""); col["row_titles"][i] = f"TODO seção ({lab})" if lab else "TODO seção"      # the section header names the exhibit; no second title in a short row
+        k += len(col["rows"])
+    if prof.get("decisions") == 1:
+        host = next((q for q in reversed(sp["panels"]) if q["kind"] != "chart"), None)
+        if host: host["callout"] = {"lead": "Conclusão:", "text": "TODO decisão recomendada"}
+        else: sp["takeaway"] = "TODO: decisão recomendada"
+    o["notes"].append("seções empilhadas (row_titles): o cabeçalho da seção nomeia o exhibit e a unidade; a linha é curta, então no máximo 1 bullet sob o gráfico")
+    return o
+
+
+def sections_option(items, els, rels, prof, k=3, wide=None, band=None, shape="cols"):
     """cols sections (user rulings 2026-11-12): k sections of one exhibit + at most one support. Variants from the content:
     wide = item index whose section gets ~1.6x the width (the exhibit that carries the message);
     band = item index that runs across the top (an exhibit that needs width, or the KPIs as a strip), the rest in k sections below."""
@@ -239,6 +283,7 @@ def sections_option(items, els, rels, prof, k=3, wide=None, band=None):
     sub = sections([items[j] for j in idx], [els[j] for j in idx], rels, k)
     if not sub: return None
     g = [[idx[j] for j in s] for s in sub]; G = grammar()
+    if shape != "cols": return stacked_option(items, els, rels, prof, g, shape, wide)
     if band is not None and els[band] != "kpis" and any(sum(els[j] not in ("kpis", "bullets", "cards") for j in s) > 1 for s in g): return None      # under a band the columns are short: no two exhibits stacked
     strip = band is not None and els[band] == "kpis"; bh = 0 if band is None else 0.2 if strip else 0.45
     perm = ([band] if band is not None else []) + [j for s in g for j in s]
@@ -285,17 +330,26 @@ def section_options(items, els, rels, prof):
     -> band first; another clear hero -> wider section first; KPIs that relate to nothing -> KPI strip first; else equal sections.
     Within a kind the archive share decides; one option per kind, so the top options differ in structure."""
     n = len(items); h = hero(items, els, rels); kp = next((j for j in range(n) if els[j] == "kpis"), None)
-    cand = [sections_option(items, els, rels, prof, k) for k in (2, 3)]
+    cand = [sections_option(items, els, rels, prof, k) for k in (2, 3, 4)] + [sections_option(items, els, rels, prof, 3, wide=h, shape="L"), sections_option(items, els, rels, prof, 4, shape="grid")]
     if h is not None: cand += [sections_option(items, els, rels, prof, k, wide=h) for k in (2, 3)] + [sections_option(items, els, rels, prof, k, band=h) for k in (2, 3)]
     if kp is not None: cand += [sections_option(items, els, rels, prof, k, band=kp) for k in (2, 3)]
     cand = [o for o in cand if o and fits(o["spec"])]
     needs_w = h is not None and (items[h]["kind"] == "bridge" or items[h].get("points", 0) >= 6)
     lone_k = kp is not None and not any(items[kp]["id"] in (r["from"], r["to"]) for r in rels)
-    order = ["band", "wide", "sections", "strip"] if needs_w else ["wide", "sections", "band", "strip"] if h is not None else ["strip", "sections"] if lone_k else ["sections", "strip"]
-    cand = sorted([o for o in cand if o["strategy"] in order], key=lambda o: (order.index(o["strategy"]), -o["score"]))
-    first = list({o["strategy"]: o for o in reversed(cand)}.values())[::-1]      # best of each kind, in content order
-    first = sorted(first, key=lambda o: order.index(o["strategy"]))
-    return first + [o for o in cand if o not in first]      # then the other section count of each kind
+    # order (user ruling 2026-11-12: vary the disposition): a draw weighted by how often the archive uses each disposition for this many
+    # blocks (grammar dispositions_by_blocks), seeded by the message so a slide keeps its order; the content boosts what it needs
+    # (a wide hero -> band, a clear hero -> wider section, KPIs related to nothing -> strip). One option per disposition first.
+    D = grammar().get("dispositions_by_blocks", {}).get(str(min(n, 7)), {}); D0 = grammar().get("dispositions", {})
+    def disp(o):
+        k = len(o["spec"]["cols"]); return {"L": "L", "grid": "grid2x2", "band": f"band_top+cols{k}", "strip": f"band_top+cols{k}", "wide": f"cols{k}_uneq"}.get(o["strategy"], f"cols{k}")
+    def weight(o):
+        w = D.get(disp(o)) or D0.get(disp(o)) or 0.01
+        return w * (5 if o["strategy"] == "band" and needs_w else 2 if o["strategy"] == "wide" else 3 if o["strategy"] == "strip" and lone_k else 1)
+    rng = random.Random(zlib.crc32((prof.get("message") or "").encode("utf8")))
+    key = {d: rng.random() ** (1 / weight(o)) for o in cand for d in [disp(o)]}      # weighted order without replacement (Efraimidis-Spirakis)
+    cand = sorted(cand, key=lambda o: (-key[disp(o)], -o["score"]))
+    first = list({disp(o): o for o in reversed(cand)}.values())[::-1]
+    return first + [o for o in cand if o not in first]
 
 
 def build_option(layout, items, els, perm, rels, prof, strategy, why, weights=None, slots=None):

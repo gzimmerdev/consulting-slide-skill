@@ -50,7 +50,9 @@ def _cols(cols, x, y, w, h):
             hh = (HEAD if c.get("title") else 0) + (_lines(c["intro"], cw, c.get("intro_size", 11))[0] * c.get("intro_size", 11) * 1.2 / 72 + 0.12 if c.get("intro") else 0)
             carry = c.get("span", 1) - 1; hh0 = hh; hw = cw
             for q in range(1, c.get("span", 1)): hw += G + _split(x, y, w, h, len(cols), [c_["w"] for c_ in cols])[k + q][2]
-        out.append(((cx, cy, cw, ch), hh, _split(cx, cy + hh, cw, ch - hh, len(c["rows"]), c["rows"], horizontal=False), hw))
+        rs = _split(cx, cy + hh, cw, ch - hh, len(c["rows"]), c["rows"], horizontal=False); rt = c.get("row_titles") or []
+        rs = [(a, b + HEAD, d, e - HEAD) if i < len(rt) and rt[i] else (a, b, d, e) for i, (a, b, d, e) in enumerate(rs)]      # row_titles: stacked sections, each row under its own header
+        out.append(((cx, cy, cw, ch), hh, rs, hw))
     return out
 
 
@@ -1046,6 +1048,13 @@ def composite(slide, spec, theme, lang):
             if bx: number_badge(slide, cx, cy + 0.01, c["title_badge"], theme)
             if c.get("title"): _header(slide, cx + bx, cy, cw - bx, c["title"], {**theme, "header_style": spec.get("section_style") or theme.get("header_style")}, serif=c.get("title_font") == "heading", fill=c.get("header_fill"), force_plain=c.get("title_plain", False))
             if c.get("intro"): set_text(box(slide, cx, cy + (HEAD if c.get("title") else 0), cw, hh - (HEAD if c.get("title") else 0)), c["intro"], theme, size=c.get("intro_size", 11), color="1A1A1A", align="l", anchor="t")
+        for c, (_r, _hh, rs, _hw) in zip(spec["cols"], _cols(spec["cols"], *_body(spec))):      # row_titles: a section header above each titled row
+            for i, (rx, ry, rw, _rh) in enumerate(rs):
+                t = (c.get("row_titles") or [None] * 99)[i] if i < len(c.get("row_titles") or []) else None
+                if not t: continue
+                b = (c.get("row_badges") or [None] * 99)[i] if i < len(c.get("row_badges") or []) else None
+                if b is not None: number_badge(slide, rx, ry - HEAD + 0.01, b, theme)
+                _header(slide, rx + (0.36 if b is not None else 0), ry - HEAD, rw - (0.36 if b is not None else 0), t, {**theme, "header_style": spec.get("section_style") or theme.get("header_style")})
     for l in links:
         if l["kind"] == "xref": ks.setdefault(l["panel"], set()).update(k for k, _ in l["pairs"]); head[l["to"]] = 1.32
         if l["kind"] == "callout": head[l["panel"]] = 1.32
@@ -1123,7 +1132,7 @@ def composite(slide, spec, theme, lang):
             k_ = int(_hasband(spec))
             for c_ in spec["cols"]: pr += [(k_ + i, k_ + i + 1) for i in range(len(c_["rows"]) - 1)]; k_ += len(c_["rows"])
         for a_, b_ in pr:
-            ra, rb = raw[a_], raw[b_]; hy = (ra[1] + ra[3] + rb[1]) / 2
+            ra, rb = raw[a_], raw[b_]; hy = (ra[1] + ra[3] + rb[1] - (HEAD if spec["layout"] == "cols" and rb[1] - (ra[1] + ra[3]) > HEAD else 0)) / 2
             hline(slide, ra[0], hy, ra[0] + ra[2], hy, "BFBFBF", 0.75, dash=True)
     for l in links:
         if l["kind"] == "arrow": _link_arrow(slide, l, {p["id"]: r for p, r in zip(P, raw)}, E, theme)   # arrows sit on the raw slot edges (x_inset moves content only)
@@ -1160,6 +1169,11 @@ def fit(spec, theme):
             room = hw - (0.36 if c.get("title_badge") is not None else 0) - (0.2 if st == "bar" else 0.05)
             if _tw(c["title"], sz, True) * fh > room:
                 w_.append(f"section header '{c['title']}' needs 2 lines but its column fits one (~{int(len(c['title']) * room / (_tw(c['title'], sz, True) * fh))} characters): shorten it")
+    for c, (_r, _hh, rs, _hw) in (zip(spec["cols"], _cols(spec["cols"], *_body(spec))) if spec["layout"] == "cols" else []):
+        for i, t in enumerate(c.get("row_titles") or []):
+            st = spec.get("section_style") or hst; sz = 14 if st == "label" else 12; bd = (c.get("row_badges") or [None] * 99)[i] if i < len(c.get("row_badges") or []) else None
+            if t and i < len(rs) and _tw(t, sz, True) * fh > rs[i][2] - (0.36 if bd is not None else 0) - (0.2 if st == "bar" else 0.05):
+                w_.append(f"section header '{t}' needs 2 lines but its section fits one: shorten it")
     for p, r in zip(P, _slots(spec)):
         pw = r[2] - _side_w(p)
         if p.get("title") and _tw(p["title"], 12, True) * fb > (pw - (0.2 if hst == "bar" and not p.get("title_plain") else 0) - (0.36 if p.get("title_badge") is not None else 0)):

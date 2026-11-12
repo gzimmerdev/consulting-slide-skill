@@ -40,7 +40,7 @@ Still open (ranked): (1) doughnut `callouts` labels overlap on adjacent small sl
 - Open: section header bars do not grow or warn when the title needs 2 lines (text spills out of the bar).
 
 ## Test 2026-11-12: Bom Preço + Claude Desktop comparison (same skeleton on two prompts)
-- Fixed (user rulings 2026-11-12): compose offers band / wide / strip / equal sections ordered by the content, one per kind first; section_style per slide from the archive mix; build fit() warnings for headers needing 2 lines, table headers breaking mid-word, chart category labels too long (PowerPoint wrapped them at 0.83in slots, not at ~0.6in).
+- Fixed (user rulings 2026-11-12): compose offers equal sections (2-4) / wide / L / 2x2 / band / strip, ordered by a draw weighted by archive disposition frequency (419 labelled slides) and boosted by the content, one per disposition first; section_style per slide from the archive mix; build fit() warnings for headers needing 2 lines, table headers breaking mid-word, chart category labels too long (PowerPoint wrapped them at 0.83in slots, not at ~0.6in).
 - Open: waterfall value labels inside very thin bars (0,4 / 0,6 in a short wide band) are unreadable; they should move above the bar.
 - Open: a kpis panel only goes side by side at >= 1.9in per item, so 3 KPIs in a 5.5in column stack with a wide gap between figure and label.
 

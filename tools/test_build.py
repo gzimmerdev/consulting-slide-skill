@@ -286,7 +286,16 @@ fw = composite.fit({"layout": "cols", "cols": [{"w": 0.32, "rows": [1], "title":
 assert any("section header" in w for w in fw) and any("breaks mid-word" in w for w in fw), fw
 fw2 = composite.fit({"layout": "cols", "cols": [{"w": 0.36, "rows": [1]}, {"w": 0.64, "rows": [1]}], "panels": [{"id": "w", "kind": "chart", "chart": {"kind": "waterfall", "categories": ["2023", "Inflação de alimentos", "Salários", "Energia", "Perdas e quebras", "Marca própria", "2024"], "series": [{"name": "s", "values": [7.8, -1.4, -.9, -.6, -.4, .6, 5.1]}]}}, {"id": "b", "kind": "bullets", "items": ["x"]}]}, th_)
 assert any("category labels" in w for w in fw2), fw2
-print("ok band layout, section styles, fit warnings (header, table header, category labels)")
+# row_titles: stacked sections with their own headers (L-shape / 2x2 sections, archive dispositions)
+ch = lambda: {"kind": "chart", "chart": {"kind": "column", "categories": ["a", "b", "c"], "series": [{"name": "s", "values": [1, 2, 3]}]}}
+Ls = {"type": "composite", "headline": "Forma em L com seções empilhadas", "layout": "cols", "source": "Dados ilustrativos", "section_style": "centred_rule", "divider": True, "dividers": True,
+      "cols": [{"w": 0.5, "rows": [1], "title": "Seção alta"}, {"w": 0.5, "rows": [0.5, 0.5], "row_titles": ["Seção de cima", "Seção de baixo"], "row_badges": [2, 3]}],
+      "panels": [{"id": "a", **ch()}, {"id": "b", **ch()}, {"id": "c", **ch()}]}
+assert not build.build_specs([Ls], out / "L.pptx")
+tx = [sh.text_frame.text for sh in Presentation(out / "L.pptx").slides[0].shapes if sh.has_text_frame]
+assert "Seção de cima" in tx and "Seção de baixo" in tx and "Seção alta" in tx, tx
+assert any("section header 'Uma seção de cima com um título longo demais" in w for w in composite.fit({**Ls, "cols": [Ls["cols"][0], {**Ls["cols"][1], "row_titles": ["Uma seção de cima com um título longo demais para meia largura do slide, que pede duas linhas inteiras", None]}]}, load_theme("bain_red")))
+print("ok band layout, section styles, fit warnings (header, table header, category labels), row_titles (stacked sections)")
 # own design (user request 2026-11-12): style from a deck incl. its corner logo, saved in my_styles/ (here a temp dir), as the default
 import tempfile; sys.path.insert(0, str(root / "tools")); import style_from_deck as sfd
 from slidegen import core as core_

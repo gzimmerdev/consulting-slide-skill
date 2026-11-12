@@ -2,30 +2,30 @@
 
 # Full-width elements and connectors
 
-Source: vision labels of 120 archive content slides (stratified over the decks), 349 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
+Source: vision labels of 419 archive content slides (stratified over the decks), 1180 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
 
 Full-width elements (share of slides):
 | element | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| tracker | 20 | 17% | D18.pptx#2, D16.pptx#5, D17.pptx#3 |
-| other | 9 | 8% | D11.pptx#2, D14.pptx#3, D20.pptx#13 |
-| intro_sentence | 8 | 7% | D18.pptx#2, D26.pptx#21, D24.pptx#11 |
-| chips | 2 | 2% | D05.pptx#6, D04.pptx#26 |
-| legend | 1 | 1% | D26.pptx#30 |
-| takeaway_bar | 1 | 1% | D26.pptx#30 |
+| tracker | 54 | 13% | D18.pptx#2, D16.pptx#5, D17.pptx#3 |
+| other | 33 | 8% | D11.pptx#2, D14.pptx#3, D04.pptx#51 |
+| intro_sentence | 22 | 5% | D18.pptx#2, D03.pptx#34, D27.pptx#33 |
+| legend | 7 | 2% | D26.pptx#29, D23.pptx#5, D13.pptx#8 |
+| takeaway_bar | 6 | 1% | D22.pptx#5, D06.pptx#6, D16.pptx#17 |
+| chips | 3 | 1% | D05.pptx#6, D04.pptx#26, D05.pptx#7 |
 
 Connectors between blocks:
 | connector | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| bullets -> icon_list (chevron) | 3 | 6% | D14.pptx#61, D16.pptx#7, D05.pptx#8 |
-| icon_list -> bullets (chevron) | 3 | 6% | D06.pptx#29, D24.pptx#12, D05.pptx#8 |
-| bullets -> bullets (chevron) | 2 | 4% | D27.pptx#5, D15.pptx#28 |
-| bullets -> picture (chevron) | 2 | 4% | D11.pptx#2, D03.pptx#17 |
-| picture -> bullets (chevron) | 2 | 4% | D18.pptx#26, D12.pptx#40 |
-| chart -> table (chevron) | 2 | 4% | D04.pptx#34, D04.pptx#35 |
-| picture -> table (chevron) | 2 | 4% | D14.pptx#29, D21.pptx#20 |
-| chart -> chart (chevron) | 2 | 4% | D25.pptx#5, D15.pptx#12 |
-| map -> chart (chevron) | 2 | 4% | D08.pptx#7, D07.pptx#24 |
-| picture -> text (chevron) | 1 | 2% | D11.pptx#2 |
-| bullets -> big_numbers (chevron) | 1 | 2% | D04.pptx#44 |
-| chart -> table (line) | 1 | 2% | D07.pptx#23 |
+| bullets -> bullets (chevron) | 14 | 8% | D27.pptx#5, D15.pptx#28, D12.pptx#36 |
+| chart -> table (chevron) | 6 | 3% | D04.pptx#34, D08.pptx#6, D26.pptx#4 |
+| bullets -> icon_list (chevron) | 5 | 3% | D14.pptx#61, D06.pptx#12, D13.pptx#4 |
+| diagram -> diagram (arrow) | 5 | 3% | D07.pptx#13, D03.pptx#34, D10.pptx#7 |
+| bullets -> bullets (arrow) | 5 | 3% | D04.pptx#2, D05.pptx#21, D04.pptx#2 |
+| icon_list -> bullets (chevron) | 5 | 3% | D22.pptx#12, D09.pptx#12, D06.pptx#29 |
+| picture -> bullets (chevron) | 4 | 2% | D18.pptx#26, D12.pptx#20, D27.pptx#28 |
+| chart -> table (line) | 4 | 2% | D07.pptx#23, D13.pptx#7, D14.pptx#64 |
+| bullets -> callout (chevron) | 4 | 2% | D16.pptx#26, D21.pptx#30, D19.pptx#23 |
+| bullets -> callout (bracket) | 3 | 2% | D20.pptx#7, D03.pptx#15, D04.pptx#13 |
+| chart -> chart (line) | 3 | 2% | D15.pptx#17, D13.pptx#8, D06.pptx#3 |
+| picture -> table (chevron) | 3 | 2% | D26.pptx#33, D14.pptx#29, D21.pptx#20 |

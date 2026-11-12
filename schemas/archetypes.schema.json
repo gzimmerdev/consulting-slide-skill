@@ -7060,6 +7060,29 @@
         "maximum": 20,
         "description": "numbered circle before the column title"
        },
+       "row_titles": {
+        "type": "array",
+        "items": {
+         "type": [
+          "string",
+          "null"
+         ],
+         "maxLength": 80
+        },
+        "description": "one SECTION header per row of this column (null = none), in the slide section_style: stacked sections (L-shape = one column with a title + one with row_titles; 2x2 sections = two columns with row_titles)"
+       },
+       "row_badges": {
+        "type": "array",
+        "items": {
+         "type": [
+          "integer",
+          "null"
+         ],
+         "minimum": 0,
+         "maximum": 20
+        },
+        "description": "numbered circle before each row title"
+       },
        "title_plain": {
         "type": "boolean"
        },

@@ -2,45 +2,45 @@
 
 # Sections and widths
 
-Source: vision labels of 120 archive content slides (stratified over the decks), 349 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
+Source: vision labels of 419 archive content slides (stratified over the decks), 1180 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
 
 | grid | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| columns | 76 | 63% | D13.pptx#20, D14.pptx#61, D27.pptx#5 |
-| grid | 27 | 22% | D11.pptx#2, D14.pptx#3, D18.pptx#2 |
-| single | 13 | 11% | D16.pptx#45, D15.pptx#1, D19.pptx#11 |
-| rows | 4 | 3% | D22.pptx#8, D05.pptx#13, D18.pptx#15 |
+| columns | 252 | 60% | D13.pptx#20, D14.pptx#61, D27.pptx#5 |
+| grid | 104 | 25% | D11.pptx#2, D14.pptx#3, D18.pptx#2 |
+| single | 48 | 11% | D07.pptx#13, D06.pptx#1, D03.pptx#34 |
+| rows | 15 | 4% | D22.pptx#14, D24.pptx#15, D13.pptx#13 |
 
 | sections per slide | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| 2 | 47 | 39% | D18.pptx#26, D04.pptx#44, D03.pptx#44 |
-| 4+ | 30 | 25% | D13.pptx#20, D11.pptx#2, D14.pptx#3 |
-| 3 | 30 | 25% | D14.pptx#61, D27.pptx#5, D15.pptx#28 |
-| 1 | 13 | 11% | D16.pptx#45, D15.pptx#1, D19.pptx#11 |
+| 2 | 147 | 35% | D18.pptx#26, D04.pptx#44, D03.pptx#44 |
+| 3 | 112 | 27% | D14.pptx#61, D27.pptx#5, D15.pptx#28 |
+| 4+ | 108 | 26% | D13.pptx#20, D11.pptx#2, D14.pptx#3 |
+| 1 | 52 | 12% | D07.pptx#13, D06.pptx#1, D03.pptx#34 |
 
 Section count by how many blocks the slide holds:
 - 1 blocks on the slide: 1 section(s) 100%
 - 2 blocks on the slide: 1 section(s) 15%, 2 section(s) 85%
-- 3 blocks on the slide: 1 section(s) 7%, 2 section(s) 39%, 3 section(s) 54%
-- 4 blocks on the slide: 1 section(s) 6%, 2 section(s) 35%, 3 section(s) 41%, 4 section(s) 18%
-- 5 blocks on the slide: 2 section(s) 50%, 3 section(s) 17%, 4 section(s) 33%
-- 6 blocks on the slide: 2 section(s) 25%, 3 section(s) 19%, 4 section(s) 56%
-- 7 blocks on the slide: 2 section(s) 15%, 3 section(s) 15%, 4 section(s) 70%
+- 3 blocks on the slide: 1 section(s) 8%, 2 section(s) 48%, 3 section(s) 44%
+- 4 blocks on the slide: 1 section(s) 1%, 2 section(s) 26%, 3 section(s) 31%, 4 section(s) 42%
+- 5 blocks on the slide: 2 section(s) 30%, 3 section(s) 44%, 4 section(s) 26%
+- 6 blocks on the slide: 2 section(s) 24%, 3 section(s) 30%, 4 section(s) 46%
+- 7 blocks on the slide: 2 section(s) 7%, 3 section(s) 25%, 4 section(s) 68%
 
 2-column width split (narrow column's share):
 | split | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| equal (45-50%) | 29 | 63% | D18.pptx#26, D04.pptx#44, D03.pptx#44 |
-| 30-40% | 8 | 17% | D08.pptx#18, D27.pptx#18, D10.pptx#4 |
-| 40-45% | 7 | 15% | D16.pptx#32, D18.pptx#9, D14.pptx#29 |
-| <30% | 2 | 4% | D13.pptx#9, D03.pptx#46 |
+| equal (45-50%) | 76 | 53% | D18.pptx#26, D04.pptx#44, D03.pptx#44 |
+| 40-45% | 29 | 20% | D07.pptx#9, D06.pptx#4, D18.pptx#14 |
+| 30-40% | 27 | 19% | D14.pptx#46, D09.pptx#8, D07.pptx#26 |
+| <30% | 12 | 8% | D15.pptx#38, D14.pptx#72, D10.pptx#7 |
 
 3-column splits:
 | split | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| equal | 14 | 74% | D27.pptx#5, D15.pptx#28, D06.pptx#3 |
-| widest middle | 2 | 11% | D14.pptx#61, D11.pptx#4 |
-| widest left | 2 | 11% | D14.pptx#38, D09.pptx#17 |
-| widest right | 1 | 5% | D12.pptx#37 |
+| equal | 41 | 59% | D27.pptx#5, D15.pptx#28, D07.pptx#15 |
+| widest left | 15 | 21% | D14.pptx#38, D18.pptx#5, D25.pptx#11 |
+| widest middle | 8 | 11% | D14.pptx#61, D06.pptx#28, D08.pptx#11 |
+| widest right | 6 | 9% | D18.pptx#8, D25.pptx#6, D13.pptx#16 |
 
-Relative width of a section by what it holds (1.0 = an equal share): matrix 1.12, table 1.05, callout 1.01, diagram 0.99, icon_list 0.98, chart 0.96, big_numbers 0.95, picture 0.94, bullets 0.93, cards 0.91, map 0.9, text 0.89, quote 0.88, other 0.87.
+Relative width of a section by what it holds (1.0 = an equal share): diagram 1.06, table 1.04, matrix 1.03, chart 0.98, callout 0.96, big_numbers 0.95, cards 0.93, map 0.93, bullets 0.92, picture 0.92, text 0.92, icon_list 0.91, quote 0.9, other 0.88.

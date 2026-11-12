@@ -2,29 +2,30 @@
 
 # Grey boxes and dividers
 
-Source: vision labels of 120 archive content slides (stratified over the decks), 349 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
+Source: vision labels of 419 archive content slides (stratified over the decks), 1180 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
 
-Sections on a grey box: 16%. Vertical divider on multi-column slides: 45%; horizontal divider where blocks stack: 18%.
+Sections on a grey box: 22%. Vertical divider on multi-column slides: 45%; horizontal divider where blocks stack: 19%.
 
-Grey rate by block kind (share of sections holding that kind that are grey): cards 46%, callout 27%, matrix 25%, text 24%, bullets 24%, big_numbers 23%, chart 21%, icon_list 17%, diagram 13%, quote 10%, other 7%, table 6%, picture 2%, map 0%
+Grey rate by block kind (share of sections holding that kind that are grey): cards 34%, bullets 30%, text 29%, callout 26%, chart 24%, big_numbers 23%, icon_list 20%, diagram 20%, table 13%, picture 12%, map 11%, other 10%, matrix 7%, quote 4%
 
 Where the grey section sits:
 | position | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| middle | 23 | 41% | D18.pptx#2, D21.pptx#10, D20.pptx#10 |
-| last | 18 | 32% | D03.pptx#44, D18.pptx#2, D10.pptx#4 |
-| first | 15 | 27% | D18.pptx#2, D21.pptx#10, D20.pptx#10 |
+| middle | 108 | 42% | D18.pptx#2, D07.pptx#15, D08.pptx#8 |
+| last | 85 | 33% | D03.pptx#44, D18.pptx#2, D07.pptx#15 |
+| first | 61 | 24% | D18.pptx#2, D04.pptx#51, D19.pptx#2 |
+| only | 4 | 2% | D03.pptx#6, D27.pptx#16, D16.pptx#19 |
 
 What sits on grey:
 | kind | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| bullets | 32 | 33% | D18.pptx#2, D20.pptx#10, D05.pptx#13 |
-| text | 20 | 21% | D20.pptx#10, D05.pptx#13, D23.pptx#3 |
-| cards | 11 | 11% | D03.pptx#44, D21.pptx#10, D05.pptx#13 |
-| big_numbers | 10 | 10% | D20.pptx#10, D23.pptx#3, D14.pptx#68 |
-| chart | 8 | 8% | D23.pptx#3, D20.pptx#4, D09.pptx#9 |
-| icon_list | 5 | 5% | D03.pptx#44, D20.pptx#10, D23.pptx#3 |
-| callout | 3 | 3% | D23.pptx#3, D09.pptx#17, D23.pptx#7 |
-| diagram | 2 | 2% | D23.pptx#3, D23.pptx#7 |
-| table | 2 | 2% | D11.pptx#21, D09.pptx#17 |
-| picture | 1 | 1% | D21.pptx#10 |
+| bullets | 140 | 35% | D18.pptx#2, D07.pptx#9, D19.pptx#2 |
+| text | 62 | 16% | D08.pptx#8, D16.pptx#39, D10.pptx#10 |
+| chart | 32 | 8% | D07.pptx#15, D23.pptx#4, D15.pptx#17 |
+| big_numbers | 30 | 8% | D13.pptx#11, D22.pptx#5, D07.pptx#10 |
+| cards | 29 | 7% | D03.pptx#44, D08.pptx#8, D07.pptx#9 |
+| icon_list | 23 | 6% | D03.pptx#44, D07.pptx#15, D06.pptx#28 |
+| diagram | 19 | 5% | D05.pptx#17, D10.pptx#10, D25.pptx#10 |
+| callout | 19 | 5% | D23.pptx#9, D16.pptx#42, D09.pptx#10 |
+| picture | 18 | 5% | D16.pptx#42, D06.pptx#16, D27.pptx#16 |
+| table | 15 | 4% | D04.pptx#51, D10.pptx#10, D16.pptx#42 |

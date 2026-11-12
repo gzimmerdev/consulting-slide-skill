@@ -11,7 +11,7 @@ async def main():
         await s.initialize()
         tools = [t.name for t in (await s.list_tools()).tools]; print("tools:", tools)
         assert {"build_slide", "list_archetypes", "get_archetype", "list_styles", "find_icons", "suggest_composition", "find_similar", "rank_candidates", "save_exemplar", "slide_grammar"} <= set(tools)
-        gr = (await s.call_tool("slide_grammar", {})).content[0].text; assert "Sections and widths" in gr and "120" in gr, gr[:200]
+        gr = (await s.call_tool("slide_grammar", {})).content[0].text; assert "Sections and widths" in gr and "archive content slides" in gr, gr[:200]
         spec = json.loads((root / "examples" / "catalog.json").read_text("utf8"))["kpi_tiles"]
         res = await s.call_tool("build_slide", {"spec": spec, "name": "mcp_test", "style": "lek_green"})
         kinds = [c.type for c in res.content]; print("build_slide ->", kinds, res.content[0].text)

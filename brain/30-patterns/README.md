@@ -8,4 +8,6 @@ Read these when choosing a composition: they say how archive slides combine sect
 - [Section headers and intros](02-headers-intros.md)
 - [What stacks in a section](03-stacking.md)
 - [Grey boxes and dividers](04-grey-dividers.md)
+- [How sections are arranged](06-dispositions.md)
+- [Styling habits](07-styling.md)
 - [Full-width elements and connectors](05-connections.md)

@@ -2,62 +2,62 @@
 
 # What stacks in a section
 
-Source: vision labels of 120 archive content slides (stratified over the decks), 349 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
+Source: vision labels of 419 archive content slides (stratified over the decks), 1180 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
 
 Blocks per section:
 | blocks | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| 1 | 215 | 62% | D14.pptx#61, D27.pptx#5, D11.pptx#2 |
-| 2 | 74 | 21% | D18.pptx#26, D04.pptx#44, D14.pptx#3 |
-| 3 | 32 | 9% | D15.pptx#28, D14.pptx#3, D03.pptx#44 |
-| 4 | 27 | 8% | D13.pptx#20, D16.pptx#5, D15.pptx#3 |
+| 1 | 706 | 60% | D14.pptx#61, D27.pptx#5, D11.pptx#2 |
+| 2 | 297 | 25% | D18.pptx#26, D04.pptx#44, D14.pptx#3 |
+| 3 | 126 | 11% | D15.pptx#28, D14.pptx#3, D03.pptx#44 |
+| 4 | 50 | 4% | D13.pptx#20, D16.pptx#5, D23.pptx#4 |
 | 0 | 1 | 0% | D15.pptx#12 |
 
 Top block:
 | top block | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| bullets | 87 | 25% | D14.pptx#61, D27.pptx#5, D11.pptx#2 |
-| text | 61 | 17% | D11.pptx#2, D15.pptx#28, D14.pptx#3 |
-| picture | 36 | 10% | D27.pptx#5, D11.pptx#2, D14.pptx#3 |
-| chart | 33 | 9% | D07.pptx#23, D04.pptx#34, D06.pptx#3 |
-| table | 30 | 9% | D11.pptx#2, D14.pptx#3, D07.pptx#23 |
-| icon_list | 27 | 8% | D14.pptx#61, D03.pptx#44, D27.pptx#18 |
-| big_numbers | 22 | 6% | D13.pptx#20, D14.pptx#3, D17.pptx#3 |
-| cards | 15 | 4% | D14.pptx#9, D20.pptx#13, D21.pptx#10 |
-| diagram | 13 | 4% | D14.pptx#3, D15.pptx#22, D18.pptx#9 |
-| map | 9 | 3% | D11.pptx#2, D14.pptx#38, D15.pptx#22 |
+| bullets | 313 | 27% | D14.pptx#61, D27.pptx#5, D11.pptx#2 |
+| text | 144 | 12% | D11.pptx#2, D15.pptx#28, D14.pptx#3 |
+| picture | 122 | 10% | D27.pptx#5, D11.pptx#2, D14.pptx#3 |
+| chart | 113 | 10% | D07.pptx#23, D04.pptx#34, D23.pptx#4 |
+| table | 99 | 8% | D11.pptx#2, D14.pptx#3, D07.pptx#23 |
+| icon_list | 95 | 8% | D14.pptx#61, D03.pptx#44, D07.pptx#15 |
+| diagram | 77 | 7% | D14.pptx#3, D07.pptx#15, D05.pptx#17 |
+| big_numbers | 71 | 6% | D13.pptx#20, D14.pptx#3, D17.pptx#3 |
+| cards | 63 | 5% | D08.pptx#8, D07.pptx#9, D14.pptx#8 |
+| matrix | 27 | 2% | D09.pptx#8, D18.pptx#8, D03.pptx#4 |
 
 Top -> bottom pairs inside a section:
 | pair | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| bullets -> bullets | 30 | 13% | D13.pptx#20, D04.pptx#44, D14.pptx#3 |
-| big_numbers -> bullets | 15 | 7% | D13.pptx#20, D22.pptx#8, D15.pptx#3 |
-| text -> bullets | 14 | 6% | D14.pptx#3, D16.pptx#5, D05.pptx#13 |
-| chart -> bullets | 13 | 6% | D10.pptx#4, D20.pptx#4, D09.pptx#9 |
-| text -> big_numbers | 11 | 5% | D08.pptx#18, D20.pptx#10, D03.pptx#24 |
-| bullets -> text | 11 | 5% | D12.pptx#31, D20.pptx#4, D17.pptx#2 |
-| bullets -> big_numbers | 9 | 4% | D04.pptx#44, D15.pptx#3, D16.pptx#2 |
-| picture -> text | 8 | 4% | D14.pptx#3, D15.pptx#1, D23.pptx#29 |
-| picture -> bullets | 8 | 4% | D16.pptx#7, D20.pptx#17, D26.pptx#20 |
-| picture -> quote | 7 | 3% | D15.pptx#28, D21.pptx#21, D04.pptx#18 |
-| text -> picture | 5 | 2% | D15.pptx#28, D16.pptx#45, D23.pptx#29 |
-| text -> text | 5 | 2% | D03.pptx#44, D06.pptx#3, D18.pptx#15 |
-| big_numbers -> text | 5 | 2% | D14.pptx#74, D14.pptx#74, D14.pptx#74 |
-| bullets -> cards | 4 | 2% | D05.pptx#13, D04.pptx#27, D05.pptx#13 |
-| bullets -> callout | 3 | 1% | D16.pptx#5, D12.pptx#40, D19.pptx#23 |
+| bullets -> bullets | 61 | 9% | D13.pptx#20, D04.pptx#44, D14.pptx#3 |
+| big_numbers -> bullets | 40 | 6% | D13.pptx#20, D15.pptx#2, D25.pptx#8 |
+| text -> bullets | 39 | 5% | D14.pptx#3, D16.pptx#5, D13.pptx#18 |
+| chart -> bullets | 37 | 5% | D15.pptx#17, D13.pptx#7, D19.pptx#7 |
+| picture -> text | 35 | 5% | D14.pptx#3, D04.pptx#8, D11.pptx#1 |
+| bullets -> big_numbers | 25 | 4% | D04.pptx#44, D08.pptx#10, D15.pptx#6 |
+| bullets -> text | 24 | 3% | D16.pptx#39, D05.pptx#14, D20.pptx#19 |
+| picture -> bullets | 23 | 3% | D14.pptx#8, D13.pptx#18, D27.pptx#11 |
+| text -> text | 22 | 3% | D03.pptx#44, D06.pptx#16, D26.pptx#12 |
+| picture -> quote | 20 | 3% | D15.pptx#28, D12.pptx#36, D16.pptx#22 |
+| bullets -> callout | 17 | 2% | D16.pptx#5, D20.pptx#7, D22.pptx#21 |
+| text -> picture | 15 | 2% | D15.pptx#28, D06.pptx#16, D27.pptx#16 |
+| diagram -> bullets | 15 | 2% | D07.pptx#15, D05.pptx#17, D25.pptx#17 |
+| text -> big_numbers | 15 | 2% | D03.pptx#15, D11.pptx#9, D16.pptx#6 |
+| chart -> callout | 13 | 2% | D23.pptx#9, D08.pptx#11, D24.pptx#7 |
 
 Blocks that share a section (any order):
 | pair | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| bullets + bullets | 50 | 14% | D13.pptx#20, D04.pptx#44, D14.pptx#3 |
-| big_numbers + bullets | 45 | 13% | D13.pptx#20, D04.pptx#44, D17.pptx#3 |
-| bullets + text | 38 | 11% | D14.pptx#3, D16.pptx#5, D12.pptx#31 |
-| big_numbers + text | 24 | 7% | D08.pptx#18, D20.pptx#10, D03.pptx#24 |
-| text + text | 17 | 5% | D03.pptx#44, D06.pptx#3, D23.pptx#3 |
-| bullets + picture | 17 | 5% | D16.pptx#7, D12.pptx#40, D20.pptx#17 |
-| picture + text | 16 | 5% | D15.pptx#28, D14.pptx#3, D16.pptx#45 |
-| bullets + chart | 16 | 5% | D16.pptx#5, D15.pptx#3, D10.pptx#4 |
-| chart + text | 11 | 3% | D03.pptx#44, D16.pptx#5, D06.pptx#3 |
-| picture + quote | 8 | 2% | D15.pptx#28, D21.pptx#10, D04.pptx#18 |
-| icon_list + text | 8 | 2% | D05.pptx#6, D05.pptx#6, D05.pptx#6 |
-| icon_list + icon_list | 7 | 2% | D05.pptx#6, D05.pptx#6, D05.pptx#6 |
+| bullets + bullets | 103 | 10% | D13.pptx#20, D04.pptx#44, D14.pptx#3 |
+| big_numbers + bullets | 98 | 9% | D13.pptx#20, D04.pptx#44, D17.pptx#3 |
+| bullets + text | 81 | 8% | D14.pptx#3, D16.pptx#5, D13.pptx#18 |
+| picture + text | 75 | 7% | D15.pptx#28, D14.pptx#3, D04.pptx#8 |
+| text + text | 58 | 6% | D03.pptx#44, D06.pptx#16, D05.pptx#14 |
+| bullets + chart | 52 | 5% | D16.pptx#5, D23.pptx#4, D15.pptx#17 |
+| bullets + picture | 46 | 4% | D14.pptx#8, D13.pptx#18, D27.pptx#11 |
+| big_numbers + text | 37 | 4% | D13.pptx#18, D26.pptx#26, D09.pptx#4 |
+| bullets + callout | 27 | 3% | D16.pptx#5, D15.pptx#2, D20.pptx#7 |
+| bullets + cards | 27 | 3% | D07.pptx#9, D04.pptx#8, D20.pptx#7 |
+| bullets + diagram | 25 | 2% | D07.pptx#15, D05.pptx#17, D06.pptx#12 |
+| picture + quote | 23 | 2% | D15.pptx#28, D12.pptx#36, D16.pptx#22 |

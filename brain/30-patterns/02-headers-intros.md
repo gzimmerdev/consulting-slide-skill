@@ -2,17 +2,17 @@
 
 # Section headers and intros
 
-Source: vision labels of 120 archive content slides (stratified over the decks), 349 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
+Source: vision labels of 419 archive content slides (stratified over the decks), 1180 sections; form `analysis/grammar/SCHEMA.md`. Shares are of this sample: patterns under ~10% are rough. These are element-level habits to combine, not layouts to copy.
 
-Sections with a header: 83%; with an intro sentence under the header: 9%.
+Sections with a header: 82%; with an intro sentence under the header: 9%.
 
 | header style | n | share | evidence (deck#slide) |
 |---|---|---|---|
-| label | 125 | 36% | D13.pptx#20, D14.pptx#61, D27.pptx#5 |
-| centred_rule | 78 | 22% | D07.pptx#23, D16.pptx#5, D20.pptx#13 |
-| none | 59 | 17% | D27.pptx#5, D18.pptx#26, D14.pptx#3 |
-| bar | 37 | 11% | D14.pptx#3, D17.pptx#3, D20.pptx#13 |
-| rule | 34 | 10% | D15.pptx#28, D14.pptx#38, D21.pptx#10 |
-| banner | 12 | 3% | D23.pptx#3, D17.pptx#2, D24.pptx#12 |
-| side_label | 3 | 1% | D06.pptx#34, D20.pptx#4, D20.pptx#4 |
-| other | 1 | 0% | D03.pptx#17 |
+| label | 373 | 32% | D13.pptx#20, D14.pptx#61, D27.pptx#5 |
+| centred_rule | 224 | 19% | D07.pptx#23, D16.pptx#5, D15.pptx#2 |
+| none | 207 | 18% | D27.pptx#5, D18.pptx#26, D14.pptx#3 |
+| rule | 155 | 13% | D15.pptx#28, D14.pptx#38, D05.pptx#17 |
+| bar | 133 | 11% | D14.pptx#3, D17.pptx#3, D23.pptx#4 |
+| banner | 44 | 4% | D04.pptx#8, D22.pptx#9, D16.pptx#17 |
+| side_label | 39 | 3% | D04.pptx#51, D23.pptx#4, D13.pptx#11 |
+| other | 5 | 0% | D05.pptx#14, D03.pptx#17, D07.pptx#7 |

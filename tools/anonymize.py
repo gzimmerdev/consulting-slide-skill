@@ -3,7 +3,7 @@ other teams' competition material. The real names live only in private/ (gitigno
   private/deck_names.json  {"D01": "<archive path of the deck>.pptx", ...}
   private/team_names.json  [["Team A", ["<team name>", ...]], ...]
 Run after regenerating archive-derived files (mine_elements, merge_labels, grammar.py, summarize_elements, ...):
-  py -3 -I tools/anonymize.py            (all tracked text files)       py -3 -I tools/anonymize.py FILE ...
+  py -3 -I tools/anonymize.py            (tracked + new non-ignored text files)   py -3 -I tools/anonymize.py FILE ...
 Idempotent; prints the files it changed. Without private/ it does nothing (a shared copy has nothing to anonymise).
 """
 import json, re, subprocess, sys
@@ -33,7 +33,7 @@ def anonymise(text, R):
 def main(files):
     R = rules()
     if not R: print("no private/deck_names.json: nothing to anonymise"); return
-    files = files or [f for f in subprocess.run(["git", "-C", str(ROOT), "ls-files"], capture_output=True, text=True).stdout.splitlines()
+    files = files or [f for f in subprocess.run(["git", "-C", str(ROOT), "ls-files", "--cached", "--others", "--exclude-standard"], capture_output=True, text=True).stdout.splitlines()
                       if Path(f).suffix in TEXT and not f.startswith(("private/", "assets/"))]
     for f in files:
         p = ROOT / f; s = p.read_text("utf8"); t = anonymise(s, R)
