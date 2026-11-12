@@ -1151,7 +1151,7 @@ def composite(slide, spec, theme, lang):
 
 
 FONT_W = {"Trebuchet MS": 1.0, "Arial": 1.03, "Helvetica": 1.03, "Calibri": 0.93, "Segoe UI": 1.02, "Tahoma": 1.03, "Verdana": 1.18,
-          "Georgia": 1.10, "Times New Roman": 0.95, "Cambria": 1.0, "Garamond": 0.9}      # ponytail: rough width relative to Trebuchet MS; unknown fonts = 1.0
+          "Georgia": 1.10, "Times New Roman": 0.95, "Cambria": 1.0, "Garamond": 0.9, "Century Gothic": 1.15, "Franklin Gothic Book": 0.95, "Gill Sans MT": 0.95}      # ponytail: rough width relative to Trebuchet MS; unknown fonts = 1.0
 
 
 def fit(spec, theme):

@@ -11,7 +11,7 @@ the style changes colour, fonts and the "skin" details that differ between the a
 | Command line | `py -3 build.py spec.json --theme lek_green` (list: `py -3 build.py --styles`) |
 | One-off tweaks | `--primary 1F6FEB`, `--font Calibri`, `--heading-font Georgia` (or the same keys in the spec) |
 
-Built in: `bain_red` (Team G/Team A), `lek_green` (Team D/Team F/Team L), `lek_report` (LEK report slides), `gold_serif` (Team E), `navy_cyan` (Team C), `lime_green` (Team I). Original styles made for this project: `orange_graphite` (Arial, orange + graphite), `teal_modern` (Calibri, rounded corners), `blue_slate` (Georgia titles with a rule), `plum_classic` (Cambria, bar headers), `indigo_clean` (Verdana, no footer rule).
+Built in: `bain_red` (Team G/Team A), `lek_green` (Team D/Team F/Team L), `lek_report` (LEK report slides), `gold_serif` (Team E), `navy_cyan` (Team C), `lime_green` (Team I). Original styles made for this project: `orange_graphite` (Arial, orange + graphite), `teal_modern` (Calibri, rounded corners), `blue_slate` (Georgia titles with a rule), `plum_classic` (Cambria, bar headers), `indigo_clean` (Verdana, no footer rule). Archive mixes (`tools/mix_styles.py`, user ruling 2026-11-12: designs from the whole archive, mixed): `mix_crimson`, `mix_forest`, `mix_navy`, `mix_ochre`, `mix_wine`, `mix_moss`: each takes one colour family the archive uses, rebuilt as an original muted tone, and draws font family (mapped to standard Office fonts), title size and weight, header look, conclusion look, table header and badge from archive frequencies; no style matches a single deck.
 Preview all of them side by side: `out/style_gallery.pptx`.
 
 ## Make your own (your design: colours, fonts, logo)

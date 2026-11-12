@@ -297,7 +297,7 @@ def takeaway_bar(slide, content, theme, lang, y=6.1, h=0.6, label=None):
     """So-what bar. style 'dashed': pale fill, dashed brand outline, solid edge (Team G 'Main Takeaway');
     style 'solid': filled brand strip (Team E / Team D conclusion strip)."""
     lab = LABELS[lang]["takeaway"] if label is None else label
-    body = [f"**{lab}:** {content}" if lab else content]
+    body = [f"**{lab}:** {content}" if lab and not content.lstrip().startswith("**") else content]      # text with its own bold lead-in ("**Recomendação:** ...") keeps it alone
     if theme.get("takeaway_style") == "rule":    # thin primary rule over plain text: no filled strip, no bold lead-in (hand-made look)
         hline(slide, MX, y, MX + CW, y, theme["primary"], 1.5)
         text(slide, MX, y + 0.08, CW, h - 0.08, [content], size=13, color="1A1A1A", font=theme["body_font"], anchor="m")
