@@ -1,0 +1,26 @@
+{
+  "type": "composite",
+  "lang": "pt",
+  "theme": "bain_red",
+  "headline": "Soja e milho combinam alto crescimento e alta margem; cana e café crescem menos e rendem pouco por hectare",
+  "layout": "2col",
+  "weights": [0.62, 0.38],
+  "panels": [
+    {"id": "p1", "kind": "chart", "title": "Crescimento de mercado vs. margem por cultura",
+     "chart": {"kind": "scatter", "subtitle": "CAGR do mercado 2024-30 e margem EBITDA típica, %",
+               "x_title": "CAGR do mercado, 2024-30 (%)", "y_title": "Margem EBITDA (%)",
+               "points": [{"x": 8.5, "y": 31, "label": "Soja"}, {"x": 7.2, "y": 28, "label": "Milho"}, {"x": 3.1, "y": 22, "label": "Cana"},
+                          {"x": 2.4, "y": 12, "label": "Café"}, {"x": 5.5, "y": 17, "label": "Algodão"}, {"x": 4.2, "y": 26, "label": "Laranja"},
+                          {"x": 9.8, "y": 14, "label": "Hortaliças"}, {"x": 6.4, "y": 20, "label": "Trigo"}],
+               "highlight": [0, 1], "x_format": "0", "y_format": "0",
+               "quadrants": {"x": "mean", "y": "mean", "labels": ["Alta margem, baixo crescimento", "Alta margem, alto crescimento", "Baixa margem, baixo crescimento", "Baixa margem, alto crescimento"]}},
+     "bullets": ["**Quadrante-alvo:** soja e milho estão acima da média nos dois eixos e somam 71% da área plantada analisada",
+                 "**Armadilha de volume:** hortaliças crescem 9,8% a.a., mas com margem de 14%"]},
+    {"id": "p2", "kind": "cards", "title": "Leitura por grupo", "numbered": true,
+     "items": [{"title": "Grãos de escala", "text": "Soja e milho: priorizar capacidade de armazenagem e originação própria"},
+               {"title": "Perenes maduras", "text": "Café e cana: crescimento moderado, foco em produtividade e renovação"},
+               {"title": "Nichos de crescimento", "text": "Hortaliças e algodão: testar entrada via parcerias, sem capital pesado"}]}
+  ],
+  "source": "Dados ilustrativos (substituir pela fonte real)",
+  "page_number": 9
+}

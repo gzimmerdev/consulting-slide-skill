@@ -1,0 +1,30 @@
+{
+  "type": "composite",
+  "lang": "pt",
+  "theme": "bain_red",
+  "headline": "O etanol de milho cresceu 3x em cinco anos e já responde por 23% da produção nacional, mas ainda concentrado em três estados",
+  "layout": "2x3",
+  "panels": [
+    {"id": "p1", "kind": "kpis", "title": "Panorama 2024",
+     "items": [{"value": "23%", "label": "da produção de etanol vem do milho"}, {"value": "R$ 38 bi", "label": "investimento anunciado em usinas até 2028"}, {"value": "+31%", "label": "CAGR da moagem de milho, 2019-24"}]},
+    {"id": "p2", "kind": "chart", "title": "Produção de etanol de milho",
+     "chart": {"kind": "column", "subtitle": "Bilhões de litros por safra", "categories": ["19/20", "20/21", "21/22", "22/23", "23/24"],
+               "series": [{"name": "Etanol de milho", "values": [1.6, 2.7, 3.5, 4.4, 5.9]}], "number_format": "0.0", "highlight": [4]}},
+    {"id": "p3", "kind": "chart", "title": "Participação por estado, 2024",
+     "chart": {"kind": "bar", "subtitle": "% da produção de etanol de milho", "categories": ["Mato Grosso", "Goiás", "Mato Grosso do Sul", "Paraná", "Outros"],
+               "series": [{"name": "Participação", "values": [62, 17, 11, 4, 6]}], "number_format": "0\"%\""}},
+    {"id": "p4", "kind": "table", "title": "Usinas em construção",
+     "columns": ["Estado", "Usinas", "Capacidade (mi L/ano)"],
+     "rows": [["Mato Grosso", "7", "2.800"], ["Goiás", "3", "1.100"], ["Mato Grosso do Sul", "2", "700"], ["Paraná", "1", "300"]]},
+    {"id": "p5", "kind": "chart", "title": "Custo de produção",
+     "chart": {"kind": "doughnut", "percent": true, "categories": ["Milho", "Energia", "Enzimas e químicos", "Mão de obra e outros"],
+               "series": [{"name": "Custo", "values": [64, 14, 12, 10]}]}},
+    {"id": "p6", "kind": "bullets", "title": "Implicações para o investidor",
+     "items": ["**Matéria-prima:** o milho responde por ~64% do custo; contratos de fornecimento de longo prazo reduzem a volatilidade",
+               "**Localização:** usinas a menos de 150 km das lavouras do Centro-Oeste têm o menor custo logístico",
+               "**Coprodutos:** o DDG e o óleo de milho cobrem ~20% da receita e suavizam o ciclo do etanol"]}
+  ],
+  "links": [{"kind": "arrow", "from": "p1", "to": "p2"}],
+  "source": "Dados ilustrativos (substituir pela fonte real)",
+  "page_number": 8
+}

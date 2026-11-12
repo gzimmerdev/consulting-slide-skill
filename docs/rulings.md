@@ -1,0 +1,41 @@
+# User rulings (product and design decisions)
+
+Exported 2026-11-08 from Claude Code's project memory, which stays the master copy. Lines starting "Ruling (user, date):" are the user's decisions: follow them even where the code currently differs, and report where it does.
+
+## Scope and front-end
+- Ruling (user, 2026-11-06): One slide per request; no deck or storyline generation for now. Decks are 16:9 case-competition presentations.
+- Ruling (user, 2026-11-06): Slide text and labels in Portuguese AND English (`lang` pt|en).
+- Ruling (user, 2026-11-06): Fonts are user-selectable; users choose the style, and the tool says what can change (tokens in docs/styles.md). Styles can be derived from any .pptx/.pdf.
+- Ruling (user, 2026-11-06): An AI front-end drives the generator. Claude front-ends run on the user's Claude subscription (Claude Code skill + MCP server for Claude Desktop), not an API key.
+- Ruling (user, 2026-11-06): Charts are native and editable, text is real text boxes; keep action titles, takeaway and source lines. Ask before assuming competition format, language or missing fonts.
+- Ruling (user, 2026-11-06): Icons = Lucide (vendored in assets/icons/lucide). Excel ranges are accepted as data input.
+
+## How slides are composed
+- Ruling (user, 2026-11-06): Source design = "merge best of all" archive decks, not one team's deck.
+- Ruling (user, 2026-11-06): The tool reasons from the given data/text/research to the best composition of ELEMENTS (charts, tables, connectors, decision boxes...), learned from the archive. The archive is a library of elements and of how they connect, not of whole slides to copy.
+- Ruling (user, 2026-11-06): Dense is the default density; density targets are the archive averages (~180 words, ~63% of the body covered).
+- Ruling (user, 2026-11-06): When input data is thin, first say the slide may be less dense than usual, then look for options that fit that amount of data, then build.
+- Ruling (user, 2026-11-06): Insight placement and annotations come from the archive's many examples, not from one reference slide.
+- Ruling (user, 2026-11-06): Reference slide = page 11 of "D16.pdf" (orbital launches): series names next to stacked columns with leader lines, a line between the right-side table and chart, small values pulled out with leader lines.
+- Ruling (user, 2026-11-06): Avoid "AI elements" (traits judges read as AI-made), verified by blind comparison with archive originals (analysis/ai_audit/).
+- Ruling (user, 2026-11-08): Tighter default spacing (compact, closer to the archive's human texture), on top of dense-as-default. Approved elements: icons in table cells, vertical side labels, chart-to-table connectors, gradient scale bars, free-floating dotted callouts.
+
+## Look and style
+- Ruling (user, 2026-11-06): A bottom "underline": full-width footer rule above source/page number. Ruling (user, 2026-11-08): it stays on by default, but a style whose source deck has no bottom rule (or a thinner one) follows that deck.
+- Protected traits (set by the user's reference and earlier rulings): bold action title, total bar colour 4D4D4D, red filled table header, dashed highlight box, red disc chevron arrow.
+- Ruling (user, 2026-11-08): No map element in the tool; maps are made externally. Blind A/B judges ignore maps and the chart add-in watermark.
+- Ruling (user, 2026-11-11): Slides must show where each content part starts and ends: section headers, dashed divider lines between columns and between stacked blocks, and grey boxes on 1-2 blocks of a different kind (results, assumptions). A dense slide without them is not acceptable ("we cannot see what is what").
+- Ruling (user, 2026-11-12): Dense does not mean crammed. The target for dense slides is exemplars 001, 005, 006 and 007 (the shared repo holds only our own slides; its density references are exemplars 024 and 029-032): at most 3 sections, each with a header, one main exhibit and at most one supporting element; detail goes into small-type tables and charts, not into more 12 pt bullets. A test slide with 6 blocks and ~150 words of 12 pt prose was "a bit too dense".
+- Ruling (user, 2026-11-11): Icons are the default on short lists: a bullets panel or cards/kpis with 2-5 short items (recommendations, drivers, KPIs) gets one Lucide icon per item; at most one icon set per slide; long-text bullets stay plain.
+- Ruling (user, 2026-11-12): The skill creates slides, it does not copy them (restates 2026-11-06). Layout (section count, pairing, widths) comes from the content's structure; the archive and the exemplars supply the grammar (density, hierarchy, element pairings, separation, element styling) and serve as a check after rendering, never as the starting spec. Retrieve-and-edit of a whole spec is only for an explicit "rebuild this archive slide" request (A/B work).
+- Ruling (user, 2026-11-12): A 1-2 line intro under a section header is optional, not required, on dense slides (the archive puts one under only ~9% of section headers). Add one only when the header and exhibit do not already say the section's point.
+- Ruling (user, 2026-11-12): Layout variety comes from the content: the recommender offers structurally different options (a wider section for the exhibit that carries the message; a full-width band on top with 2-3 sections below, as on ~23% of archive slides; KPIs as a strip instead of their own block), and its top options must differ in structure. Prompted by two test slides (saneamento, Bom Preço) that came out with the same 3-equal-column skeleton.
+- Ruling (user, 2026-11-12): Section header styles follow the archive mix (archive: plain bold label 36%, centred rule 22%, bar 11%), chosen per slide by the recommender, not always the style's bar.
+- Ruling (user, 2026-11-12): Layout defects are caught by automatic build checks, not only by written instructions: header text too long for its bar, table headers breaking mid-word, chart category labels too long for their slot.
+- Ruling (user, 2026-11-12): The tool is shared with friends through a private GitHub repository (gzimmerdev/consulting-slide-skill), friends invited as collaborators, with a README on installing and using the skill in Claude Code and Claude Desktop.
+- Ruling (user, 2026-11-12): The shared repo is the slim "tool only" version: no material that leaks other teams' competition decks (deck/team names, slide rebuilds, audits stay local in private/). Slides based on other teams' work are replaced by altered new slides (new topic, numbers and text, logos removed) that keep the layout.
+- Ruling (user, 2026-11-12): Crush is no longer used; the crush branch was merged into main and the Crush setup removed.
+- Ruling (user, 2026-11-12): Users can give the slides their own design before or while using the tool: colours/fonts/logo said in words or screenshots, or copied from their own .pptx/.pdf (colours, fonts, title, corners, corner logo). Their styles are saved locally in my_styles/ (not in git, survive updates) and one can be the default for every slide.
+- Ruling (user, 2026-11-12): The repository is public (anyone can read and download it); only the owner pushes: others propose changes through pull requests that need the owner's approval (main protected: 1 approving review, no force-push or deletion). License: MIT. Commits use the GitHub no-reply address, not the real email. A style named after a team was renamed navy_cyan (no team names in public files). README shows examples in six styles plus an own-design example.
+- Ruling (user, 2026-11-12): In public files only consulting firms keep their names (Bain, L.E.K., Mirow & Co., Accenture); universities, competitions, software vendors, teams and people get neutral names (styles gold_serif and lime_green; chart add-in; invented people on example slides).
+- Ruling (user, 2026-11-12): The README gallery and the shared exemplars show only slides the tool made from our own requests, in original styles made for this project (orange_graphite, teal_modern, blue_slate, plum_classic, indigo_clean) plus lek_green; slides rebuilt from other teams' layouts stay in private/.

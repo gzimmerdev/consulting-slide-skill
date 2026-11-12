@@ -1,0 +1,199 @@
+{
+ "type": "composite",
+ "lang": "pt",
+ "theme": "lek_green",
+ "divider": true,
+ "headline": "Abrir 12 farmácias no Nordeste exige R$ 28,8 mi e se paga em 3,8 anos (TIR de 24%), num mercado que cresce ~9% ao ano",
+ "accent_words": [
+  "3,8 anos"
+ ],
+ "layout": "cols",
+ "cols": [
+  {
+   "w": 0.35,
+   "rows": [
+    0.5,
+    0.5
+   ],
+   "title": "Mercado e praças",
+   "intro": "O varejo farmacêutico do Nordeste chegou a **R$ 53 bi** em 2024, 39% acima de 2020",
+   "intro_size": 12
+  },
+  {
+   "w": 0.32,
+   "rows": [
+    1
+   ],
+   "title": "Investimento",
+   "intro": "Cada loja exige **R$ 2,4 mi**; reforma e estoque inicial somam 71%",
+   "intro_size": 12
+  },
+  {
+   "w": 0.33,
+   "rows": [
+    0.48,
+    0.52
+   ],
+   "title": "Retorno e riscos",
+   "intro": "Uma loja madura vende R$ 9,6 mi/ano, com EBITDA de R$ 0,77 mi",
+   "intro_size": 12
+  }
+ ],
+ "panels": [
+  {
+   "id": "m",
+   "kind": "chart",
+   "title": "Mercado de farmácias no Nordeste",
+   "title_plain": true,
+   "chart": {
+    "kind": "column",
+    "subtitle": "Em R$ bi",
+    "categories": [
+     "2020",
+     "2021",
+     "2022",
+     "2023",
+     "2024"
+    ],
+    "series": [
+     {
+      "name": "R$ bi",
+      "values": [
+       38,
+       41,
+       45,
+       49,
+       53
+      ]
+     }
+    ],
+    "labels": true
+   }
+  },
+  {
+   "id": "c",
+   "kind": "chart",
+   "title": "Novas lojas por cidade",
+   "title_plain": true,
+   "chart": {
+    "kind": "bar",
+    "categories": [
+     "Fortaleza",
+     "Recife",
+     "Salvador",
+     "Natal"
+    ],
+    "series": [
+     {
+      "name": "Lojas",
+      "values": [
+       4,
+       3,
+       3,
+       2
+      ]
+     }
+    ],
+    "labels": true
+   }
+  },
+  {
+   "id": "f",
+   "kind": "flow",
+   "panel": "grey",
+   "direction": "lr",
+   "title": "Investimento por loja, R$ mi",
+   "title_plain": true,
+   "nodes": [
+    {
+     "id": "r",
+     "text": "Loja 2,4",
+     "style": "fill",
+     "op": "+"
+    },
+    {
+     "id": "a",
+     "text": "Reforma 0,9",
+     "style": "outline",
+     "parent": "r"
+    },
+    {
+     "id": "b",
+     "text": "Estoque inicial 0,8",
+     "style": "outline",
+     "parent": "r"
+    },
+    {
+     "id": "e",
+     "text": "Equipamentos 0,4",
+     "style": "grey",
+     "parent": "r"
+    },
+    {
+     "id": "g",
+     "text": "Capital de giro 0,3",
+     "style": "grey",
+     "parent": "r"
+    }
+   ],
+   "callout": {
+    "lead": "12 lojas:",
+    "text": "R$ 28,8 mi no total"
+   }
+  },
+  {
+   "id": "k",
+   "kind": "kpis",
+   "items": [
+    {
+     "value": "24%",
+     "label": "TIR"
+    },
+    {
+     "value": "3,8 anos",
+     "label": "Payback"
+    },
+    {
+     "value": "8%",
+     "label": "Margem EBITDA"
+    }
+   ]
+  },
+  {
+   "id": "x",
+   "kind": "bullets",
+   "bullet_size": 12,
+   "items": [
+    "**Grandes redes:** concorrência nas mesmas praças",
+    "**Aluguel:** custo acima do previsto adia o payback"
+   ],
+   "icons": [
+    "store",
+    "key-round"
+   ],
+   "callout": {
+    "lead": "Conclusão:",
+    "text": "as 12 lojas se pagam antes do 4º ano"
+   }
+  }
+ ],
+ "frame": {
+  "panels": [
+   "k",
+   "x"
+  ],
+  "style": "none"
+ },
+ "links": [
+  {
+   "kind": "cagr",
+   "panel": "m",
+   "from": 0,
+   "to": 4,
+   "label": "+8,7% a.a."
+  }
+ ],
+ "source": "IQVIA, Abrafarma, análise da equipe. Dados ilustrativos",
+ "source_label": "Fontes",
+ "page_number": 9
+}

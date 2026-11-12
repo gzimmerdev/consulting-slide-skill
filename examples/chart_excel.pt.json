@@ -1,0 +1,16 @@
+{
+  "type": "chart_takeaway",
+  "lang": "pt",
+  "theme": "navy_cyan",
+  "headline": "Carnes alternativas crescem mais rápido que laticínios e devem superar US$ 80 bi em 2028",
+  "chart": {
+    "kind": "column",
+    "title": "Mercado de alternativas vegetais",
+    "subtitle": "2024–2028 – em US$ bilhões",
+    "excel": {"file": "data/mercado.xlsx", "sheet": "Mercado", "range": "A1:C6"},
+    "number_format": "0"
+  },
+  "insights": ["**Carnes** crescem 69% no período", "**Laticínios** crescem 41%", "**Gap** entre as duas cai de 13 para 5 bi"],
+  "takeaway": "A categoria de carnes é a aposta de crescimento; laticínios, a de escala.",
+  "source": "Dados ilustrativos (planilha examples/data/mercado.xlsx)"
+}

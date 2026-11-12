@@ -1,0 +1,25 @@
+{
+  "type": "chart_takeaway",
+  "lang": "en",
+  "theme": "lek_green",
+  "headline": "Corn and sugarcane make up 65% of the value of the five main crops, while coffee tripled in five years (25% CAGR)",
+  "chart": {
+    "kind": "column",
+    "title": "Gross production value by crop",
+    "subtitle": "2019 vs 2024 – R$ billion",
+    "categories": ["Corn", "Sugarcane", "Coffee", "Citrus", "Wheat"],
+    "series": [
+      {"name": "2019", "values": [92, 80, 38, 20, 8]},
+      {"name": "2024", "values": [167, 117, 115, 25, 10]}
+    ],
+    "number_format": "0"
+  },
+  "insights": [
+    "**Coffee leapt:** from R$ 38 bi to R$ 115 bi, the fastest growth of the five",
+    "**Wheat lags:** R$ 10 bi in 2024, barely above 2019",
+    "**Concentration:** corn and sugarcane are R$ 284 bi of R$ 434 bi in 2024"
+  ],
+  "takeaway": "Prioritize corn, sugarcane and coffee: they combine scale with demonstrated growth.",
+  "source": "Illustrative data (replace with the real source)",
+  "page_number": 8
+}

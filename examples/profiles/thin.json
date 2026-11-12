@@ -1,0 +1,8 @@
+{
+  "message": "A receita cresceu em quatro anos seguidos",
+  "lang": "pt",
+  "items": [{"id": "a", "kind": "trend", "points": 4, "series": 1, "label": "Receita anual"}],
+  "relations": [],
+  "insights": 0,
+  "decisions": 0
+}

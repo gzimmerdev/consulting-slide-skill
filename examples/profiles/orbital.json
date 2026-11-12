@@ -1,0 +1,15 @@
+{
+  "message": "EUA e China responderam por ~88% dos 251 lançamentos orbitais de 2023, liderados por SpaceX e CASC",
+  "lang": "pt",
+  "items": [
+    {"id": "a", "kind": "bridge", "points": 6, "series": 1, "label": "Lançamentos orbitais por país, 2023"},
+    {"id": "b", "kind": "lookup_table", "points": 5, "series": 2, "label": "Principal empresa lançadora por país"},
+    {"id": "c", "kind": "composition", "points": 6, "series": 3, "label": "Objetos em órbita por país e tipo"}
+  ],
+  "relations": [
+    {"from": "a", "to": "b", "type": "zooms_into"},
+    {"from": "a", "to": "c", "type": "zooms_into"}
+  ],
+  "insights": 3,
+  "decisions": 0
+}

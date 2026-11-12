@@ -1,0 +1,21 @@
+{
+  "type": "composite",
+  "lang": "pt",
+  "theme": "bain_red",
+  "headline": "Três de cada quatro reais do crescimento do agro vêm de duas cadeias, e o logotipo do patrocinador segue no rodapé",
+  "layout": "L|R3",
+  "panels": [
+    {"id": "p1", "kind": "chart", "title": "Valor bruto da produção por cadeia",
+     "chart": {"kind": "stacked", "totals": true, "subtitle": "R$ bilhões", "categories": ["2020", "2021", "2022", "2023", "2024"],
+               "series": [{"name": "Grãos", "values": [420, 510, 590, 610, 640]}, {"name": "Carnes", "values": [210, 240, 270, 290, 310]}, {"name": "Outras", "values": [150, 160, 170, 175, 185]}],
+               "number_format": "#,##0"},
+     "bullets": ["**Grãos:** 56% do valor em 2024, +52% desde 2020", "**Carnes:** segunda maior cadeia, +48% no período"]},
+    {"id": "p2", "kind": "kpis", "title": "Indicadores", "items": [{"value": "R$ 1,1 tri", "label": "valor bruto da produção, 2024"}, {"value": "+13%", "label": "CAGR 2020-24"}]},
+    {"id": "p3", "kind": "bullets", "title": "Riscos", "items": ["**Clima:** quebras de safra concentradas no Sul reduziram 6% do valor em 2022", "**Câmbio:** 70% da receita em grãos é indexada ao dólar"]},
+    {"id": "p4", "kind": "bullets", "title": "Próximos passos", "items": ["Validar o modelo de custos com três cooperativas", "Priorizar originação própria em soja e milho"]}
+  ],
+  "links": [],
+  "logo": {"file": "examples/data/logo_placeholder.png", "position": "footer-right", "height": 0.32},
+  "source": "Dados ilustrativos (substituir pela fonte real)",
+  "page_number": 10
+}

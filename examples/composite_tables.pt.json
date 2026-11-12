@@ -1,0 +1,45 @@
+{
+  "type": "composite",
+  "lang": "pt",
+  "theme": "lek_green",
+  "headline": "Três candidatas superam 40 pontos, mas só a ABB combina escala nacional com o melhor histórico de entrega no prazo",
+  "layout": "T|B",
+  "panels": [
+    {
+      "id": "t1",
+      "kind": "table",
+      "title": "Avaliação das EPCs por critério (0-10)",
+      "columns": ["Empresa", "Escala", "Prazo", "Custo", "Técnica", "Segurança", "ESG", "Total"],
+      "head_fill": ["7F1D1D", "grey_dark", "grey_dark", "grey_dark", "grey_dark", "grey_dark", "grey_dark", "7F1D1D"],
+      "col_fill": ["FBE3D6", null, null, null, null, null, null, "FBE3D6"],
+      "align": ["l", "c", "c", "c", "c", "c", "c", "c"],
+      "rows": [
+        ["ABB", "9", {"text": "10", "box": "primary"}, "6", "9", "8", "7", {"text": "49", "bold": true}],
+        ["Siemens Energy", "8", "7", "7", "9", "8", "8", {"text": "47", "bold": true}],
+        ["WEG", "7", "8", {"text": "9", "fill": "pale"}, "7", "7", "6", {"text": "44", "bold": true}],
+        ["Andritz", "6", "6", "7", "8", "7", "5", "39"],
+        ["Voith", "5", "6", "6", "7", "6", "6", "36"]
+      ],
+      "size": 11
+    },
+    {
+      "id": "t2",
+      "kind": "table",
+      "title": "Receita líquida projetada (R$ mi)",
+      "columns": ["Linha", "2024", "2025", "2026", "2027", "2028", "2029", "2030", "2031", "CAGR"],
+      "grid": "1A1A1A",
+      "bands": "grey",
+      "head_fill": "1A1A1A",
+      "align": ["l", "r", "r", "r", "r", "r", "r", "r", "r", "r"],
+      "rows": [
+        ["Serviços", "120", "131", "145", "158", "170", "184", "199", "215", "8,7%"],
+        ["Peças", "64", "66", "70", "73", "77", "80", "84", "88", "4,7%"],
+        ["Retrofit", "18", "24", "31", "39", "46", "52", "57", "61", {"text": "19,0%", "fill": "FFF2CC", "bold": true}],
+        {"total": ["Total", "202", "221", "246", "270", "293", "316", "340", "364", "8,8%"]}
+      ],
+      "size": 11
+    }
+  ],
+  "source": "Dados ilustrativos (substituir pela fonte real)",
+  "page_number": 12
+}

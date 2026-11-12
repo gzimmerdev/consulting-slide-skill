@@ -1,0 +1,39 @@
+# Source material (other teams' competition decks; large) - keep locally, not in git
+archive/
+*.zip
+!desktop/slide.zip
+
+# Regenerable outputs
+out/
+render/
+analysis/crops/
+analysis/ai_audit/ab*/*.png
+analysis/ai_audit/v2/**/*.png
+analysis/ai_audit/v3/**/*.png
+analysis/ai_audit/v4/**/*.png
+
+# Python / tooling
+__pycache__/
+*.pyc
+.ruff_cache/
+
+# Personal settings and secrets
+.claude/settings.local.json
+.crush/
+.env
+*.key
+analysis/ai_audit/ab*/**/*.png
+
+# Local only: material derived from other teams' competition decks (real deck/team names, slide rebuilds, audits).
+# The shared repo carries anonymised data (tools/anonymize.py, maps in private/).
+private/
+brain/00-index/
+brain/10-archive/
+analysis/ai_audit/
+analysis/library/
+analysis/grammar/
+analysis/nearest/
+analysis/*.json
+!analysis/grammar.json
+!analysis/layout_stats.json
+my_styles/

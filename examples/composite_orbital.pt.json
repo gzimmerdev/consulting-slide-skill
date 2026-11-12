@@ -1,0 +1,49 @@
+{
+  "type": "composite",
+  "lang": "pt",
+  "theme": "bain_red",
+  "heading_font": "Georgia",
+  "headline": "China e Europa responderam por ~84% dos 13,5 milhões de elétricos vendidos em 2023, liderados por BYD e Volkswagen",
+  "layout": "L|R2",
+  "weights": [0.5, 0.5],
+  "panels": [
+    {
+      "id": "p1", "kind": "chart", "title": "Vendas de elétricos por região, 2023",
+      "chart": {
+        "kind": "waterfall", "total_first": true, "subtitle": "Veículos elétricos vendidos, mil unidades",
+        "categories": ["Total", "China", "Europa", "EUA", "Coreia", "Índia"],
+        "series": [{"name": "Vendas", "values": [13500, 8100, 3200, 1400, 420, 380]}],
+        "number_format": "#,##0"
+      },
+      "bullets": [
+        "**Concentração:** China (8.100) e Europa (3.200) somam 11.300 das 13.500 mil unidades, ~84% do total mundial",
+        "**Liderança chinesa:** 8.100 mil veículos, mais que o dobro da Europa (3.200)",
+        "**Demais mercados:** EUA, Coreia e Índia somam 2.200 mil unidades (~16%)"
+      ]
+    },
+    {
+      "id": "p2", "kind": "table", "title": "Principal montadora por região",
+      "columns": ["Região", "Principal montadora"],
+      "rows": [["China", "BYD"], ["Europa", "Volkswagen"], ["EUA", "Tesla"], ["Coreia", "Hyundai / Kia"], ["Índia", "Tata"]]
+    },
+    {
+      "id": "p3", "kind": "chart", "title": "Vendas por região e tipo de motor",
+      "chart": {
+        "kind": "stacked", "totals": true, "subtitle": "Vendas em 2023, mil unidades",
+        "categories": ["China", "Europa", "EUA", "Coreia", "Índia"],
+        "series": [
+          {"name": "Bateria (BEV)", "values": [5600, 2100, 1000, 330, 360]},
+          {"name": "Híbrido plug-in", "values": [2400, 1050, 380, 70, 15]},
+          {"name": "Outros", "values": [100, 50, 20, 20, 5]}
+        ],
+        "number_format": "#,##0"
+      }
+    }
+  ],
+  "links": [
+    {"kind": "arrow", "from": "p1", "to": "p2"},
+    {"kind": "highlight", "panel": "p1", "categories": [1, 2], "label": "~84% do total"}
+  ],
+  "source": "Dados ilustrativos",
+  "page_number": 7
+}

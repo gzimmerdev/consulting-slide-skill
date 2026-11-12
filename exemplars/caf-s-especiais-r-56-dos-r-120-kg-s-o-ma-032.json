@@ -1,0 +1,159 @@
+{
+ "type": "composite",
+ "lang": "pt",
+ "theme": "plum_classic",
+ "headline": "Cafés especiais: R$ 56 dos R$ 120/kg são margem (canal 31 + torrefação 25), e clube de assinatura com e-commerce próprio já somam 51% das vendas",
+ "accent_words": [
+  "R$ 56",
+  "51%"
+ ],
+ "layout": "cols",
+ "cols": [
+  {
+   "w": 1.0,
+   "title": "Preço por kg",
+   "title_badge": 1,
+   "rows": [
+    1
+   ]
+  },
+  {
+   "w": 1.0,
+   "title": "Canais de venda",
+   "title_badge": 2,
+   "rows": [
+    1
+   ]
+  },
+  {
+   "w": 1.0,
+   "title": "Consumidor e decisão",
+   "title_badge": 3,
+   "rows": [
+    1,
+    1
+   ]
+  }
+ ],
+ "divider": true,
+ "panels": [
+  {
+   "id": "f",
+   "kind": "flow",
+   "title": "Composição do preço médio, R$/kg",
+   "title_plain": true,
+   "direction": "lr",
+   "node_size": 10,
+   "nodes": [
+    {
+     "id": "tot",
+     "text": "Preço médio: 120",
+     "style": "fill",
+     "op": "+"
+    },
+    {
+     "id": "a",
+     "text": "Café verde 38",
+     "style": "plain",
+     "parent": "tot"
+    },
+    {
+     "id": "b",
+     "text": "Torra e embalagem 17",
+     "style": "plain",
+     "parent": "tot"
+    },
+    {
+     "id": "c",
+     "text": "Logística 9",
+     "style": "plain",
+     "parent": "tot"
+    },
+    {
+     "id": "d",
+     "text": "Margem do canal 31",
+     "style": "outline",
+     "parent": "tot"
+    },
+    {
+     "id": "e",
+     "text": "Margem da torrefação 25",
+     "style": "outline",
+     "parent": "tot"
+    }
+   ],
+   "callout": {
+    "lead": "Margens:",
+    "text": "canal e torrefação somam R$ 56, 47% do preço"
+   }
+  },
+  {
+   "id": "c",
+   "kind": "chart",
+   "title": "Participação nas vendas de cafés especiais, %",
+   "title_plain": true,
+   "chart": {
+    "kind": "bar",
+    "labels": true,
+    "number_format": "0\"%\"",
+    "categories": [
+     "E-commerce próprio",
+     "Cafeterias",
+     "Supermercados premium",
+     "Clube de assinatura"
+    ],
+    "series": [
+     {
+      "name": "Participação",
+      "values": [
+       34,
+       27,
+       22,
+       17
+      ]
+     }
+    ]
+   },
+   "callout": {
+    "lead": "Canais próprios:",
+    "text": "e-commerce e clube somam 34% + 17% = 51%"
+   }
+  },
+  {
+   "id": "k",
+   "kind": "kpis",
+   "title": "Pesquisa com 800 consumidores",
+   "title_plain": true,
+   "items": [
+    {
+     "value": "41%",
+     "label": "pagariam 20% a mais por origem rastreada",
+     "icon": "badge-check"
+    },
+    {
+     "value": "63%",
+     "label": "compram café online",
+     "icon": "shopping-cart"
+    },
+    {
+     "value": "58",
+     "label": "NPS das marcas especiais",
+     "icon": "star"
+    }
+   ]
+  },
+  {
+   "id": "r",
+   "kind": "bullets",
+   "title": "Recomendação",
+   "title_plain": true,
+   "items": [
+    "**Lançar com clube de assinatura e e-commerce próprio:** canais com ==51% das vendas== e ==63% de compra online=="
+   ],
+   "icons": [
+    "award"
+   ]
+  }
+ ],
+ "source": "BSCA, pesquisa da equipe. Dados ilustrativos."
+}

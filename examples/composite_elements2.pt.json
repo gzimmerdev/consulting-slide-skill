@@ -1,0 +1,33 @@
+{
+  "type": "composite",
+  "lang": "pt",
+  "theme": "bain_red",
+  "headline": "O etanol e o biometano concentram as emissões evitáveis; a eletrificação cobre o transporte público",
+  "layout": "3col",
+  "weights": [1.15, 1.25, 0.9],
+  "panels": [
+    {"id": "c", "kind": "chart", "title": "Emissões por tipo de veículo",
+     "chart": {"kind": "waterfall", "total_first": true, "subtitle": "MtCO₂ em 2023", "labels": true, "number_format": "0.0",
+               "categories": ["Total", "Carros", "Caminhões", "Ônibus"],
+               "series": [{"name": "Emissões", "values": [36.0, 13.4, 19.3, 3.3]}]}},
+    {"id": "t", "kind": "table", "title": "Estratégia por modal", "size": 10, "col_weights": [1.3, 2.0], "align": ["c", "l"],
+     "columns": ["Estratégia", "Detalhamento"],
+     "side_label": [{"text": "CARROS", "rows": [0, 0]}, {"text": "CAMINHÕES", "rows": [1, 1]}, {"text": "ÔNIBUS", "rows": [2, 2]}],
+     "rows": [
+       [{"icon": "fuel", "text": "Etanol hidratado"}, ["Tributação diferenciada", "Incentivos fiscais ao abastecimento"]],
+       [{"icon": "leaf", "text": "Biometano"}, ["Regulação por contratos de concessão", "Infraestrutura de abastecimento"]],
+       [{"icon": "zap", "text": "Eletrificação"}, ["Infraestrutura prévia", "Aquisição subsidiada de frotas"]]]},
+    {"id": "s", "kind": "chart", "title": "Mercado de biocombustíveis", "side_label": "MERCADO", "side_fill": "4D4D4D",
+     "chart": {"kind": "column", "subtitle": "R$ bilhões", "labels": true, "number_format": "0",
+               "categories": ["2024", "2025", "2026", "2027"], "series": [{"name": "Mercado", "values": [60, 66, 73, 81]}]},
+     "scale": {"colors": ["D93025", "F5D90A", "3DAE2B"], "left": "Fragmentado", "right": "Consolidado", "markers": [{"at": 0.0}, {"at": 0.45, "label": "Brasil"}, {"at": 1.0}], "frame": true}}
+  ],
+  "links": [
+    {"kind": "connector", "from": "c", "category": 1, "to": "t", "row": 0},
+    {"kind": "connector", "from": "c", "category": 2, "to": "t", "row": 1, "via": 0.6},
+    {"kind": "connector", "from": "c", "category": 3, "to": "t", "row": 2, "via": 0.7},
+    {"kind": "note", "panel": "s", "text": "CAGR típico de um mercado promissor", "at": 3},
+    {"kind": "note", "panel": "c", "text": "Carros e caminhões: 90% do total", "at": "top-right"}
+  ],
+  "source": "Dados ilustrativos"
+}

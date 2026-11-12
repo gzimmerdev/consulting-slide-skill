@@ -1,0 +1,43 @@
+{
+  "type": "composite",
+  "lang": "pt",
+  "theme": "bain_red",
+  "headline": "O CAPEX concentra mais da metade do custo do projeto; os custos operacionais caem a partir da fase 2",
+  "layout": "T2|B3",
+  "weights": [0.85, 1.15],
+  "right_weights": [1, 1.5, 0.9],
+  "panels": [
+    {"id": "f", "kind": "flow", "title": "Como o custo total é montado", "direction": "lr",
+     "nodes": [
+       {"id": "tot", "text": "Custo total", "style": "fill", "op": "+"},
+       {"id": "opex", "text": "OPEX", "style": "outline", "parent": "tot", "op": "+"},
+       {"id": "capex", "text": "CAPEX", "style": "fill", "parent": "tot"},
+       {"id": "var", "text": "Custos variáveis", "style": "outline", "parent": "opex"},
+       {"id": "fix", "text": "Custos fixos", "style": "grey", "parent": "opex"}
+     ]},
+    {"id": "d", "kind": "chart", "title": "Composição do CAPEX",
+     "chart": {"kind": "doughnut", "callouts": true, "percent": true,
+               "categories": ["Terra e construção", "Equipamentos", "Laboratórios", "Reservas", "TI e segurança"],
+               "series": [{"name": "CAPEX", "values": [27, 34, 11, 14, 14]}]}},
+    {"id": "c", "kind": "chart", "title": "OPEX anual por fase",
+     "chart": {"kind": "column", "subtitle": "R$ milhões", "labels": true, "number_format": "0.0",
+               "categories": ["2026", "2027", "2028", "2029", "2030", "2031"],
+               "series": [{"name": "OPEX", "values": [1.3, 1.1, 0.3, 0.4, 0.6, 0.5]}],
+               "phases": [{"start": 0, "label": "1"}, {"start": 2, "label": "2"}, {"start": 4, "label": "3"}]}},
+    {"id": "t", "kind": "table", "title": "Origem de cada premissa",
+     "columns": ["Custo", "Como é calculado", "Origem", "R$ mi"],
+     "col_weights": [1.1, 2.0, 1.2, 0.6], "size": 10, "tight": true, "align": ["l", "l", "c", "r"],
+     "rows": [
+       ["Taxas de loja", "30% das novas assinaturas", {"pill": "Dado público", "color": "primary"}, "5,2"],
+       ["Checkpoints", "US$ 4,9 por unidade", {"pill": "Benchmark", "color": "C0701F"}, "1,7"],
+       ["Equipe", "14 para 43 pessoas", {"pill": "Decisão", "color": "FFC000"}, "19,0"],
+       ["Outros fixos", "Ferramentas e certificações", {"pill": "Estimativa", "color": "4D4D4D"}, "3,0"]],
+     "pill_legend": {"label": "Origem:", "pills": [{"pill": "Dado público", "color": "primary"}, {"pill": "Benchmark", "color": "C0701F"}, {"pill": "Decisão", "color": "FFC000"}, {"pill": "Estimativa", "color": "4D4D4D"}]}},
+    {"id": "k", "kind": "kpis", "title": "Números-chave",
+     "items": [
+       {"value": "R$ 17,9 mi", "label": "CAPEX inicial", "icon": "building-2"},
+       {"value": "R$ 2,4 mi", "label": "OPEX anual", "icon": "wallet"},
+       {"value": "9 un/ano", "label": "Break-even", "icon": "target"}]}
+  ],
+  "source": "Dados ilustrativos"
+}

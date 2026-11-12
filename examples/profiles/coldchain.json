@@ -1,0 +1,16 @@
+{
+  "message": "O CD de cadeia fria em Goiás se paga em 5,5 anos (TIR 19%), mas a energia é o maior risco operacional",
+  "lang": "pt",
+  "items": [
+    {"id": "cost", "kind": "breakdown", "points": 6, "groups": [3, 3], "label": "Custo total do ano 1: R$ 42 mi = CAPEX 28 + OPEX 14"},
+    {"id": "cash", "kind": "trend", "points": 8, "series": 1, "signed": true, "phases": 3, "payback": true, "label": "Fluxo de caixa anual, R$ mi"},
+    {"id": "assum", "kind": "assumptions", "points": 4, "series": 3, "label": "Premissas e origem"},
+    {"id": "kpi", "kind": "kpi", "points": 2, "label": "Retorno"}
+  ],
+  "relations": [
+    {"from": "cost", "to": "cash", "type": "leads_to"},
+    {"from": "kpi", "to": "cash", "type": "explains"}
+  ],
+  "insights": 1,
+  "decisions": 0
+}

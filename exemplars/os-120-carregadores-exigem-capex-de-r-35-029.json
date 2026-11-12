@@ -1,0 +1,212 @@
+{
+ "type": "composite",
+ "lang": "pt",
+ "headline": "Os 120 carregadores exigem CAPEX de R$ 35 mi e se pagam em ==5,8 anos== (TIR 17%): começar pelos 40 postos de rodovia em SP",
+ "layout": "cols",
+ "panels": [
+  {
+   "id": "p1",
+   "kind": "flow",
+   "title": "CAPEX total, R$ mi",
+   "direction": "lr",
+   "nodes": [
+    {
+     "id": "tot",
+     "text": "Total: R$ 35 mi",
+     "style": "fill",
+     "op": "+"
+    },
+    {
+     "id": "tot_0",
+     "text": "Carregadores: 18",
+     "style": "grey",
+     "parent": "tot"
+    },
+    {
+     "id": "tot_1",
+     "text": "Conexão à rede: 9",
+     "style": "grey",
+     "parent": "tot"
+    },
+    {
+     "id": "tot_2",
+     "text": "Obras civis: 6",
+     "style": "grey",
+     "parent": "tot"
+    },
+    {
+     "id": "tot_3",
+     "text": "Software: 2",
+     "style": "grey",
+     "parent": "tot"
+    }
+   ],
+   "title_plain": true
+  },
+  {
+   "id": "p2",
+   "kind": "chart",
+   "title": "Fluxo de caixa anual, R$ mi",
+   "chart": {
+    "kind": "column",
+    "categories": [
+     "2026",
+     "2027",
+     "2028",
+     "2029",
+     "2030",
+     "2031",
+     "2032",
+     "2033"
+    ],
+    "series": [
+     {
+      "name": "Fluxo de caixa",
+      "values": [
+       -20,
+       -15,
+       3,
+       6,
+       9,
+       11,
+       12,
+       13
+      ]
+     }
+    ],
+    "number_format": "#,##0"
+   },
+   "title_plain": true
+  },
+  {
+   "id": "p3",
+   "kind": "kpis",
+   "title": "Retorno do projeto",
+   "items": [
+    {
+     "value": "5,8 anos",
+     "label": "Payback"
+    },
+    {
+     "value": "17%",
+     "label": "TIR"
+    }
+   ],
+   "title_plain": true
+  },
+  {
+   "id": "p4",
+   "kind": "table",
+   "title": "Premissas e origem",
+   "columns": [
+    "Premissa",
+    "Valor",
+    "Origem"
+   ],
+   "rows": [
+    [
+     "Utilização média",
+     "18%",
+     {
+      "pill": "Benchmark",
+      "color": "C0701F"
+     }
+    ],
+    [
+     "Tarifa ao cliente",
+     "R$ 2,10/kWh",
+     {
+      "pill": "Dado público",
+      "color": "primary"
+     }
+    ],
+    [
+     "Custo de energia",
+     "R$ 0,85/kWh",
+     {
+      "pill": "Dado público",
+      "color": "primary"
+     }
+    ],
+    [
+     "Pontos de recarga",
+     "120 em 40 postos",
+     {
+      "pill": "Decisão",
+      "color": "FFC000"
+     }
+    ]
+   ],
+   "pill_legend": {
+    "label": "Origem:",
+    "pills": [
+     {
+      "pill": "Dado público",
+      "color": "primary"
+     },
+     {
+      "pill": "Benchmark",
+      "color": "C0701F"
+     },
+     {
+      "pill": "Decisão",
+      "color": "FFC000"
+     }
+    ]
+   },
+   "title_plain": true,
+   "callout": {
+    "lead": "Recomendação:",
+    "text": "começar pelos 40 postos de rodovia em SP"
+   }
+  }
+ ],
+ "source": "ANEEL, ABVE, análise da equipe. Dados ilustrativos.",
+ "links": [
+  {
+   "kind": "arrow",
+   "from": "p1",
+   "to": "p2"
+  },
+  {
+   "kind": "note",
+   "panel": "p2",
+   "text": "Payback em 5,8 anos",
+   "at": "top-left"
+  }
+ ],
+ "divider": true,
+ "section_style": "centred_rule",
+ "cols": [
+  {
+   "w": 0.28,
+   "rows": [
+    1
+   ],
+   "title": "Investimento"
+  },
+  {
+   "w": 0.43,
+   "rows": [
+    0.55,
+    0.45
+   ],
+   "title": "Retorno"
+  },
+  {
+   "w": 0.29,
+   "rows": [
+    1
+   ],
+   "title": "Premissas e decisão"
+  }
+ ],
+ "frame": {
+  "panels": [
+   "p2",
+   "p3"
+  ],
+  "style": "none"
+ },
+ "theme": "orange_graphite"
+}

@@ -1,0 +1,32 @@
+[
+ {
+  "id": "o-cd-de-cadeia-fria-em-goi-s-se-paga-em--011",
+  "note": "cold-chain DC: cost tree + phased cash flow + sourced assumptions",
+  "date": "2026-11-08"
+ },
+ {
+  "id": "abrir-12-farm-cias-no-nordeste-exige-r-2-024",
+  "note": "Dense, not crammed (user approved 2026-11-12): 3 sections with intros, market + cities, cost tree in grey, KPIs + risks in one grey frame with conclusion. lek_green.",
+  "date": "2026-11-12"
+ },
+ {
+  "id": "os-120-carregadores-exigem-capex-de-r-35-029",
+  "note": "EV charging: CAPEX flow tree, signed cash flow with payback, sourced assumptions; centred_rule headers, orange_graphite.",
+  "date": "2026-11-12"
+ },
+ {
+  "id": "telemedicina-no-brasil-cresceu-3-4x-em-5-030",
+  "note": "Telemedicine: market CAGR, revenue doughnut on grey, entry-model rating table + KPIs with icons; teal_modern.",
+  "date": "2026-11-12"
+ },
+ {
+  "id": "a-gera-o-solar-distribu-da-saltou-14-6x--031",
+  "note": "Distributed solar: KPI strip on top, three exhibits (trend, ranking, financing doughnut), conclusion band; blue_slate.",
+  "date": "2026-11-12"
+ },
+ {
+  "id": "caf-s-especiais-r-56-dos-r-120-kg-s-o-ma-032",
+  "note": "Specialty coffee: price cost tree with margins outlined, channel bars, consumer KPIs + recommendation; bar headers, plum_classic.",
+  "date": "2026-11-12"
+ }
+]

@@ -1,0 +1,1137 @@
+{
+ "cover": {
+  "type": "cover",
+  "title": "Plano de Entrada no Mercado de Cafés Especiais",
+  "subtitle": "Tamanho de mercado, canais e recomendação",
+  "team": "Equipe Exemplo",
+  "members": [
+   "Ana Souza",
+   "Bruno Lima",
+   "Carla Mendes",
+   "Eduarda Pinto"
+  ],
+  "event": "Desafio Estratégico",
+  "date": "Maio de 2026"
+ },
+ "team": {
+  "type": "team",
+  "headline": "Apresentação da equipe",
+  "members": [
+   {
+    "name": "Ana Souza",
+    "role": "Engenharia Civil"
+   },
+   {
+    "name": "Bruno Lima",
+    "role": "Engenharia Ambiental"
+   },
+   {
+    "name": "Carla Mendes",
+    "role": "Engenharia de Produção"
+   },
+   {
+    "name": "Daniel Rocha",
+    "role": "Engenharia Naval"
+   },
+   {
+    "name": "Eduarda Pinto",
+    "role": "Engenharia de Produção"
+   }
+  ]
+ },
+ "agenda_divider": {
+  "type": "agenda_divider",
+  "title": "Agenda",
+  "active": 1,
+  "sections": [
+   {
+    "name": "Atratividade de mercado",
+    "topics": [
+     "Tamanho e crescimento",
+     "Tendências"
+    ]
+   },
+   {
+    "name": "Potencial de disrupção",
+    "topics": [
+     "Percepção do consumidor",
+     "Concorrência"
+    ]
+   },
+   {
+    "name": "Avaliação do fundador",
+    "topics": [
+     "Alinhamento",
+     "Entrevistas"
+    ]
+   },
+   {
+    "name": "Recomendação",
+    "topics": [
+     "Plano de ação"
+    ]
+   }
+  ]
+ },
+ "executive_summary": {
+  "type": "executive_summary",
+  "headline": "Com infraestrutura equalizada entre regiões, a IA pode ser implementada de forma homogênea na educação pública brasileira",
+  "columns": [
+   {
+    "header": "Diagnóstico",
+    "kpi": "56%",
+    "bullets": [
+     "**Professores** já usam IA nas aulas, mas sem orientação formal",
+     "**Gap de acesso** à internet entre Norte e Sul de 50 p.p."
+    ]
+   },
+   {
+    "header": "Solução proposta",
+    "bullets": [
+     "**Fundo de infraestrutura** para as escolas mais defasadas",
+     "**Plataforma nacional** de IA com curadoria pedagógica"
+    ]
+   },
+   {
+    "header": "Implementação",
+    "bullets": [
+     "**Pilotos em 2026** na região Norte",
+     "**Escala nacional** a partir de 2028"
+    ]
+   },
+   {
+    "header": "Riscos",
+    "bullets": [
+     "**Capacitação docente** insuficiente",
+     "**LGPD**: vazamento de dados de alunos"
+    ]
+   }
+  ],
+  "takeaway": "Infraestrutura primeiro, plataforma depois: só assim a IA chega a todas as redes.",
+  "source": "Dados ilustrativos",
+  "tracker": {
+   "sections": [
+    "Resumo",
+    "Diagnóstico",
+    "Solução",
+    "Riscos"
+   ],
+   "active": 0
+  }
+ },
+ "two_column": {
+  "type": "two_column",
+  "headline": "A proposta combina investimento em infraestrutura com uma plataforma nacional de IA",
+  "left": {
+   "header": "Investimento em infraestrutura",
+   "bullets": [
+    "**Foco** nas escolas mais carentes de conectividade",
+    "**Fundo** com cofinanciamento federal e estadual",
+    "**Meta:** 100% das salas com energia estável até 2028"
+   ]
+  },
+  "right": {
+   "header": "Plataforma Nacional de IA",
+   "bullets": [
+    "**Curadoria** de conteúdo alinhada à BNCC",
+    "**Chatbot pedagógico** para professores",
+    "**Painel de uso** para secretarias"
+   ]
+  },
+  "takeaway": "Infraestrutura e plataforma se reforçam: uma sem a outra não gera impacto.",
+  "source": "Dados ilustrativos"
+ },
+ "icon_columns": {
+  "type": "icon_columns",
+  "headline": "Três alavancas sustentam a estratégia de crescimento da FoodTech Co. até 2030",
+  "active": 1,
+  "cards": [
+   {
+    "header": "Canais de varejo",
+    "bullets": [
+     "Entrada em 3 redes nacionais",
+     "Gôndola dedicada a plant-based"
+    ],
+    "icon": "store"
+   },
+   {
+    "header": "Portfólio",
+    "bullets": [
+     "Linha de carnes alternativas",
+     "Preço até 10% acima do animal"
+    ],
+    "icon": "package"
+   },
+   {
+    "header": "Marca",
+    "bullets": [
+     "Posicionamento insurgente",
+     "Parcerias com chefs"
+    ],
+    "icon": "megaphone"
+   }
+  ],
+  "takeaway": "Portfólio é a alavanca de maior impacto no curto prazo.",
+  "source": "Dados ilustrativos"
+ },
+ "kpi_tiles": {
+  "type": "kpi_tiles",
+  "headline": "O investimento de US$ 27 mi vira lucro em 2029, mesmo com queda de 26% no volume",
+  "kpis": [
+   {
+    "value": "US$ 22 mi",
+    "label": "Receita em 2029",
+    "note": "cenário base",
+    "icon": "dollar-sign"
+   },
+   {
+    "value": "US$ 4 mi",
+    "label": "EBITDA em 2029",
+    "note": "margem de 18%",
+    "icon": "trending-up"
+   },
+   {
+    "value": "74%",
+    "label": "do volume para o break-even",
+    "icon": "target"
+   },
+   {
+    "value": "3 anos",
+    "label": "Payback",
+    "note": "a partir do lançamento",
+    "icon": "clock"
+   }
+  ],
+  "bullets": [
+   "**Exposição máxima de caixa** inferior a 1% do caixa livre da empresa",
+   "**Portões de decisão** liberam capital só após validação de demanda"
+  ],
+  "takeaway": "Aposta de baixo risco com retorno assimétrico.",
+  "source": "Dados ilustrativos"
+ },
+ "quote_interview": {
+  "type": "quote_interview",
+  "headline": "Se eu pudesse escolher um único foco, seria evitar a criação de novos detritos: prevenir é mais barato que limpar",
+  "person": {
+   "name": "Jorge Bidinotto",
+   "role": "Doutor em Engenharia Mecânica, Univ. de Cranfield"
+  },
+  "factors": [
+   {
+    "label": "Mitigação prática",
+    "detail": "Projetos de fim de vida devem ser exigidos já no licenciamento das missões"
+   },
+   {
+    "label": "Indústria promissora",
+    "detail": "Serviços de remoção e reabastecimento em órbita já têm demanda comercial"
+   },
+   {
+    "label": "Boas práticas",
+    "detail": "Reuso de estágios e passivação reduzem o risco de fragmentação"
+   }
+  ],
+  "source": "Entrevista com especialista (ilustrativo)"
+ },
+ "chart_takeaway": {
+  "type": "chart_takeaway",
+  "headline": "O mercado global de plant-based cresce ~9% a.a. e deve atingir US$ 271 bi em 2030, 1,7x o tamanho de 2024",
+  "chart": {
+   "kind": "column",
+   "title": "Mercado global de plant-based",
+   "subtitle": "2024–2030 (projeção) – em US$ bilhões",
+   "categories": [
+    "2024",
+    "2025",
+    "2026",
+    "2027",
+    "2028",
+    "2029",
+    "2030"
+   ],
+   "series": [
+    {
+     "name": "Mercado",
+     "values": [
+      162,
+      184,
+      208,
+      218,
+      236,
+      252,
+      271
+     ]
+    }
+   ],
+   "number_format": "#,##0",
+   "highlight": [
+    0,
+    6
+   ],
+   "callout": "CAGR +9%"
+  },
+  "insights": [
+   "**Crescimento sustentado:** +67% no período",
+   "**Maior salto em 2026:** +US$ 24 bi em um ano",
+   "**Escala em 2030:** 1,7x o mercado de 2024"
+  ],
+  "takeaway": "O crescimento é constante: a janela de entrada segue aberta até o fim da década.",
+  "source": "Dados ilustrativos",
+  "page_number": 6
+ },
+ "multi_chart": {
+  "type": "multi_chart",
+  "headline": "Não-veganos dominam o consumo e priorizam preço e qualidade, as principais alavancas de penetração",
+  "panels": [
+   {
+    "claim": "Não-veganos são 93% dos respondentes…",
+    "chart": {
+     "kind": "doughnut",
+     "categories": [
+      "Não-veganos",
+      "Veganos"
+     ],
+     "series": [
+      {
+       "name": "Respondentes",
+       "values": [
+        3156,
+        243
+       ]
+      }
+     ],
+     "percent": true,
+     "subtitle": "2024 – nº de respondentes"
+    }
+   },
+   {
+    "claim": "…consomem plant-based ocasionalmente…",
+    "chart": {
+     "kind": "column",
+     "categories": [
+      "0",
+      "1-2",
+      "3-4",
+      "5-6",
+      "7-8",
+      "9-10"
+     ],
+     "series": [
+      {
+       "name": "Respondentes",
+       "values": [
+        819,
+        1367,
+        418,
+        231,
+        188,
+        99
+       ]
+      }
+     ],
+     "highlight": [
+      1
+     ],
+     "subtitle": "Refeições veganas nas últimas 10"
+    }
+   },
+   {
+    "claim": "…e escolhem por preço e qualidade",
+    "chart": {
+     "kind": "bar",
+     "categories": [
+      "Preço",
+      "Qualidade",
+      "Sabor",
+      "Marca"
+     ],
+     "series": [
+      {
+       "name": "% citações",
+       "values": [
+        0.34,
+        0.27,
+        0.22,
+        0.17
+       ]
+      }
+     ],
+     "number_format": "0%",
+     "highlight": [
+      0,
+      1
+     ],
+     "subtitle": "Critério de compra – % das citações"
+    }
+   }
+  ],
+  "takeaway": "Competir em preço e qualidade, não em discurso vegano.",
+  "source": "Dados ilustrativos"
+ },
+ "waterfall": {
+  "type": "waterfall",
+  "headline": "A receita cresce de US$ 15 mi para US$ 26 mi até 2029, puxada pelo modo Profissional",
+  "chart_title": "Ponte de receita 2026–2029",
+  "subtitle": "em US$ milhões",
+  "steps": [
+   {
+    "label": "2026",
+    "value": 15
+   },
+   {
+    "label": "Profissional",
+    "value": 8
+   },
+   {
+    "label": "B2B",
+    "value": 5
+   },
+   {
+    "label": "Churn",
+    "value": -3
+   },
+   {
+    "label": "Preço",
+    "value": 1
+   },
+   {
+    "label": "2029",
+    "value": 26
+   }
+  ],
+  "number_format": "0",
+  "insights": [
+   "**Profissional** responde por 57% do crescimento bruto",
+   "**Churn** consome US$ 3 mi: retenção é crítica",
+   "**Preço** tem efeito marginal no período"
+  ],
+  "takeaway": "O plano depende do modo Profissional: é onde concentrar o investimento.",
+  "source": "Dados ilustrativos"
+ },
+ "scenarios": {
+  "type": "scenarios",
+  "headline": "Mesmo no cenário pessimista o projeto tem VPL positivo, e o caso base sustenta a recomendação de compra",
+  "recommended": 1,
+  "scenarios": [
+   {
+    "name": "Pessimista",
+    "value": "R$ 38",
+    "value_label": "preço-alvo por ação",
+    "metrics": [
+     {
+      "label": "Upside",
+      "value": "+6%"
+     },
+     {
+      "label": "TIR",
+      "value": "12%"
+     },
+     {
+      "label": "Crescimento a.a.",
+      "value": "4%"
+     }
+    ],
+    "assumptions": [
+     "Juros altos por mais tempo",
+     "Market share estável"
+    ]
+   },
+   {
+    "name": "Base",
+    "value": "R$ 47",
+    "value_label": "preço-alvo por ação",
+    "metrics": [
+     {
+      "label": "Upside",
+      "value": "+31%"
+     },
+     {
+      "label": "TIR",
+      "value": "17%"
+     },
+     {
+      "label": "Crescimento a.a.",
+      "value": "8%"
+     }
+    ],
+    "assumptions": [
+     "Expansão para 3 novos estados",
+     "Margem EBITDA de 22%"
+    ]
+   },
+   {
+    "name": "Otimista",
+    "value": "R$ 58",
+    "value_label": "preço-alvo por ação",
+    "metrics": [
+     {
+      "label": "Upside",
+      "value": "+61%"
+     },
+     {
+      "label": "TIR",
+      "value": "23%"
+     },
+     {
+      "label": "Crescimento a.a.",
+      "value": "12%"
+     }
+    ],
+    "assumptions": [
+     "Aquisição de concorrente regional",
+     "Ganho de escala logística"
+    ]
+   }
+  ],
+  "takeaway": "Recomendação: COMPRA, com upside de 31% no cenário base.",
+  "source": "Dados ilustrativos",
+  "tag": "Ilustrativo"
+ },
+ "comparison_table": {
+  "type": "comparison_table",
+  "headline": "O metano se destaca entre os combustíveis por combinar produção limpa e escalabilidade",
+  "corner": "Combustível",
+  "columns": [
+   "Impulso específico (s)",
+   "Densidade (g/cm³)",
+   "Produção limpa",
+   "Escalável",
+   "Custo"
+  ],
+  "rows": [
+   {
+    "label": "Querosene (RP-1)",
+    "cells": [
+     "353",
+     "0,81",
+     "✗",
+     "✓",
+     "harvey:3"
+    ]
+   },
+   {
+    "label": "Metano (CH₄)",
+    "cells": [
+     "369",
+     "0,43",
+     "✓",
+     "✓",
+     "harvey:3"
+    ]
+   },
+   {
+    "label": "Hidrogênio (LH₂)",
+    "cells": [
+     "363",
+     "0,07",
+     "✓",
+     "✗",
+     "harvey:1"
+    ]
+   },
+   {
+    "label": "Amônia (NH₃)",
+    "cells": [
+     "343",
+     "0,68",
+     "✓",
+     "✗",
+     "harvey:2"
+    ]
+   }
+  ],
+  "highlight_row": 1,
+  "takeaway": "Metano é a melhor combinação de desempenho e sustentabilidade.",
+  "source": "Dados ilustrativos"
+ },
+ "scorecard": {
+  "type": "scorecard",
+  "headline": "Milho e café arábica são as culturas mais atrativas pela matriz de 5 critérios ponderados",
+  "criteria": [
+   {
+    "name": "Vantagem competitiva",
+    "weight": 30
+   },
+   {
+    "name": "Potencial de mercado",
+    "weight": 25
+   },
+   {
+    "name": "Cadeia",
+    "weight": 20
+   },
+   {
+    "name": "Entrada e operação",
+    "weight": 15
+   },
+   {
+    "name": "Margem",
+    "weight": 10
+   }
+  ],
+  "options": [
+   {
+    "name": "Milho",
+    "scores": [
+     5,
+     5,
+     4,
+     4,
+     3
+    ]
+   },
+   {
+    "name": "Café arábica",
+    "scores": [
+     5,
+     4,
+     4,
+     3,
+     5
+    ]
+   },
+   {
+    "name": "Cana-de-açúcar",
+    "scores": [
+     4,
+     3,
+     3,
+     2,
+     3
+    ]
+   },
+   {
+    "name": "Trigo",
+    "scores": [
+     1,
+     3,
+     3,
+     3,
+     2
+    ]
+   },
+   {
+    "name": "Cítricos",
+    "scores": [
+     4,
+     2,
+     2,
+     3,
+     3
+    ]
+   }
+  ],
+  "takeaway": "Milho lidera; café arábica é a segunda escolha por margem.",
+  "source": "Dados ilustrativos"
+ },
+ "data_table": {
+  "type": "data_table",
+  "headline": "O projeto atinge break-even operacional no ano 2 e gera R$ 7,9 mi de EBITDA acumulado até o ano 5",
+  "unit": "DRE projetada – R$ milhares",
+  "corner": "R$ mil",
+  "columns": [
+   "Ano 1",
+   "Ano 2",
+   "Ano 3",
+   "Ano 4",
+   "Ano 5"
+  ],
+  "rows": [
+   {
+    "label": "Receita bruta",
+    "values": [
+     2100,
+     4800,
+     7900,
+     10400,
+     12600
+    ]
+   },
+   {
+    "label": "Impostos",
+    "values": [
+     -210,
+     -480,
+     -790,
+     -1040,
+     -1260
+    ],
+    "style": "sub"
+   },
+   {
+    "label": "Receita líquida",
+    "values": [
+     1890,
+     4320,
+     7110,
+     9360,
+     11340
+    ],
+    "style": "total"
+   },
+   {
+    "label": "Custos variáveis",
+    "values": [
+     -1130,
+     -2380,
+     -3560,
+     -4490,
+     -5330
+    ],
+    "style": "sub"
+   },
+   {
+    "label": "Custos fixos",
+    "values": [
+     -1500,
+     -1700,
+     -1900,
+     -2000,
+     -2100
+    ],
+    "style": "sub"
+   },
+   {
+    "label": "EBITDA",
+    "values": [
+     -740,
+     240,
+     1650,
+     2870,
+     3910
+    ],
+    "style": "total"
+   }
+  ],
+  "takeaway": "Break-even no ano 2; EBITDA de R$ 3,9 mi no ano 5.",
+  "source": "Dados ilustrativos"
+ },
+ "process_steps": {
+  "type": "process_steps",
+  "headline": "A validação de uma missão espacial segue cinco etapas, da pré-submissão ao monitoramento",
+  "style": "chevrons",
+  "active": 2,
+  "steps": [
+   {
+    "title": "Pré-submissão",
+    "description": "Operador consulta o ITS e prepara o plano de mitigação"
+   },
+   {
+    "title": "Submissão",
+    "description": "Envio digital e checagem formal da documentação"
+   },
+   {
+    "title": "Revisão técnica",
+    "description": "Conformidade ITS/LTS e cálculo preliminar de créditos"
+   },
+   {
+    "title": "Decisão",
+    "description": "Licença condicionada ao pagamento da taxa"
+   },
+   {
+    "title": "Monitoramento",
+    "description": "Relatórios periódicos e auditoria anual"
+   }
+  ],
+  "takeaway": "A revisão técnica é o gargalo do processo.",
+  "source": "Dados ilustrativos"
+ },
+ "timeline": {
+  "type": "timeline",
+  "headline": "A implementação em três fases leva a plataforma do piloto à escala nacional até 2030",
+  "periods": [
+   "2026",
+   "2027",
+   "2028",
+   "2029",
+   "2030"
+  ],
+  "bars": [
+   {
+    "label": "Infraestrutura",
+    "start": 0,
+    "end": 2,
+    "note": "Conectividade e energia"
+   },
+   {
+    "label": "Plataforma de IA",
+    "start": 1,
+    "end": 3,
+    "note": "MVP → versão nacional",
+    "level": 1
+   },
+   {
+    "label": "Capacitação docente",
+    "start": 1,
+    "end": 4,
+    "note": "Trilhas por região",
+    "level": 2
+   },
+   {
+    "label": "Avaliação de impacto",
+    "start": 3,
+    "end": 4,
+    "note": "Indicadores",
+    "level": 3
+   }
+  ],
+  "takeaway": "Escala só após validação nos pilotos de 2027.",
+  "source": "Dados ilustrativos"
+ },
+ "matrix_2x2": {
+  "type": "matrix_2x2",
+  "headline": "Heterogeneidade da infraestrutura e capacitação docente são os riscos prioritários do plano",
+  "x_label": "Impacto",
+  "y_label": "Probabilidade",
+  "quadrants": [
+   "Monitorar",
+   "Prioridade",
+   "Aceitar",
+   "Mitigar"
+  ],
+  "list_title": "Riscos e mitigação",
+  "items": [
+   {
+    "label": "Infraestrutura desigual",
+    "x": 8.5,
+    "y": 8,
+    "size": 5,
+    "description": "modelo híbrido offline nas escolas críticas"
+   },
+   {
+    "label": "Capacitação docente",
+    "x": 7,
+    "y": 7,
+    "size": 4,
+    "description": "trilhas obrigatórias com certificação"
+   },
+   {
+    "label": "Vazamento de dados",
+    "x": 8,
+    "y": 3,
+    "size": 3,
+    "description": "anonimização e auditoria LGPD"
+   },
+   {
+    "label": "Descontinuidade política",
+    "x": 5,
+    "y": 5,
+    "size": 3,
+    "description": "metas em lei federal"
+   },
+   {
+    "label": "Uso inadequado por alunos",
+    "x": 3,
+    "y": 6,
+    "size": 2,
+    "description": "guias de uso por série"
+   }
+  ],
+  "takeaway": "Mitigar primeiro os dois riscos do quadrante superior direito.",
+  "source": "Dados ilustrativos"
+ },
+ "flowchart": {
+  "type": "flowchart",
+  "headline": "A nova governança cria uma divisão dedicada com três frentes reportando ao conselho",
+  "nodes": [
+   {
+    "id": "c",
+    "label": "Conselho de Partes"
+   },
+   {
+    "id": "s",
+    "label": "Secretaria Executiva",
+    "parent": "c"
+   },
+   {
+    "id": "t",
+    "label": "Comitê Técnico-Financeiro",
+    "parent": "c"
+   },
+   {
+    "id": "a",
+    "label": "Auditoria",
+    "parent": "c"
+   },
+   {
+    "id": "s1",
+    "label": "Licenciamento",
+    "parent": "s"
+   },
+   {
+    "id": "s2",
+    "label": "Registro de missões",
+    "parent": "s"
+   },
+   {
+    "id": "t1",
+    "label": "Taxas e créditos",
+    "parent": "t"
+   },
+   {
+    "id": "a1",
+    "label": "Conformidade",
+    "parent": "a"
+   }
+  ],
+  "takeaway": "Separar regulação de auditoria evita conflito de interesse.",
+  "source": "Dados ilustrativos"
+ },
+ "issue_tree": {
+  "type": "issue_tree",
+  "headline": "A queda de lucro se explica por duas alavancas, das quais o custo logístico é a maior",
+  "nodes": [
+   {
+    "id": "q",
+    "label": "Por que o lucro caiu 18%?"
+   },
+   {
+    "id": "r",
+    "label": "Receita",
+    "parent": "q"
+   },
+   {
+    "id": "c",
+    "label": "Custos",
+    "parent": "q"
+   },
+   {
+    "id": "r1",
+    "label": "Volume (-4%)",
+    "parent": "r"
+   },
+   {
+    "id": "r2",
+    "label": "Preço médio (+2%)",
+    "parent": "r"
+   },
+   {
+    "id": "c1",
+    "label": "Logística (+22%)",
+    "parent": "c"
+   },
+   {
+    "id": "c2",
+    "label": "Matéria-prima (+6%)",
+    "parent": "c"
+   },
+   {
+    "id": "c3",
+    "label": "Pessoal (+3%)",
+    "parent": "c"
+   }
+  ],
+  "takeaway": "Atacar logística primeiro: é a maior variação de custo.",
+  "source": "Dados ilustrativos"
+ },
+ "funnel": {
+  "type": "funnel",
+  "headline": "De 955 produtos mapeados, 5 atendem a todos os critérios e formam o portfólio recomendado",
+  "stages": [
+   {
+    "label": "produtos mapeados",
+    "value": "955",
+    "criterion": "Base completa de produtos de PMEs do setor"
+   },
+   {
+    "label": "com demanda crescente",
+    "value": "212",
+    "criterion": "Crescimento de vendas > 10% a.a. em 3 anos"
+   },
+   {
+    "label": "com margem atrativa",
+    "value": "64",
+    "criterion": "Margem bruta > 35%"
+   },
+   {
+    "label": "recomendados",
+    "value": "5",
+    "criterion": "Viáveis com a capacidade produtiva atual"
+   }
+  ],
+  "takeaway": "Portfólio enxuto de 5 produtos concentra o esforço comercial.",
+  "source": "Dados ilustrativos"
+ },
+ "tile_map": {
+  "type": "tile_map",
+  "headline": "Sudeste, Sul e DF concentram as escolas conectadas; Norte e Nordeste ficam majoritariamente abaixo de 45%",
+  "unit": "%",
+  "values": {
+   "SP": 82,
+   "RJ": 76,
+   "MG": 71,
+   "ES": 69,
+   "PR": 78,
+   "SC": 80,
+   "RS": 74,
+   "DF": 85,
+   "GO": 63,
+   "MT": 55,
+   "MS": 61,
+   "BA": 41,
+   "SE": 44,
+   "AL": 36,
+   "PE": 47,
+   "PB": 42,
+   "RN": 45,
+   "CE": 52,
+   "PI": 33,
+   "MA": 28,
+   "PA": 31,
+   "AP": 34,
+   "AM": 27,
+   "RR": 30,
+   "AC": 25,
+   "RO": 39,
+   "TO": 38
+  },
+  "highlight": [
+   "AM",
+   "MA",
+   "AC"
+  ],
+  "ranking_title": "Maior conectividade",
+  "insights": [
+   "**Gap** de 60 p.p. entre DF e AC",
+   "**AM, MA e AC** são prioridade do fundo"
+  ],
+  "takeaway": "Direcionar o fundo de infraestrutura para Norte e Nordeste.",
+  "source": "Dados ilustrativos"
+ },
+ "exhibit_annotated": {
+  "type": "exhibit_annotated",
+  "headline": "O modelo de scoring calcula a nota de cada cultura em quatro passos reprodutíveis",
+  "image_label": "captura do código / planilha",
+  "notes": [
+   "**Carrega a base** de produção por cultura",
+   "**Normaliza** cada critério para a escala 1–5",
+   "**Aplica os pesos** da matriz de priorização",
+   "**Ordena** as culturas pela nota ponderada"
+  ],
+  "source": "Dados ilustrativos"
+ },
+ "key_insight": {
+  "type": "key_insight",
+  "label": "Insight-chave",
+  "statement": "O mercado de plant-based está em crescimento sustentado, impulsionado por saúde, meio ambiente e inovação em sabor e textura."
+ },
+ "closing": {
+  "type": "closing",
+  "word": "Obrigado!",
+  "subtitle": "Perguntas e respostas",
+  "contacts": "Equipe Exemplo  ·  contato@exemplo.com"
+ },
+ "composite": {
+  "type": "composite",
+  "lang": "pt",
+  "theme": "bain_red",
+  "headline": "Loja física e e-commerce geram ~66% da receita; três decisões atacam os canais com maior espaço de ganho",
+  "layout": "3col",
+  "weights": [
+   0.38,
+   0.3,
+   0.32
+  ],
+  "panels": [
+   {
+    "id": "p1",
+    "kind": "chart",
+    "title": "Receita por canal",
+    "chart": {
+     "kind": "column",
+     "subtitle": "2024 - em R$ mi",
+     "categories": [
+      "Loja",
+      "E-commerce",
+      "Atacado",
+      "Marketplace",
+      "Outros"
+     ],
+     "series": [
+      {
+       "name": "Receita",
+       "values": [
+        48,
+        31,
+        22,
+        12,
+        6
+       ]
+      }
+     ],
+     "number_format": "#,##0",
+     "highlight": [
+      0,
+      1
+     ]
+    },
+    "bullets": [
+     "**Concentração:** 79 de 119 vêm de dois canais"
+    ]
+   },
+   {
+    "id": "p2",
+    "kind": "bullets",
+    "title": "Diagnóstico",
+    "items": [
+     "**Loja:** maior canal, mas margem pressionada por aluguel e frete de reposição",
+     "**E-commerce:** cresce rápido, porém com custo de aquisição crescente",
+     "**Atacado:** receita estável e previsível, com baixa exposição a promoções",
+     "**Marketplace:** canal ainda pequeno, com potencial de escala se houver sortimento próprio"
+    ]
+   },
+   {
+    "id": "p3",
+    "kind": "cards",
+    "title": "Decisões",
+    "numbered": true,
+    "items": [
+     {
+      "title": "Renegociar contratos de loja",
+      "text": "Reduzir custo de ocupação em 10%"
+     },
+     {
+      "title": "Reequilibrar mídia paga",
+      "text": "Migrar verba para CRM e canais orgânicos"
+     },
+     {
+      "title": "Escalar marketplace",
+      "text": "Ampliar sortimento e metas por categoria"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "kind": "arrow",
+    "from": "p2",
+    "to": "p3"
+   },
+   {
+    "kind": "xref",
+    "panel": "p3",
+    "to": "p1",
+    "pairs": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      3
+     ]
+    ]
+   },
+   {
+    "kind": "callout",
+    "panel": "p1",
+    "category": 2,
+    "text": "Estável, margem alta"
+   }
+  ],
+  "source": "Dados ilustrativos (substituir pela fonte real)"
+ }
+}

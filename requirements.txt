@@ -1,0 +1,6 @@
+python-pptx>=1.0
+jsonschema>=4.0
+mcp>=1.0
+openpyxl>=3.1
+PyMuPDF>=1.24
+Pillow>=10.0

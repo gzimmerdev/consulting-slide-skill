@@ -1,0 +1,24 @@
+{
+  "type": "chart_takeaway",
+  "lang": "pt",
+  "theme": "bain_red",
+  "headline": "O mercado global de plant-based cresce ~9% a.a. e deve atingir US$ 271 bi em 2030, 1,7x o tamanho de 2024",
+  "chart": {
+    "kind": "column",
+    "title": "Mercado global de plant-based",
+    "subtitle": "2024–2030 (projeção) – em US$ bilhões",
+    "categories": ["2024", "2025", "2026", "2027", "2028", "2029", "2030"],
+    "series": [{"name": "Mercado", "values": [162, 184, 208, 218, 236, 252, 271]}],
+    "number_format": "#,##0",
+    "highlight": [0, 6]
+  },
+  "insights": [
+    "**Crescimento sustentado:** CAGR de ~9% entre 2024 e 2030, +67% no período",
+    "**Maior salto em 2026:** +US$ 24 bi em um único ano",
+    "**Escala em 2030:** mercado 1,7x maior que o de 2024"
+  ],
+  "takeaway": "O crescimento é constante, não pontual: a janela de entrada permanece aberta até o fim da década.",
+  "source": "Dados ilustrativos (substituir pela fonte real)",
+  "page_number": 6,
+  "footer_tag": "Atratividade de mercado"
+}

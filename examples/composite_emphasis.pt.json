@@ -1,0 +1,28 @@
+{
+  "type": "composite",
+  "lang": "pt",
+  "theme": "bain_red",
+  "headline": "A receita cresce em todas as frentes, mas só a frente digital escala sem aumentar o custo por cliente",
+  "layout": "3col",
+  "weights": [1.0, 1.1, 1.3],
+  "panels": [
+    {"id": "k", "kind": "kpis", "title": "Resultado 2025", "title_shape": "pentagon",
+     "items": [{"value": "R$ 84 M", "label": "Receita total", "delta": "up"},
+               {"value": "18%", "label": "Margem operacional", "delta": "up"},
+               {"value": "41%", "label": "Vendas no canal digital", "delta": "up"},
+               {"value": "R$ 212", "label": "Custo por cliente", "delta": "down"}]},
+    {"id": "b", "kind": "bullets", "title": "O que mudou", "title_shape": "pentagon",
+     "items": ["Canal digital passou de 22% para 41% das vendas", "Lojas físicas mantêm o ticket médio, com 9% menos custo fixo", "Atendimento automatizado reduziu o tempo de resposta em 60%", "Parceiros crescem pouco e dependem de poucos contratos", "Custo por cliente cai pela primeira vez desde 2021"]},
+    {"id": "c", "kind": "chart", "title": "Receita por canal (R$ M)",
+     "chart": {"kind": "stacked", "labels": true, "number_format": "0", "categories": ["2023", "2024", "2025"],
+               "series": [{"name": "Digital", "values": [12, 22, 34]}, {"name": "Lojas", "values": [38, 41, 40]}, {"name": "Parceiros", "values": [8, 9, 10]}]}}
+  ],
+  "emphasis": [
+    {"kind": "backdrop", "panels": ["c"], "fill": "grey", "outline": "dashed"},
+    {"kind": "accent_bar", "panel": "k"},
+    {"kind": "pointer", "from": "k", "to": "b", "shape": "triangle"},
+    {"kind": "pointer", "from": "b", "to": "c", "shape": "block"}
+  ],
+  "takeaway": "Priorizar o digital: cada R$ 1 investido ali devolve 2,3x o retorno das lojas",
+  "source": "Dados ilustrativos"
+}
