@@ -459,7 +459,8 @@ def _chart(slide, p, x, y, w, h, theme, lang, head, room=0):
         c["inner"] = (lw, top, 0.96 - lw, 1 - top - 0.03 - lg)
     elif k not in ("pie", "doughnut", "scatter", "bubble"):      # scatter/bubble set their own plot area (axis titles need room)
         lx = 0.17 if c.get("series_labels") == "left" else 0.03        # series names need room left of the first stack
-        c["inner"] = (lx, top, 0.97 - lx, 1 - top - min(0.13, 0.40 / h) - lg)
+        cf = c.get("cat_size") or theme.get("chart_font", 10); bt = max(min(0.13, 0.40 / h), (cf * 1.25 / 72 + 0.15) / h)      # a short chart still keeps one category-label line (1.8in charts cut the labels in half)
+        c["inner"] = (lx, top, 0.97 - lx, 1 - top - bt - lg)
     c["head"] = head; c["lang"] = lang
     if k == "bar": c["head"] = max(head, 1 + 0.45 / (c["inner"][2] * w))     # room for the value label after the longest bar, in inches
     elif room: ph = c["inner"][3] * h; c["head"] = max(head, 1 / (1 - min(room / ph, 0.45)))     # room (in) above the tallest bar: a cagr arrow on a short chart hit the value label
@@ -731,10 +732,10 @@ def _kpis(slide, p, x, y, w, h, theme):
         ox = 0.65 if ic else 0; vw = min(1.9, w * (0.36 if ic else 0.42))
         for i, k in enumerate(items):
             ry = y + i * (rh + 0.1)
-            if k.get("icon"): _icon(slide, k["icon"], x + 0.4, ry + rh / 2, 0.5, theme, st)
-            vc, lc = _kpi_card(slide, x + ox + (0.05 if ic else 0), ry, w - ox - (0.05 if ic else 0), rh, theme) if card else (None, "1A1A1A")      # the card starts right of the icon
+            if k.get("icon"): _icon(slide, k["icon"], x + 0.4, ry + rh / 2, min(0.5, rh * 0.9), theme, st)      # never taller than its row
+            vc, lc = _kpi_card(slide, x + ox + (0.1 if ic else 0), ry, w - ox - (0.1 if ic else 0), rh, theme) if card else (None, "1A1A1A")      # the card starts right of the icon
             text(slide, x + 0.15 + ox, ry, vw, rh, k["value"], size=min(max(16, min(24, int(vw * 72 / (0.6 * max(len(k["value"]), 1))))), int(rh * 72 * 0.55) if card else 99), bold=theme.get("kpi_bold", True), color=vc or theme.get("kpi_color") or theme["primary"], font=theme["heading_font"], anchor="m")      # in a card the figure fits the card height
-            text(slide, x + 0.15 + ox + vw + 0.1, ry, w - ox - vw - (0.25 if ic else 0.4), rh, k["label"], size=12, color=lc, font=f, anchor="m")
+            text(slide, x + 0.15 + ox + vw + 0.1, ry, w - ox - vw - (0.25 if ic else 0.4), rh, k["label"], size=10 if card else 12, color=lc, font=f, anchor="m")
             if k.get("delta"): _delta(slide, k, x + 0.15 + ox + vw - 0.2, ry + rh / 2, theme)      # stacked rows: markers share one column at the right edge of the figure column
 
 
@@ -1073,6 +1074,16 @@ def composite(slide, spec, theme, lang):
             head.setdefault(l["panel"], 1.22)      # room above the tallest bar for its value label + the box label (1.14 put the box edge through "154")
             # ponytail: highlight link also greys the other bars (charts.py rule), not just a box around them
             next(p for p in P if p["id"] == l["panel"])["chart"].setdefault("highlight", l["categories"])
+    under = set()      # cols: panels under a section header (column title or row title) default to plain titles; the header marks the section
+    if spec["layout"] == "cols":
+        k_ = int(_hasband(spec))
+        if k_ and spec["band"].get("title"): under.add(P[0]["id"])
+        for c_ in spec["cols"]:
+            for i in range(len(c_["rows"])):
+                if k_ + i < len(P) and (c_.get("title") or (i < len(c_.get("row_titles") or []) and c_["row_titles"][i])): under.add(P[k_ + i]["id"])
+            k_ += len(c_["rows"])
+    for p in P:
+        if p["id"] in under: p.setdefault("title_plain", True)
     for p, (x, y, w, h) in zip(P, rects):
         if p.get("title") and p.get("title_badge") is not None:      # panel option title_badge: numbered circle left of the title (archive section numbers); the title shifts right
             number_badge(slide, x, y + 0.01, p["title_badge"], theme); x += 0.36; w -= 0.36
@@ -1170,6 +1181,8 @@ def fit(spec, theme):
     their bar slot. # ponytail: character-count estimates (CPE), not PowerPoint metrics."""
     w_ = []; P = spec["panels"]; hst = theme.get("header_style")
     fh, fb = FONT_W.get(theme.get("heading_font"), 1.0), FONT_W.get(theme.get("body_font"), 1.0)      # widths calibrated on Trebuchet MS renders
+    ts = theme.get("title_size", 20); hl = re.sub(r"==|\*\*", "", spec.get("headline", "")); nl = math.ceil(_tw(hl, ts, theme.get("title_bold", True)) * fh / (CW - 0.1))
+    if nl > 2: w_.append(f"headline needs {nl} lines at {ts}pt in this style (the title area holds 2): shorten it to ~{int(len(hl) * 2 / nl)} characters")
     if spec["layout"] == "cols":
         hd = list(zip(spec["cols"], _cols(spec["cols"], *_body(spec))))
         if _hasband(spec): hd.insert(0, (spec["band"], (None, 0, None, _full(spec)[2])))

@@ -197,11 +197,13 @@ def title_and_footer(slide, spec, theme, lang):
          bold=theme.get("title_bold", True), color=theme["title_color"], font=theme["heading_font"], anchor="m")
     if spec.get("accent_words"):    # key phrases in the brand colour (same font/size); case-insensitive match
         p0 = tb.text_frame.paragraphs[0]; r0 = p0.runs[0]; f0 = r0.font
-        parts = re.split("(" + "|".join(re.escape(w) for w in spec["accent_words"]) + ")", spec["headline"], flags=re.I)
+        words = list(spec["accent_words"]) + re.findall(r"==(.+?)==", spec["headline"])      # ==markup== in the headline counts too
+        hl = re.sub(r"==|\*\*", "", spec["headline"])      # no raw markup in the title when accent_words takes over the runs
+        parts = re.split("(" + "|".join(re.escape(w) for w in words) + ")", hl, flags=re.I)
         for r in list(p0.runs): r._r.getparent().remove(r._r)
         for seg in filter(None, parts):
             r = p0.add_run(); r.text = seg; f = r.font; f.size = f0.size; f.name = f0.name; f.bold = f0.bold
-            hit = re.fullmatch("|".join(re.escape(w) for w in spec["accent_words"]), seg, re.I)
+            hit = re.fullmatch("|".join(re.escape(w) for w in words), seg, re.I)
             if hit and spec.get("accent_bold"): f.bold = True      # spec option: bold keywords (s04 original)
             f.color.rgb = rgb(theme["primary"] if hit else theme["title_color"])
     if theme.get("title_rule"):     # optional rule under the action title
