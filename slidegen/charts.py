@@ -6,6 +6,7 @@ Rules (docs/design-system.md §5 + chart add-in / Bain "Chart it up" training): 
 value axis hidden, bold direct data labels, series dark->light of the primary, single-series "story colouring"
 via highlight (rest grey), no gridlines by default.
 """
+from pptx.oxml.ns import qn
 from pptx.chart.data import CategoryChartData, XyChartData, BubbleChartData
 from pptx.enum.chart import XL_MARKER_STYLE, XL_CHART_TYPE, XL_LABEL_POSITION, XL_LEGEND_POSITION, XL_TICK_MARK, XL_TICK_LABEL_POSITION
 from pptx.util import Pt, Inches
@@ -388,6 +389,12 @@ def add_chart(slide, c, theme, x, y, w, h, font_size=10):
                 s.format.fill.fore_color.rgb = rgb(GREY_BAR)
                 for k in hl:
                     pt = s.points[k]; pt.format.fill.solid(); pt.format.fill.fore_color.rgb = rgb(p)
+            if nser == 1:
+                for k, pc in enumerate((c.get("point_colors") or [])[:len(c["categories"])]):      # spec option: own colour per bar (growth blue, falls red, total grey)
+                    if pc:
+                        pt = s.points[k]; pt.format.fill.solid(); pt.format.fill.fore_color.rgb = rgb(pc)
+                        dp = s._element.get_or_add_dPt_for_point(k)
+                        if not dp.xpath("c:invertIfNegative"): dp.idx.addnext(dp.makeelement(qn("c:invertIfNegative"), {"val": "0"}))      # a coloured negative point turns white unless told not to
         lnf = "0%" if kind == "stacked100" and nf == "General" else nf
         if stacked:
             sz, lc = theme.get("stacked_label_font", font_size), "FFFFFF" if _is_dark(col) else LB

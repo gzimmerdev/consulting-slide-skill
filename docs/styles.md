@@ -87,6 +87,7 @@ Tokens are grouped by what they touch. "Default" is the `_defaults` value; "—"
 | Token | Values | What it changes | Used by |
 |---|---|---|---|
 | `takeaway_style` | `dashed` (default) · `solid` · `rule` · `grey` | so-what bar: `dashed` = pale fill + dashed outline; `solid` = brand strip with light text; `rule` = thin primary rule over plain text, no box; `grey` = grey box, no outline | Team G dashed · LEK/Team D solid · Team E rule |
+| `takeaway_fill` | hex (default F2F2F2) | box colour of the `grey` takeaway | user style gd_navy EEF2F7 |
 | `bar_gap` | % of a bar width (default 80) | gap between bars in column/bar charts: 50 = thick bars, 140 = thin bars (waterfalls keep their own) | mix_* styles |
 | `corners` | `square` (default) · `rounded` | cards, tiles, bars | Team I / Team E rounded |
 | `badge` | `circle` (default) · `square` | numbered markers 1-2-3 | Team I square |

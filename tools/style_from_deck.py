@@ -176,7 +176,7 @@ def logo_pdf(path):
 def save(name, tokens, logo=None, logo_position=None, logo_height=None, default=False):
     """Create/update style NAME in my_styles/styles.json. logo = image file path or (bytes, ext). Returns the saved style."""
     key = re.sub(r"[^a-z0-9_]+", "_", name.lower()).strip("_") or "my_style"
-    known = set().union(*(v.keys() for v in core.themes().values())) | {"logo", "_src"}
+    known = set().union(*(v.keys() for v in core.themes().values())) | {"logo", "_src", "takeaway_fill"}      # tokens no built-in style sets yet
     bad = [k for k in tokens if k not in known]
     if bad: raise ValueError(f"unknown tokens {bad}; see docs/styles.md")
     core.MY_STYLES.mkdir(parents=True, exist_ok=True); st = core.my_styles()

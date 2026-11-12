@@ -47,7 +47,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -291,7 +291,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -530,7 +530,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -777,7 +777,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -994,7 +994,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -1218,7 +1218,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -1459,7 +1459,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -1711,7 +1711,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -1977,7 +1977,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -2233,7 +2233,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -2495,7 +2495,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -2756,7 +2756,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -2967,7 +2967,7 @@
        "type": "array",
        "items": {
         "type": "string",
-        "maxLength": 40
+        "maxLength": 48
        },
        "minItems": 2,
        "maxItems": 30
@@ -3051,6 +3051,16 @@
        },
        "minItems": 1,
        "maxItems": 6
+      },
+      "point_colors": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "pattern": "^([0-9A-Fa-f]{6})?$"
+       },
+       "minItems": 1,
+       "maxItems": 12,
+       "description": "single-series column/bar: one hex per bar ('' keeps the default), e.g. growth in the brand colour, falls in red, total grey"
       },
       "labels": {
        "type": "boolean"
@@ -3146,7 +3156,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -3366,7 +3376,7 @@
           "type": "array",
           "items": {
            "type": "string",
-           "maxLength": 40
+           "maxLength": 48
           },
           "minItems": 2,
           "maxItems": 30
@@ -3450,6 +3460,16 @@
           },
           "minItems": 1,
           "maxItems": 6
+         },
+         "point_colors": {
+          "type": "array",
+          "items": {
+           "type": "string",
+           "pattern": "^([0-9A-Fa-f]{6})?$"
+          },
+          "minItems": 1,
+          "maxItems": 12,
+          "description": "single-series column/bar: one hex per bar ('' keeps the default), e.g. growth in the brand colour, falls in red, total grey"
          },
          "labels": {
           "type": "boolean"
@@ -3547,7 +3567,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -3823,7 +3843,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -4109,7 +4129,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -4375,7 +4395,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -4648,7 +4668,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -4927,7 +4947,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -5176,7 +5196,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -5473,7 +5493,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -5754,7 +5774,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -6000,7 +6020,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -6246,7 +6266,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -6492,7 +6512,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -6812,7 +6832,7 @@
     "source": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 320,
+     "maxLength": 400,
      "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"
     },
     "page_number": {
@@ -6979,8 +6999,8 @@
     "takeaway": {
      "type": "string",
      "minLength": 1,
-     "maxLength": 160,
-     "description": "one-sentence so-what"
+     "maxLength": 260,
+     "description": "so-what bar at the base: one or two sentences (up to ~2 lines at 13 pt)"
     },
     "layout": {
      "enum": [
@@ -7770,7 +7790,7 @@
              "type": "array",
              "items": {
               "type": "string",
-              "maxLength": 40
+              "maxLength": 48
              },
              "minItems": 2,
              "maxItems": 30
@@ -7848,6 +7868,16 @@
              },
              "minItems": 1,
              "maxItems": 6
+            },
+            "point_colors": {
+             "type": "array",
+             "items": {
+              "type": "string",
+              "pattern": "^([0-9A-Fa-f]{6})?$"
+             },
+             "minItems": 1,
+             "maxItems": 12,
+             "description": "single-series column/bar: one hex per bar ('' keeps the default), e.g. growth in the brand colour, falls in red, total grey"
             },
             "labels": {
              "type": "boolean"

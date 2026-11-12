@@ -315,3 +315,9 @@ try:
 finally:
     core_.MY_STYLES = _ms
 print("ok own design: style + logo from a deck, default style, tokens by hand")
+# per-bar colours (user request 2026-11-12, GD slide): growth blue, falls red; a coloured negative bar must not turn white
+pc_ = {"type": "composite", "lang": "pt", "headline": "Telhado cresce 8% e usinas remotas caem 32% a 65% em 2026, puxando o total para -10%", "layout": "1", "source": "Dados ilustrativos",
+       "panels": [{"id": "a", "kind": "chart", "chart": {"kind": "bar", "categories": ["A", "B", "C"], "series": [{"name": "s", "values": [8, -32, -10]}], "point_colors": ["1F3A5F", "B5462B", ""]}}]}
+ch_ = [x for x in build1(pc_, "t_point_colors") if x.has_chart][0].chart._chartSpace.xml
+assert ch_.count("B5462B") == 1 and ch_.count('invertIfNegative val="0"') >= 3, "two coloured points + the series, all non-inverting"
+print("ok point_colors")

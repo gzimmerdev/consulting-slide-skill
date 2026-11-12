@@ -305,7 +305,7 @@ def takeaway_bar(slide, content, theme, lang, y=6.1, h=0.6, label=None):
         text(slide, MX, y + 0.08, CW, h - 0.08, [content], size=13, color="1A1A1A", font=theme["body_font"], anchor="m")
         return
     if theme.get("takeaway_style") == "grey":      # grey box, no outline (archive conclusion look)
-        box(slide, MX, y, CW, h, fill="F2F2F2", shape=rect_shape(theme))
+        box(slide, MX, y, CW, h, fill=theme.get("takeaway_fill", "F2F2F2"), shape=rect_shape(theme))      # theme takeaway_fill: own box colour (pale blue)
         text(slide, MX + 0.3, y, CW - 0.5, h, body, size=13, color="1A1A1A", font=theme["body_font"], anchor="m")
         return
     if theme.get("takeaway_style") == "solid":

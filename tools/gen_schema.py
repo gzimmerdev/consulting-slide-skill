@@ -10,7 +10,7 @@ common = {
     "theme": {**S(40), "description": "style name from slidegen/themes.json (list: py -3 build.py --styles)"},
     "primary": {"type": "string", "pattern": "^#?[0-9A-Fa-f]{6}$", "description": "overrides theme primary colour; tints are derived"},
     "font": S(60), "heading_font": S(60),
-    "source": {**S(320), "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"},
+    "source": {**S(400), "description": "prints as 'Fonte:'/'Source:'. Required on data slides; never invent one"},
     "page_number": {"type": ["integer", "string"]}, "footer_tag": S(40), "footer_bar": obj(["x", "w"], {"x": NUM, "w": NUM}),
     "accent_words": {"type": "array", "items": S(80), "description": "headline phrases drawn in the theme primary colour"},
     "tag": {**S(40), "description": "stamp top-right, e.g. ILUSTRATIVO / PRELIMINAR"},
@@ -25,13 +25,13 @@ TAKE = {"takeaway": {**S(160), "description": "one-sentence so-what"}}
 CHART = obj(["kind", "categories", "series"], {
     "kind": {"enum": ["column", "stacked", "stacked100", "bar", "line", "pie", "doughnut"]},
     "title": S(60), "subtitle": {**S(80), "description": "unit + period, e.g. '2024 - em R$ bi'"},
-    "categories": arr({"type": "string", "maxLength": 40}, 2, 30),
+    "categories": arr({"type": "string", "maxLength": 48}, 2, 30),
     "series": arr(obj(["name", "values"], {"name": S(40), "values": arr(NUM, 2, 30)}), 1, 4),
     "number_format": {"type": "string", "description": "Excel code: '#,##0', '0.0', '0%'"},
     "highlight": {"type": "array", "items": {"type": "integer", "minimum": 0}, "maxItems": 3,
                   "description": "single series only: indexes in primary colour, rest grey"},
     "callout": {**S(24), "description": "bubble top-right of the chart, e.g. 'CAGR +9%'"},
-    "percent": {"type": "boolean"}, "gridlines": {"type": "boolean"}, "value_axis": {"type": "boolean", "description": "show the value axis (grey 9pt labels); default hidden"}, "min": NUM, "max": NUM, "markers": {"type": "boolean"}, "smooth": {"type": "boolean", "description": "line charts: smooth curves instead of straight segments"}, "colors": arr(S(6), 1, 6), "labels": {"type": "boolean"}, "end_labels": {"type": "boolean", "description": "label only the first and last point"}, "axis_format": {"type": "string", "description": "tick label Excel code when value_axis is shown, e.g. '#,##0'"}, "labels_above": {"type": "boolean", "description": "waterfall: delta labels above the bars instead of inside"}, "names": {"type": "boolean", "description": "pie/doughnut: show category names in the labels"}, "legend": {"type": "boolean"}, "max_height_in": {"type": "number", "minimum": 1, "maximum": 8, "description": "cap the chart height in inches (compact columns)"}, "legend_pos": {"enum": ["top", "top_tight", "inside"], "description": "legend above the plot instead of below (top_tight: reserves only 0.10 of the frame; inside: floats over the plot bottom-right)"}})
+    "percent": {"type": "boolean"}, "gridlines": {"type": "boolean"}, "value_axis": {"type": "boolean", "description": "show the value axis (grey 9pt labels); default hidden"}, "min": NUM, "max": NUM, "markers": {"type": "boolean"}, "smooth": {"type": "boolean", "description": "line charts: smooth curves instead of straight segments"}, "colors": arr(S(6), 1, 6), "point_colors": {**arr({"type": "string", "pattern": "^([0-9A-Fa-f]{6})?$"}, 1, 12), "description": "single-series column/bar: one hex per bar ('' keeps the default), e.g. growth in the brand colour, falls in red, total grey"}, "labels": {"type": "boolean"}, "end_labels": {"type": "boolean", "description": "label only the first and last point"}, "axis_format": {"type": "string", "description": "tick label Excel code when value_axis is shown, e.g. '#,##0'"}, "labels_above": {"type": "boolean", "description": "waterfall: delta labels above the bars instead of inside"}, "names": {"type": "boolean", "description": "pie/doughnut: show category names in the labels"}, "legend": {"type": "boolean"}, "max_height_in": {"type": "number", "minimum": 1, "maximum": 8, "description": "cap the chart height in inches (compact columns)"}, "legend_pos": {"enum": ["top", "top_tight", "inside"], "description": "legend above the plot instead of below (top_tight: reserves only 0.10 of the frame; inside: floats over the plot bottom-right)"}})
 member = obj(["name", "role"], {"name": S(40), "role": S(70), "photo": S(260)})
 
 
@@ -231,7 +231,7 @@ LINKS = [
     obj(["kind", "panel", "to", "pairs"], {"kind": {"const": "xref"}, "panel": IDS(), "to": IDS(),
         "pairs": {**arr(arr(CI, 2, 2), 1, 6), "description": "[item index in panel, category index in the chart panel 'to']; badge number = item index + 1"}}),
 ]
-A["composite"] = arch("composite", ["headline", "layout", "panels", "source"], {**HEAD, **TAKE,
+A["composite"] = arch("composite", ["headline", "layout", "panels", "source"], {**HEAD, **TAKE, "takeaway": {**S(260), "description": "so-what bar at the base: one or two sentences (up to ~2 lines at 13 pt)"},
     "layout": {"enum": ["1", "2col", "3col", "4col", "T|B", "L|R2", "L2|R", "2x2", "2x3", "L|R3", "T|B3", "T2|B3", "cols"],
                "description": "slots in reading order: cols=free columns, each split into rows (spec 'cols'; slots column by column, top to bottom), 1=1, 2col=2, 3col=3, 4col=4, T|B=top/bottom (2), L|R2=left full + right top/bottom (3), L2|R=left top/bottom + right full (3), 2x2=4, 2x3=2 rows x 3 cols (6, row by row), L|R3=left full + right 3 stacked (4), T|B3=top full + bottom 3 side by side (4), T2|B3=top 2 + bottom 3 (5)"},
     "cols": {**arr(obj(["w", "rows"], {"w": {"type": "number", "exclusiveMinimum": 0, "description": "column width proportion"}, "rows": {**arr({"type": "number", "exclusiveMinimum": 0}, 1, 4), "description": "height proportions of the column's slots (one number per slot)"},
