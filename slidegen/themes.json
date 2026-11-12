@@ -170,52 +170,53 @@
   "footer_rule": false
  },
  "orange_graphite": {
-  "_src": "original design (2026-11-12): orange on graphite, Arial, thin rules",
-  "primary": "E8590C",
+  "_src": "original design (2026-11-12): burnt orange on graphite, Arial, thin rules",
+  "primary": "C4501E",
   "title_color": "2B2F33",
   "dark": "2B2F33",
-  "kpi_color": "E8590C",
+  "kpi_color": "C4501E",
   "series": [
-   "7A2E06",
-   "E8590C",
-   "F59F6B",
-   "FAD3B8"
+   "6B2A10",
+   "C4501E",
+   "E09A74",
+   "F2D5C4"
   ],
   "badge": "square",
   "takeaway_style": "solid"
  },
  "teal_modern": {
-  "_src": "original design (2026-11-12): teal, Calibri, side-bar headers, rounded shapes",
-  "primary": "0F766E",
-  "title_color": "0F3D3A",
+  "_src": "original design (2026-11-12): petrol teal, Calibri, side-bar headers, rounded shapes",
+  "primary": "1D5C63",
+  "title_color": "123B3F",
   "heading_font": "Calibri",
   "body_font": "Calibri",
   "header_style": "vbar",
   "corners": "rounded",
-  "dark": "0B3B37",
+  "dark": "123B3F",
   "series": [
-   "0B4F4A",
-   "0F766E",
-   "5FB3A9",
-   "BFE3DE"
+   "0F3439",
+   "1D5C63",
+   "7FA3A6",
+   "CADBDC"
   ],
   "subtitle_italic": false
  },
  "blue_slate": {
-  "_src": "original design (2026-11-12): blue on slate, Georgia titles, title underline",
-  "primary": "1D4ED8",
-  "title_color": "0F172A",
+  "_src": "original design (2026-11-12): navy on slate, Georgia titles, title underline",
+  "primary": "1F4E79",
+  "title_color": "1B2A3A",
   "heading_font": "Georgia",
   "body_font": "Arial",
   "title_rule": true,
   "footer_rule": false,
-  "dark": "0F172A",
+  "dark": "1B2A3A",
   "series": [
-   "1E3A8A",
-   "1D4ED8",
-   "60A5FA",
-   "BFDBFE"
-  ]
+   "14324F",
+   "1F4E79",
+   "7A9CBF",
+   "C9D6E3"
+  ],
+  "takeaway_style": "rule"
  },
  "plum_classic": {
   "_src": "original design (2026-11-12): plum, Cambria titles, filled header bars",
@@ -234,19 +235,19 @@
   "takeaway_style": "solid"
  },
  "indigo_clean": {
-  "_src": "original design (2026-11-12): indigo, Verdana, square shapes, no footer rule",
-  "primary": "4338CA",
-  "title_color": "1E1B4B",
+  "_src": "original design (2026-11-12): muted indigo, Verdana, square shapes, no footer rule",
+  "primary": "3A3F73",
+  "title_color": "1F2244",
   "heading_font": "Verdana",
   "body_font": "Verdana",
   "title_size": 19,
   "footer_rule": false,
-  "dark": "1E1B4B",
+  "dark": "1F2244",
   "series": [
-   "1E1B4B",
-   "4338CA",
-   "818CF8",
-   "C7D2FE"
+   "1F2244",
+   "3A3F73",
+   "8C90B6",
+   "D4D6E6"
   ],
   "source_italic": false
  }

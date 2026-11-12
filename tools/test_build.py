@@ -79,8 +79,8 @@ tb = [x for x in sh if x.shape_type == 17 and x.text_frame.text.startswith("Item
 est = tb.top / 914400 + sum(composite._lines(p.text, tb.width / 914400 - 0.2)[0] * 0.2 + p.space_after.pt / 72 for p in tb.text_frame.paragraphs)
 assert bot - est < 0.45, f"bullets spread over the slot (text ends {bot - est:.2f}in above the slot bottom)"
 sparse = {"type": "composite", "headline": "Slide esparso", "layout": "1", "source": "Dados ilustrativos", "panels": [{"id": "a", "kind": "bullets", "items": ["Um unico ponto curto"]}]}
-warns = []; build.build_specs([sparse], out / "sparse.pptx", warnings=warns); assert warns and "density" in warns[0], warns
-warns = []; build.build_specs([orb], out / "composite_orbital.pptx", warnings=warns); assert not warns, warns      # a well-filled example stays quiet
+warns = []; build.build_specs([sparse], out / "sparse.pptx", warnings=warns); assert any("density" in w for w in warns) and any("sparse text" in w for w in warns), warns
+warns = []; build.build_specs([orb], out / "composite_orbital.pptx", warnings=warns); assert not [w for w in warns if "density" in w], warns      # a well-filled example has no empty regions (its text is light: 107 words, it warns "sparse text")
 print("ok composite fill rule + density warning")
 
 # rich inline text: ==x== = bold in the accent colour; a list cell = one bulleted paragraph per item

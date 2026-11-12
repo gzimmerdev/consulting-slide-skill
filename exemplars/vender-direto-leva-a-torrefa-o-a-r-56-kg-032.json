@@ -1,0 +1,168 @@
+{
+ "type": "composite",
+ "lang": "pt",
+ "theme": "plum_classic",
+ "headline": "Vender direto leva a torrefação a R$ 56/kg, ao reter a margem do canal de R$ 31 sobre o preço de R$ 120: lançar com clube de assinatura e e-commerce próprio",
+ "layout": "cols",
+ "panels": [
+  {
+   "id": "p1",
+   "kind": "flow",
+   "title": "Composição do preço médio do café especial, R$/kg",
+   "direction": "lr",
+   "title_plain": true,
+   "nodes": [
+    {
+     "id": "tot",
+     "text": "Preço médio R$ 120/kg",
+     "style": "fill",
+     "op": "+"
+    },
+    {
+     "id": "tot_0",
+     "text": "Café verde 38",
+     "style": "grey",
+     "parent": "tot"
+    },
+    {
+     "id": "tot_1",
+     "text": "Torra e embalagem 17",
+     "style": "grey",
+     "parent": "tot"
+    },
+    {
+     "id": "tot_2",
+     "text": "Logística 9",
+     "style": "grey",
+     "parent": "tot"
+    },
+    {
+     "id": "tot_3",
+     "text": "Margem do canal 31",
+     "style": "fill",
+     "parent": "tot"
+    },
+    {
+     "id": "tot_4",
+     "text": "Margem torrefação 25",
+     "style": "grey",
+     "parent": "tot"
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "kind": "bullets",
+   "title": "Leitura do preço",
+   "title_plain": true,
+   "items": [
+    "**Intermediário:** R$ 31 dos R$ 120 vão ao canal",
+    "**Custo direto:** R$ 64 (verde, torra, logística)"
+   ]
+  },
+  {
+   "id": "p2",
+   "kind": "chart",
+   "title": "Vendas por canal, %",
+   "title_plain": true,
+   "chart": {
+    "kind": "doughnut",
+    "categories": [
+     "E-commerce próprio",
+     "Cafeterias",
+     "Supermercados premium",
+     "Clube de assinatura"
+    ],
+    "series": [
+     {
+      "name": "Vendas",
+      "values": [
+       34,
+       27,
+       22,
+       17
+      ]
+     }
+    ],
+    "number_format": "0\"%\""
+   }
+  },
+  {
+   "id": "p3",
+   "kind": "kpis",
+   "title": "Pesquisa com 800 consumidores",
+   "title_plain": true,
+   "items": [
+    {
+     "value": "41%",
+     "label": "pagariam 20% a mais por origem rastreada"
+    },
+    {
+     "value": "63%",
+     "label": "compram café online"
+    },
+    {
+     "value": "58",
+     "label": "NPS das marcas especiais"
+    }
+   ],
+   "bullets": [
+    "**Prêmio:** origem rastreada sustenta preço maior",
+    "**Online:** a maioria já compra café pela internet"
+   ]
+  },
+  {
+   "id": "p4",
+   "kind": "bullets",
+   "title": "Por que canais próprios",
+   "title_plain": true,
+   "items": [
+    "**Margem:** vendendo direto, a torrefação fica com a margem do canal e leva ==R$ 56/kg==",
+    "**Assinatura:** churn de 4% ao mês e LTV de ==R$ 540==",
+    "**Supermercados:** exigem 45 dias de prazo e verba de gôndola",
+    "**Risco:** o custo de aquisição digital subiu ==30%== em 2025"
+   ],
+   "callout": {
+    "lead": "Recomendação:",
+    "text": "lançar com clube de assinatura e e-commerce próprio, com origem rastreada por QR code na embalagem, e entrar em supermercados só no ano 2."
+   },
+   "icons": [
+    "coins",
+    "repeat",
+    "store",
+    "triangle-alert"
+   ]
+  }
+ ],
+ "source": "BSCA; pesquisa da equipe. Dados ilustrativos.",
+ "links": [],
+ "divider": true,
+ "section_style": "bar",
+ "cols": [
+  {
+   "w": 0.34,
+   "rows": [
+    0.74,
+    0.26
+   ],
+   "title": "Onde está a margem",
+   "intro": "Margem do canal (31) + da torrefação (25) = R$ 56/kg se vender direto."
+  },
+  {
+   "w": 0.33,
+   "rows": [
+    0.5,
+    0.5
+   ],
+   "title": "Demanda e canais hoje",
+   "intro": "Canais próprios já somam 51% das vendas e o consumidor compra online."
+  },
+  {
+   "w": 0.33,
+   "rows": [
+    1
+   ],
+   "title": "O que fazer"
+  }
+ ]
+}

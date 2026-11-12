@@ -1114,7 +1114,7 @@ def composite(slide, spec, theme, lang):
     # dividers are opt-in (spec "divider"): s09/s10 originals have one, other archive slides use the gutter alone
     if spec.get("divider") and spec["layout"] in ("2col", "L2|R", "L|R2", "L|R3", "3col", "4col", "cols"):
         for r_ in (raw[1:] if spec["layout"] in ("3col", "4col") else [c_[0] for c_ in _cols(spec["cols"], *_body(spec)) if c_[3]][1:] if spec["layout"] == "cols" else raw[-1:]):      # 3col: a line at both gutters
-            dx = r_[0] - G / 2; hline(slide, dx, _body(spec)[1] if _hasband(spec) else BODY_TOP, dx, FOOTER_RULE_Y - 0.05, "A6A6A6", 1.0, dash=True)
+            dx = r_[0] - G / 2; hline(slide, dx, _body(spec)[1] if _hasband(spec) else BODY_TOP, dx, BAR_Y - 0.1 if spec.get("takeaway") else FOOTER_RULE_Y - 0.05, "A6A6A6", 1.0, dash=True)      # stop above a takeaway bar
         if _hasband(spec): x_, y_, w_, _h = _body(spec); hline(slide, x_, y_ - BAND_GAP / 2, x_ + w_, y_ - BAND_GAP / 2, "A6A6A6", 1.0, dash=True)      # band | columns
     if spec.get("dividers", theme.get("dividers")):      # horizontal dashed light-grey line between vertically stacked slots
         pr = {"L|R2": [(1, 2)], "L2|R": [(0, 1)], "T|B": [(0, 1)], "2x2": [(0, 2), (1, 3)],

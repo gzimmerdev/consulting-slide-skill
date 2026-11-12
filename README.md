@@ -74,13 +74,16 @@ Slides are saved in `out/mcp/`. Ask Claude "abre no PowerPoint" / "open it in Po
 
 ## How to ask for a slide
 
-Give Claude **all the data in one message**: numbers, the breakdowns, the comparison, your recommendation and the source. The more structure you give, the better the composition. Example:
+Give Claude **all the data in one message**: numbers, the breakdowns, the comparison, *why* the numbers are what they are, the risks, your recommendation and the source. Numbers alone give a sparse slide: Claude never invents the reasons, so the text on the slide comes from what you tell it. The more structure you give, the better the composition. Example:
 
 ```
 /slide Gera um slide: a margem EBITDA da rede Bom Preço caiu de 7,8% em 2023 para 5,1% em 2024.
 Ponte da margem (p.p.): 2023 7,8; inflação de alimentos -1,4; salários -0,9; energia -0,6; perdas -0,4;
 marca própria +0,6; 2024 5,1. Perdas por categoria (% da venda): hortifrúti 6,2; padaria 4,8; carnes 3,1.
-Marca própria: Bom Preço 9%, média do setor 14%, líder 22%. KPIs: 142 lojas, R$ 6,3 bi de receita.
+Hortifrúti e padaria são 18% da venda, mas 61% das perdas, por quebra na cadeia fria e pedido manual.
+Marca própria: Bom Preço 9%, média do setor 14%, líder 22%; margem bruta 8 p.p. maior que a das marcas líderes.
+Plano até 2026: pedido automático e preço dinâmico em frescos tiram 1,0 p.p. de perdas (piloto em 12 lojas
+cortou 35%); levar a marca própria a 14% soma 0,5 p.p. KPIs: 142 lojas, R$ 6,3 bi de receita.
 Recomendação: atacar perdas em hortifrúti e padaria e acelerar marca própria. Fonte: ABRAS, análise da equipe.
 ```
 

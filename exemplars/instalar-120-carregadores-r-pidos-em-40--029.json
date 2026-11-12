@@ -1,0 +1,251 @@
+{
+ "type": "composite",
+ "lang": "pt",
+ "theme": "orange_graphite",
+ "headline": "Instalar 120 carregadores rápidos em 40 postos de rodovia de SP exige CAPEX de R$ 35 mi e se paga em ==5,8 anos== (TIR 17%)",
+ "layout": "cols",
+ "divider": true,
+ "section_style": "rule",
+ "cols": [
+  {
+   "w": 0.31,
+   "rows": [
+    0.42,
+    0.58
+   ],
+   "title": "Por que rodovia",
+   "title_badge": 1
+  },
+  {
+   "w": 0.37,
+   "rows": [
+    0.55,
+    0.45
+   ],
+   "title": "Investimento e retorno",
+   "title_badge": 2
+  },
+  {
+   "w": 0.32,
+   "rows": [
+    0.36,
+    0.64
+   ],
+   "title": "Riscos e decisão",
+   "title_badge": 3
+  }
+ ],
+ "panels": [
+  {
+   "id": "why",
+   "kind": "bullets",
+   "title": "Demanda e parada ideal",
+   "title_plain": true,
+   "icons": [
+    "trending-up",
+    "route",
+    "clock"
+   ],
+   "items": [
+    "**Frota crescendo:** a frota elétrica de SP cresceu ==2,1x== em 2 anos",
+    "**Oferta escassa:** 70% das viagens longas usam rodovias, com só ==0,3== carregador rápido a cada 100 km",
+    "**Encaixe no tempo:** a parada média de 25 min é o tempo de recarga até 80%"
+   ]
+  },
+  {
+   "id": "assum",
+   "kind": "table",
+   "title": "Premissas e origem",
+   "title_plain": true,
+   "size": 10,
+   "tight": true,
+   "columns": [
+    "Premissa",
+    "Valor",
+    "Origem"
+   ],
+   "col_weights": [
+    1.1,
+    1.3,
+    1.2
+   ],
+   "align": [
+    "l",
+    "l",
+    "c"
+   ],
+   "rows": [
+    [
+     "Utilização média",
+     "18%",
+     {
+      "pill": "Benchmark",
+      "color": "C0701F"
+     }
+    ],
+    [
+     "Tarifa ao cliente",
+     "R$ 2,10/kWh",
+     {
+      "pill": "Dado público",
+      "color": "primary"
+     }
+    ],
+    [
+     "Custo de energia",
+     "R$ 0,85/kWh",
+     {
+      "pill": "Dado público",
+      "color": "primary"
+     }
+    ],
+    [
+     "Escala",
+     "120 em 40 postos",
+     {
+      "pill": "Decisão",
+      "color": "FFC000"
+     }
+    ]
+   ],
+   "pill_legend": {
+    "label": "Origem:",
+    "pills": [
+     {
+      "pill": "Dado público",
+      "color": "primary"
+     },
+     {
+      "pill": "Benchmark",
+      "color": "C0701F"
+     },
+     {
+      "pill": "Decisão",
+      "color": "FFC000"
+     }
+    ]
+   },
+   "pill_size": 9
+  },
+  {
+   "id": "capex",
+   "kind": "flow",
+   "title": "CAPEX, R$ mi",
+   "title_plain": true,
+   "direction": "lr",
+   "node_size": 8,
+   "nodes": [
+    {
+     "id": "tot",
+     "text": "Total: 35",
+     "style": "fill",
+     "op": "+"
+    },
+    {
+     "id": "c1",
+     "text": "Carregadores 18",
+     "style": "fill",
+     "parent": "tot"
+    },
+    {
+     "id": "c2",
+     "text": "Conexão à rede 9",
+     "style": "grey",
+     "parent": "tot"
+    },
+    {
+     "id": "c3",
+     "text": "Obras civis 6",
+     "style": "grey",
+     "parent": "tot"
+    },
+    {
+     "id": "c4",
+     "text": "Software 2",
+     "style": "grey",
+     "parent": "tot"
+    }
+   ]
+  },
+  {
+   "id": "cash",
+   "kind": "chart",
+   "title": "Fluxo de caixa anual, R$ mi",
+   "title_plain": true,
+   "chart": {
+    "kind": "column",
+    "labels": true,
+    "number_format": "#,##0",
+    "categories": [
+     "2026",
+     "2027",
+     "2028",
+     "2029",
+     "2030",
+     "2031",
+     "2032",
+     "2033"
+    ],
+    "series": [
+     {
+      "name": "Fluxo de caixa",
+      "values": [
+       -20,
+       -15,
+       3,
+       6,
+       9,
+       11,
+       12,
+       13
+      ]
+     }
+    ],
+    "max": 16
+   }
+  },
+  {
+   "id": "risk",
+   "kind": "bullets",
+   "title": "Riscos",
+   "title_plain": true,
+   "icons": [
+    "trending-down",
+    "clock"
+   ],
+   "items": [
+    "**Utilização:** abaixo de 12%, o payback vai a ==8 anos==",
+    "**Conexão:** a concessionária pode atrasar ==9 meses=="
+   ]
+  },
+  {
+   "id": "kpi",
+   "kind": "kpis",
+   "title": "Retorno e recomendação",
+   "title_plain": true,
+   "items": [
+    {
+     "value": "5,8 anos",
+     "label": "Payback"
+    },
+    {
+     "value": "17%",
+     "label": "TIR"
+    }
+   ],
+   "callout": {
+    "lead": "Recomendação:",
+    "text": "começar pelos 40 postos de rodovia, negociar a conexão em lote com a concessionária e só expandir com utilização acima de 15%"
+   }
+  }
+ ],
+ "links": [],
+ "source": "ANEEL, ABVE, análise da equipe. Dados ilustrativos.",
+ "frame": {
+  "panels": [
+   "risk",
+   "kpi"
+  ],
+  "style": "none"
+ }
+}

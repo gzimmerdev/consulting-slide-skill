@@ -151,6 +151,16 @@ def _words(v):
     return 0
 
 
+def _slide_words(shapes):
+    """Words visible on a built slide (text boxes, shapes, table cells; chart labels not counted)."""
+    n = 0
+    for sh in shapes:
+        if sh.shape_type == 6: n += _slide_words(sh.shapes)
+        elif sh.has_table: n += sum(len(c.text.split()) for r in sh.table.rows for c in r.cells)
+        elif sh.has_text_frame: n += len(sh.text_frame.text.split())
+    return n
+
+
 def build_specs(specs, out, theme=None, primary=None, font=None, heading_font=None, warnings=None):
     """Validate then build. Returns a list of error strings (empty = written to `out`). Shared by CLI and MCP server.
     Non-fatal findings (density check) are appended to the `warnings` list when one is passed."""
@@ -164,8 +174,9 @@ def build_specs(specs, out, theme=None, primary=None, font=None, heading_font=No
                         font or s.get("font"), heading_font or s.get("heading_font"))
         try: BUILDERS[s["type"]](blank(prs), s, th, s.get("lang", "pt"))
         except LogoError as ex: return [str(ex)]          # theme-token logo with a missing file
-    for s in specs:      # steer away from fallback archetypes (front-end rule: composite is the default for 2+ data blocks)
+    for s, sl in zip(specs, prs.slides):      # steer away from fallback archetypes (front-end rule: composite is the default for 2+ data blocks)
         if s["type"] in ("multi_chart", "chart_takeaway"): composite.WARNINGS.append(f"fallback archetype '{s['type']}': prefer composite for multi-block content (cost tree, assumptions with sources, phases, KPIs); every data block the user gave must appear on the slide")
+        elif s["type"] == "composite" and (n := _slide_words(sl.shapes)) < 140: composite.WARNINGS.append(f"sparse text: {n} words on the slide (approved exemplars have 154-307): add the so-what the user's material supports (a section intro, 2 short bullets, a reasoned recommendation); never invent claims, and if the material has none, tell the user the slide is light")
         elif s["type"] != "composite" and _words(s) < 100: composite.WARNINGS.append(f"sparse fallback slide ({_words(s)} words < 100): the archive median is ~175; add the data blocks the user gave or use composite")
     Path(out).parent.mkdir(parents=True, exist_ok=True); prs.save(out)
     if warnings is not None: warnings.extend(composite.WARNINGS)

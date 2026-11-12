@@ -1,0 +1,179 @@
+{
+ "type": "composite",
+ "lang": "pt",
+ "theme": "blue_slate",
+ "headline": "Solar distribuído chegou a 33,5 GW em 2024; o foco são PMEs de MG e SP via leasing",
+ "layout": "cols",
+ "panels": [
+  {
+   "id": "p1",
+   "kind": "chart",
+   "title": "Capacidade instalada, GW",
+   "title_plain": true,
+   "chart": {
+    "kind": "column",
+    "categories": [
+     "2019",
+     "2020",
+     "2021",
+     "2022",
+     "2023",
+     "2024"
+    ],
+    "series": [
+     {
+      "name": "GW",
+      "values": [
+       2.3,
+       4.7,
+       8.8,
+       17.2,
+       26.0,
+       33.5
+      ]
+     }
+    ],
+    "number_format": "0.0"
+   }
+  },
+  {
+   "id": "p2",
+   "kind": "kpis",
+   "title": "Retorno e escala",
+   "title_plain": true,
+   "items": [
+    {
+     "value": "4,5 anos",
+     "label": "payback residencial"
+    },
+    {
+     "value": "3,1 mi",
+     "label": "sistemas instalados"
+    },
+    {
+     "value": "+9% a.a.",
+     "label": "tarifa de energia"
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "kind": "chart",
+   "title": "Maiores estados, GW",
+   "title_plain": true,
+   "chart": {
+    "kind": "bar",
+    "categories": [
+     "MG",
+     "SP",
+     "RS",
+     "PR",
+     "MT"
+    ],
+    "series": [
+     {
+      "name": "GW",
+      "values": [
+       4.8,
+       4.1,
+       3.2,
+       2.9,
+       2.2
+      ]
+     }
+    ],
+    "number_format": "0.0"
+   }
+  },
+  {
+   "id": "p4",
+   "kind": "bullets",
+   "title": "Por que MG e SP, e o risco",
+   "title_plain": true,
+   "items": [
+    "**Liderança:** irradiação alta e ==tarifas caras== em MG e SP",
+    "**Risco:** o fio B reduz a economia e a rede de MG já ==rejeita conexões== em algumas cidades"
+   ]
+  },
+  {
+   "id": "p5",
+   "kind": "chart",
+   "title": "Financiamento, % dos sistemas",
+   "title_plain": true,
+   "chart": {
+    "kind": "doughnut",
+    "categories": [
+     "Banco",
+     "Próprio",
+     "Leasing",
+     "Consórcio"
+    ],
+    "series": [
+     {
+      "name": "%",
+      "values": [
+       52,
+       28,
+       12,
+       8
+      ]
+     }
+    ],
+    "number_format": "0\"%\""
+   }
+  },
+  {
+   "id": "p6",
+   "kind": "bullets",
+   "title": "Leasing e clientes comerciais",
+   "title_plain": true,
+   "items": [
+    "**Leasing cresce:** PMEs não querem imobilizar capital com a Selic em ==10,5%==",
+    "**Comercial:** consumo de dia, quando há geração, com payback de ==3,8 anos=="
+   ]
+  }
+ ],
+ "source": "ABSOLAR, ANEEL, análise da equipe. Dados ilustrativos.",
+ "divider": true,
+ "section_style": "bar",
+ "cols": [
+  {
+   "w": 0.34,
+   "rows": [
+    0.6,
+    0.4
+   ],
+   "title": "Adoção multiplicou 14x desde 2019",
+   "title_badge": 1,
+   "intro": "Lei 14.300: fio B gradual desde 2023 alonga o payback em ~0,5 ano até 2029."
+  },
+  {
+   "w": 0.33,
+   "rows": [
+    0.58,
+    0.42
+   ],
+   "title": "MG e SP lideram a capacidade",
+   "title_badge": 2
+  },
+  {
+   "w": 0.33,
+   "rows": [
+    0.55,
+    0.45
+   ],
+   "title": "Capital de terceiros financia 72%",
+   "title_badge": 3
+  }
+ ],
+ "links": [
+  {
+   "kind": "cagr",
+   "panel": "p1",
+   "from": 0,
+   "to": 5,
+   "label": "+71% a.a."
+  }
+ ],
+ "takeaway": "**Recomendação:** focar em PMEs comerciais de MG e SP com leasing de 7 anos e parcela abaixo da conta de luz atual."
+}
