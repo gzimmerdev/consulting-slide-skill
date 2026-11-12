@@ -43,3 +43,4 @@ Exported 2026-11-08 from Claude Code's project memory, which stays the master co
 - Ruling (user, 2026-11-12): Icons by default on short lists stay (confirms 2026-11-11).
 - Ruling (user, 2026-11-12): The centred title between two thin lines (section_style centred_rule) is a liked header look: it gives slides a different feel; keep varying header styles between slides.
 - Ruling (user, 2026-11-12): Designs and references come from studying the whole archive (all decks, mixed), not from a handful of exemplars; slides should also vary in disposition (how sections are arranged), not only in header style.
+- Ruling (user, 2026-11-12): The README gallery shows the six slides made with the archive-mixed styles and varied layouts (Bom Preço L-shape mix_olive, EV four columns mix_slate, telemedicine 2x2 mix_cobalt, coffee wide + narrow mix_wine, solar band on top mix_amber, sanitation two columns mix_jade).

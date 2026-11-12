@@ -3,22 +3,22 @@
 Turn your data, notes and research into **one finished, editable PowerPoint slide** in case-competition consulting style: action title, charts, tables, cost trees, KPIs, sources. You type a request to Claude, and Claude builds the slide for you.
 
 - Native PowerPoint: real charts and text boxes you can edit, not images.
-- Dense by default, organized into 2-3 marked sections. The layout follows your content: Claude doesn't paste the same template every time.
-- Portuguese or English, with several styles (`bain_red`, `lek_green`, `orange_graphite`, `teal_modern`, `blue_slate`, `plum_classic`, `indigo_clean`, ...). You can also extract a style from any .pptx or .pdf.
+- Dense by default, organized into 2-4 marked sections (side-by-side columns, an L-shape, a 2x2 grid, a band on top). The layout follows your content: Claude doesn't paste the same template every time.
+- Portuguese or English, with 30+ styles: 24 `mix_*` styles mixed from the archive study (`mix_olive`, `mix_slate`, `mix_cobalt`, `mix_wine`, `mix_amber`, `mix_jade`, ...) plus `bain_red`, `lek_green` and others. You can also extract a style from any .pptx or .pdf.
 - Runs on your own Claude subscription (Claude Code or Claude Desktop). No API key needed.
 
 ## Examples
 
-The same tool in six styles. Every slide was made by the tool from a one-message request, is native PowerPoint and fully editable. All the data in these examples is illustrative.
+Six slides, six styles, six layouts. Every slide was made by the tool from a one-message request, is native PowerPoint and fully editable. The layout follows the content (an L-shape, four columns, a 2x2 grid, wide and narrow columns, a band on top, two columns), and the styles are mixes of habits from a study of ~420 case-competition slides. All the data in these examples is illustrative.
 
 | | |
 |---|---|
-| ![orange_graphite](docs/images/example-orange_graphite.png) | ![teal_modern](docs/images/example-teal_modern.png) |
-| `orange_graphite`: EV charging CAPEX tree, cash flow with payback, sourced assumptions | `teal_modern`: telemedicine market, revenue mix, entry-model ratings and KPIs |
-| ![plum_classic](docs/images/example-plum_classic.png) | ![blue_slate](docs/images/example-blue_slate.png) |
-| `plum_classic`: specialty-coffee price tree, sales channels, consumer KPIs | `blue_slate`: distributed solar KPIs, growth, top states and financing mix |
-| ![lek_green](docs/images/example-lek_green.png) | ![indigo_clean](docs/images/example-indigo_clean.png) |
-| `lek_green`: margin bridge, losses by category, plan with sources | `indigo_clean`: sanitation investment gap, needs and contract models |
+| ![mix_olive](docs/images/example-mix_olive.png) | ![mix_slate](docs/images/example-mix_slate.png) |
+| `mix_olive`, L-shape: margin bridge with KPI tiles, losses and private label stacked beside it | `mix_slate`, four columns: why highways, CAPEX tree, cash flow, sourced assumptions and risks |
+| ![mix_cobalt](docs/images/example-mix_cobalt.png) | ![mix_wine](docs/images/example-mix_wine.png) |
+| `mix_cobalt`, 2x2 sections: telemedicine market, KPIs, revenue mix, entry-model ratings | `mix_wine`, wide + narrow: specialty-coffee price tree and channels, survey KPIs and the case for own channels |
+| ![mix_amber](docs/images/example-mix_amber.png) | ![mix_jade](docs/images/example-mix_jade.png) |
+| `mix_amber`, band on top: solar growth across the slide, states, financing, returns and risks | `mix_jade`, two columns: sanitation investment gap and needs, KPIs and contract models |
 
 Want your own colours, fonts and logo? See [Use your own design](#use-your-own-design-colours-fonts-logo).
 
