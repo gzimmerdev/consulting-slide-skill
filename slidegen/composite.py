@@ -231,7 +231,7 @@ def _bar_h(row, cw=None, size=11):
 def _extra_h(p, w):
     """(callout box height, footnotes height) in inches; 0 when absent."""
     co = p.get("callout"); ch = 0
-    if co: ch = _lines(f"{co.get('lead', '')} {co['text']}", w - 0.3, 11)[0] * 0.19 + 0.16
+    if co: ps = f"{co.get('lead', '')} {co['text']}".split("\n"); ch = sum(_lines(t, w - 0.3, 11)[0] for t in ps) * 0.19 + 0.16 + 0.16 * (len(ps) > 1) + 0.06 * (len(ps) - 1)      # "\n" = own paragraphs, more padding
     fn = sum(_lines(f, w, 9)[0] for f in p.get("footnotes") or []) * 0.15 + (0.04 if p.get("footnotes") else 0)
     return ch, fn + (PILL_H if p.get("pill_legend") else 0) + (SC_H if p.get("scale") else 0)
 
@@ -1130,7 +1130,11 @@ def composite(slide, spec, theme, lang):
             if xc:
                 co = p["callout"]; ld = co.get("lead", ""); ct = (ld if "==" in ld else f"**{ld}**") + f" {co['text']}" if ld else co["text"]   # lead with ==accent== keeps its own markup
                 if theme.get("callout_style") == "bold_centre": text(slide, x, cy, w, xc, ct.replace("**", ""), size=11, bold=True, color="1A1A1A", font=theme["body_font"], align="c", anchor="m")   # theme token (lek_report): bold centred text on the backdrop, no inner box
-                else: set_text(box(slide, x, cy, w, xc, fill="FFFFFF" if p["id"] in bg else p.get("callout_fill", theme.get("callout_fill", "F2F2F2")), shape=rect_shape(theme)), ct, theme, size=11, color="1A1A1A", align="l")
+                else:
+                    cb = set_text(box(slide, x, cy, w, xc, fill="FFFFFF" if p["id"] in bg else p.get("callout_fill", theme.get("callout_fill", "F2F2F2")), shape=rect_shape(theme)), ct.split("\n"), theme, size=11, color="1A1A1A", align="l")
+                    if "\n" in ct:      # multi-line callout (point, then one line per consequence): roomier padding, space between lines
+                        tf = cb.text_frame; tf.margin_left = tf.margin_right = Inches(0.15); tf.margin_top = tf.margin_bottom = Inches(0.1)
+                        for q in tf.paragraphs[1:]: q.space_before = Pt(5)
             pl = PILL_H if p.get("pill_legend") else 0; sc = SC_H if p.get("scale") else 0
             if sc: _scale(slide, p["scale"], x, y + h - xf, w, theme)      # gradient scale bar: top of the bottom block, above pills and footnotes
             if pl:       # legend row of pills ("Input source: [Public data] [Benchmark]"), above the footnotes
